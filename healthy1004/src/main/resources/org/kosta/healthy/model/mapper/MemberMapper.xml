@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kosta.healthy.model.mapper.MemberMapper">
+	<sql id="selectMember">
+		select memberId,password,memberName,address,email,height,weight,age,phone
+		from healthy_member
+	</sql>
+	<select id="login" resultType="memberVO" parameterType="memberVO">
+		<include refid="selectMember" />
+		where memberId=#{memberId} and password=#{password}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
