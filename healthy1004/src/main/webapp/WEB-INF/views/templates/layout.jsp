@@ -51,26 +51,18 @@
 				$("#frm").attr("action",
 						"${pageContext.request.contextPath}/home"); //form 의 action 값을 /로 변경			
 				$("#pageName").val("home");
-			} else if (menu === "about") {
+			} else if (menu === "diary") {
 				$("#frm").attr("action",
-						"${pageContext.request.contextPath}/about"); //form 의 action 값을 home2로 변경
-				$("#pageName").val("about");
-			} else if (menu === "course") {
+						"${pageContext.request.contextPath}/diary"); //form 의 action 값을 home2로 변경
+				$("#pageName").val("diary");
+			} else if (menu === "crewfind") {
 				$("#frm").attr("action",
-						"${pageContext.request.contextPath}/course"); //form 의 action 값을 home2로 변경
-				$("#pageName").val("course");
-			} else if (menu === "blog") {
+						"${pageContext.request.contextPath}/crewfind"); //form 의 action 값을 home2로 변경
+				$("#pageName").val("crewfind");
+			} else if (menu === "mypage") {
 				$("#frm").attr("action",
-						"${pageContext.request.contextPath}/blog"); //form 의 action 값을 home2로 변경
-				$("#pageName").val("blog");
-			} else if (menu === "instructor") {
-				$("#frm").attr("action",
-						"${pageContext.request.contextPath}/instructor"); //form 의 action 값을 home2로 변경
-				$("#pageName").val("instructor");
-			} else if (menu === "contact") {
-				$("#frm").attr("action",
-						"${pageContext.request.contextPath}/contact"); //form 의 action 값을 home2로 변경
-				$("#pageName").val("contact")
+						"${pageContext.request.contextPath}/mypage"); //form 의 action 값을 home2로 변경
+				$("#pageName").val("mypage");
 			}
 			$("#frm").submit();
 

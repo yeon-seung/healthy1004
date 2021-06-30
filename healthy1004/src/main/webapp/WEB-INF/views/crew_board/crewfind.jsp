@@ -11,7 +11,7 @@
 		<div
 			class="row no-gutters slider-text align-items-end justify-content-center">
 			<div class="col-md-9 ftco-animate pb-5 text-center">
-				<h1 class="mb-0 bread">Map봐요~~</h1>
+				<h1 class="mb-0 bread">크루 구하기</h1>
 			</div>
 		</div>
 	</div>

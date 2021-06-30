@@ -27,16 +27,16 @@
 					href="${pageContext.request.contextPath}/contact" class="nav-link">Contact</a></li> --%>
 				<li class="nav-item active " id="home"><a
 					href="#" class="nav-link">Home</a></li>
-				<li class="nav-item active" id="about"><a
+				<li class="nav-item active" id="crewfind"><a
 					href="#" class="nav-link">크루 찾기</a></li>
-				<li class="nav-item active" id="course"><a
+				<li class="nav-item active" id="diary"><a
 					href="#" class="nav-link">다이어리</a></li>
-				<li class="nav-item active" id="instructor"><a
-					href="#" class="nav-link ">Instructor</a></li>
-				<li class="nav-item active" id="blog"><a
+				<li class="nav-item active" id="mypage"><a
+					href="#" class="nav-link ">마이 페이지</a></li>
+		<!--	<li class="nav-item active" id="blog"><a
 					href="#" class="nav-link">Blog</a></li>
 				<li class="nav-item active" id="contact"><a
-					href="#" class="nav-link">Contact</a></li>
+					href="#" class="nav-link">Contact</a></li>	-->
 			</ul>
 			<form id="frm" method="get" action="">
 				<input type="hidden" name="pageName" id="pageName">

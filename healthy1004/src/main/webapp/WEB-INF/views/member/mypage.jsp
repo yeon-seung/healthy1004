@@ -15,7 +15,7 @@
 							class="fa fa-chevron-right"></i></a></span> <span>Course Lists <i
 						class="fa fa-chevron-right"></i></span>
 				</p> --%>
-				<h1 class="mb-0 bread">My Page</h1>
+				<h1 class="mb-0 bread">마이 페이지</h1>
 			</div>
 		</div>
 	</div>
