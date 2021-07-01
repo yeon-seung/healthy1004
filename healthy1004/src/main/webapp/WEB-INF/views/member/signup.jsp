@@ -8,10 +8,10 @@
 	<div class="overlay"></div>
 	<div class="container">
 		<div
-			class="row no-gutters slider-text align-items-end justify-content-center">
+			class="row no-gutters slider-text align-items-end justify-content-ce``nter">
 			<div class="col-md-9 ftco-animate pb-5 text-center">
 
-				<h1 class="mb-0 bread">SIGN UP</h1>
+				<h1 class="mb-0 bread">회원가입</h1>
 			</div>
 		</div>
 	</div>
@@ -26,7 +26,7 @@
 						<div
 							class="col-lg-8 col-md-7 order-md-last d-flex align-items-stretch">
 							<div class="contact-wrap w-100 p-md-5 p-4">
-								<h3 class="mb-4">SIGN UP</h3>
+								<h3 class="mb-4">회원가입</h3>
 								<form method="POST" id="contactForm" name="contactForm"
 									class="contactForm">
 									<div class="row">

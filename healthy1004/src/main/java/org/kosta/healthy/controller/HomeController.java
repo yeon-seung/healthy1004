@@ -10,21 +10,23 @@ public class HomeController {
 		return "home.tiles";
 	}
 	
-	// 임의 이름임.
-	// 변경 사항 -> jsp 명, header의 a태그 href 속성
-	
 	@RequestMapping("mypage") //마이페이지
-	public String instructor() {
+	public String mypage() {
 		return "member/mypage.tiles";
 	}
 	
 	@RequestMapping("diary") //다이어리
-	public String about() {
+	public String diary() {
 		return "diary/diary.tiles";
 	}
 	
 	@RequestMapping("crewfind") //크루 구하기
-	public String course() {
+	public String crewfind() {
 		return "crew_board/crewfind.tiles";
+	}
+	
+	@RequestMapping("signup") //크루 구하기
+	public String signup() {
+		return "member/signup.tiles";
 	}
 }

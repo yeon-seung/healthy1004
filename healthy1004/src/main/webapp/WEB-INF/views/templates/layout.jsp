@@ -53,16 +53,20 @@
 				$("#pageName").val("home");
 			} else if (menu === "diary") {
 				$("#frm").attr("action",
-						"${pageContext.request.contextPath}/diary"); //form 의 action 값을 home2로 변경
+						"${pageContext.request.contextPath}/diary");
 				$("#pageName").val("diary");
 			} else if (menu === "crewfind") {
 				$("#frm").attr("action",
-						"${pageContext.request.contextPath}/crewfind"); //form 의 action 값을 home2로 변경
+						"${pageContext.request.contextPath}/crewfind"); 
 				$("#pageName").val("crewfind");
 			} else if (menu === "mypage") {
 				$("#frm").attr("action",
-						"${pageContext.request.contextPath}/mypage"); //form 의 action 값을 home2로 변경
+						"${pageContext.request.contextPath}/mypage");
 				$("#pageName").val("mypage");
+			} else if (menu === "signup") {
+				$("#frm").attr("action",
+						"${pageContext.request.contextPath}/signup");
+				$("#pageName").val("signup");
 			}
 			$("#frm").submit();
 
