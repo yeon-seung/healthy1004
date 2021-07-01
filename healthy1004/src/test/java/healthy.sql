@@ -6,7 +6,7 @@ drop table healthy_member;
 --member table 생성
 create table healthy_member (
 	member_id varchar2(100) primary key,
-	password varchar2(100) not null,;
+	password varchar2(100) not null,
 	member_name varchar2(100) not null,
 	address varchar2(100) not null,
 	email varchar2(100) not null,
@@ -21,7 +21,7 @@ insert into healthy_member values('java','a','박동은','송파','dongooree@nav
 
 --member table 전체 검색 
 select * from healthy_member;
-commit;
+commit
 
 
 --	CREW
@@ -33,16 +33,25 @@ drop table healthy_crew;
 create table healthy_crew (
 	crew_id varchar2(100) primary key,
 	crew_name varchar2(100) not null,
-	crew_info varchar2(100) not null,
-	crew_size varchar2(100) not null,
+	crew_info varchar2(500) not null,
+	crew_size number not null,
 	crew_location varchar2(100) not null
 )
 
-insert into healthy_crew values('a','la러닝크루','la에서 러닝하실 분들 구합니다','10','캘리포니아');
+-- 크루 아이디 시퀀스로 주는 걸로 바꿀게~ diary랑 board도 시퀀스로 해줘 누군가가~
+drop sequence crew_seq;
+create sequence crew_seq;
+
+-- 아이디 시퀀스로 바꾼 후 insert문
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '송파 러닝 크루','애인괌','10','서울시 송파구 중대로12길 35');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '송파 수영 크루','sexy 물개 모여라','10','서울시 송파구 신천동 32');
+
+-- 아이디 시퀀스로 바꾸기 전 insert문
+-- insert into healthy_crew values('a','la러닝크루','la에서 러닝하실 분들 구합니다','10','캘리포니아');
 
 --crew table 전체 검색
 select * from healthy_crew;
-commit;
+commit
 
 
 --	CREW_MEMBER
@@ -64,7 +73,7 @@ insert into healthy_crew_member values('java','a','2021-06-28');
 
 --crew_member table 전체 검색
 select * from healthy_crew_member;
-commit;
+commit
 
 
 --	DIARY
@@ -86,7 +95,7 @@ insert into healthy_diary values('da','java','2021-06-27','다리가 부음','�
 
 --diary table 전체 검색
 select * from healthy_diary;
-commit;
+commit
 
 
 --	CREW_BOARD
@@ -110,7 +119,7 @@ insert into healthy_board values('ba','java','a','7/1 la러닝 크루구합니�
 
 --crew_board table 전체 검색
 select * from healthy_board;
-commit;
+commit
 
 
 --	AUTHORITY
@@ -128,7 +137,7 @@ create table authorities(
 
 --authorities table 전체 검색
 select * from authorities;
-commit;
+commit
 
 
 
