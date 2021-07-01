@@ -91,7 +91,15 @@ create table healthy_diary (
 	constraint fk_diary_member_id foreign key(member_id) references healthy_member(member_id)
 )
 
-insert into healthy_diary values('da','java','2021-06-27','다리가 부음','러닝 100분');
+--다이어리 시퀀스 넣었어~~~
+drop sequence diary_seq;
+create sequence diary_seq;
+
+--이건 seq로 id 넣은 후 insert문~~~
+insert into healthy_diary(diary_id,member_id,diary_date,body_condition,excercise_content) values(diary_seq.nextval,'java','2021-06-27','다리가 부음','러닝 100분');
+
+--이건 seq로 id 넣기 전 insert문~~~
+--insert into healthy_diary values('da','java','2021-06-27','다리가 부음','러닝 100분');
 
 --diary table 전체 검색
 select * from healthy_diary;
@@ -115,7 +123,15 @@ create table healthy_board(
 	constraint fk_board_crew_id foreign key(crew_id) references healthy_crew(crew_id)
 )
 
-insert into healthy_board values('ba','java','a','7/1 la러닝 크루구합니다','7/1에 la에서 러닝하실 분 구합니다','2021-06-30');
+--다이어리 시퀀스 넣었어~~~
+drop sequence board_seq;
+create sequence board_seq;
+
+--이건 seq로 id 넣은 후 insert문~~~
+insert into healthy_board(board_id,member_id,crew_id,board_title,board_content,board_time) values(board_seq.nextval,'java',1,'7/1 la러닝 크루구합니다','7/1에 la에서 러닝하실 분 구합니다',sysdate);
+
+--이건 seq로 id 넣기 전 insert문~~~
+--insert into healthy_board values('ba','java','a','7/1 la러닝 크루구합니다','7/1에 la에서 러닝하실 분 구합니다','2021-06-30');
 
 --crew_board table 전체 검색
 select * from healthy_board;
