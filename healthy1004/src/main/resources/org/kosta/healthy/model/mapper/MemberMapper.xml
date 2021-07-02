@@ -4,14 +4,31 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.healthy.model.mapper.MemberMapper">
-	<sql id="selectMember">
-		select memberId,password,memberName,address,email,height,weight,age,phone
-		from healthy_member
-	</sql>
-	<select id="login" resultType="memberVO" parameterType="memberVO">
-		<include refid="selectMember" />
-		where memberId=#{memberId} and password=#{password}
+	<!-- Spring Security에서 로그인 인증시 사용 : 
+	      사용가능한(enabled 1) 계정일 경우만 조회. 
+	 -->
+	<select id="findMemberById" resultType="memberVO">
+ 		SELECT	member_id, password, member_name, address, email, height, weight, age, phone, enabled
+		FROM	healthy_member
+		WHERE 	member_id=#{value}	
+		AND		enabled=1 		
+ 	</select>
+	<!-- Spring Security에서 권한 체크를 위해 사용 -->
+	<select id="selectAuthorityByUsername"  resultType="authority">
+		SELECT	username, authority
+		FROM	authorities
+		WHERE	username=#{value}
 	</select>
+	<insert id="registerMember" parameterType="memberVO">
+		insert into healthy_member(member_id, password, member_name, address, email, height, weight, age, phone)
+		values (#{memberId}, #{password}, #{memberName}, #{address}, #{email}, #{height}, #{weight}, #{age}, #{phone})
+	</insert>
+	<select id="idcheck" resultType="int">
+		select count(*) from healthy_member where member_id=#{value}
+	</select>
+	<insert id="registerRole" parameterType="authority">
+		insert into authorities(username,authority) values(#{username},#{authority})
+	</insert>
 </mapper>
 
 

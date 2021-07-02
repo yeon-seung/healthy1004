@@ -1,41 +1,42 @@
---	MEMBER	
+--   MEMBER   
 
 --member table 삭제
 drop table healthy_member;
 
 --member table 생성
 create table healthy_member (
-	member_id varchar2(100) primary key,
-	password varchar2(100) not null,
-	member_name varchar2(100) not null,
-	address varchar2(100) not null,
-	email varchar2(100) not null,
-	height varchar2(100) not null,
-	weight varchar2(100) not null,
-	age varchar2(100) not null,
-	phone varchar2(100) not null,
-	enabled int default 1 not null
+   member_id varchar2(100) primary key,
+   password varchar2(100) not null,
+   member_name varchar2(100) not null,
+   address varchar2(100) not null,
+   email varchar2(100) not null,
+   height varchar2(100) not null,
+   weight varchar2(100) not null,
+   age varchar2(100) not null,
+   phone varchar2(100) not null,
+   enabled int default 1 not null
 )
 
-insert into healthy_member values('java','a','박동은','송파','dongooree@naver.com','165','50','26','01011112222',1);
+--member 데이터 전체 삭제
+delete from healthy_member;
 
 --member table 전체 검색 
 select * from healthy_member;
 commit
 
 
---	CREW
+--   CREW
 
 --crew table 삭제
 drop table healthy_crew;
 
 --crew table 생성
 create table healthy_crew (
-	crew_id varchar2(100) primary key,
-	crew_name varchar2(100) not null,
-	crew_info varchar2(500) not null,
-	crew_size number not null,
-	crew_location varchar2(100) not null
+   crew_id varchar2(100) primary key,
+   crew_name varchar2(100) not null,
+   crew_info varchar2(500) not null,
+   crew_size number not null,
+   crew_location varchar2(100) not null
 )
 
 -- 크루 아이디 시퀀스로 주는 걸로 바꿀게~ diary랑 board도 시퀀스로 해줘 누군가가~
@@ -54,19 +55,19 @@ select * from healthy_crew;
 commit
 
 
---	CREW_MEMBER
+--   CREW_MEMBER
 
 --crew_member table 삭제
 drop table healthy_crew_member;
 
 --crew_member table 생성
 create table healthy_crew_member (
-	member_id varchar2(100) not null,
-	crew_id varchar2(100) not null,
-	join_date varchar2(100) not null,
-	constraint fk_member_id foreign key(member_id) references healthy_member(member_id),
-	constraint fk_crew_id foreign key(crew_id) references healthy_crew(crew_id),
-	constraint pk_crew_member primary key(member_id, crew_id)
+   member_id varchar2(100) not null,
+   crew_id varchar2(100) not null,
+   join_date varchar2(100) not null,
+   constraint fk_member_id foreign key(member_id) references healthy_member(member_id),
+   constraint fk_crew_id foreign key(crew_id) references healthy_crew(crew_id),
+   constraint pk_crew_member primary key(member_id, crew_id)
 )
 
 insert into healthy_crew_member values('java','a','2021-06-28');
@@ -76,64 +77,85 @@ select * from healthy_crew_member;
 commit
 
 
---	DIARY
+--   DIARY
 
 --diary table 삭제
 drop table healthy_diary;
 
 --diary table 생성
 create table healthy_diary (
-	diary_id varchar2(100) primary key,
-	member_id varchar2(100) not null,
-	diary_date varchar2(100) not null,
-	body_condition varchar2(100) not null,
-	excercise_content varchar2(100) not null,
-	constraint fk_diary_member_id foreign key(member_id) references healthy_member(member_id)
+   diary_id varchar2(100) primary key,
+   member_id varchar2(100) not null,
+   diary_date varchar2(100) not null, 
+   body_condition varchar2(100) not null,
+   body_condition_detail varchar2(100) not null,
+   excercise_content varchar2(100) default '운동안함' ,
+   constraint fk_diary_member_id foreign key(member_id) references healthy_member(member_id)
 )
 
-insert into healthy_diary values('da','java','2021-06-27','다리가 부음','러닝 100분');
+--다이어리 시퀀스 넣었어~~~
+drop sequence diary_seq;
+create sequence diary_seq;
+
+--이건 seq로 id 넣은 후 insert문~~~
+insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail,excercise_content) values(diary_seq.nextval,'java','2021-07-01','상','다리가 부음','러닝 100분');
+insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail) values(diary_seq.nextval,'java','2021-07-27','하','다리가 부음');
+insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail,excercise_content) values(diary_seq.nextval,'java','2021-07-17','중','다리가 부음','러닝 100분');
+--이건 seq로 id 넣기 전 insert문~~~
+--insert into healthy_diary values('da','java','2021-06-27','다리가 부음','러닝 100분');
 
 --diary table 전체 검색
 select * from healthy_diary;
 commit
 
 
---	CREW_BOARD
+--   CREW_BOARD
 
 --crew_board table 삭제
 drop table healthy_board;
 
 --crew_board table 생성
 create table healthy_board(
-	board_id varchar2(100) primary key,
-	member_id varchar2(100) not null,
-	crew_id varchar2(100) not null,
-	board_title varchar2(100) not null,
-	board_content varchar2(100) not null,
-	board_time varchar2(100) not null,
-	constraint fk_board_member_id foreign key(member_id) references healthy_member(member_id),
-	constraint fk_board_crew_id foreign key(crew_id) references healthy_crew(crew_id)
+   board_id varchar2(100) primary key,
+   member_id varchar2(100) not null,
+   crew_id varchar2(100) not null,
+   board_title varchar2(100) not null,
+   board_content varchar2(100) not null,
+   board_time varchar2(100) not null,
+   constraint fk_board_member_id foreign key(member_id) references healthy_member(member_id),
+   constraint fk_board_crew_id foreign key(crew_id) references healthy_crew(crew_id)
 )
 
-insert into healthy_board values('ba','java','a','7/1 la러닝 크루구합니다','7/1에 la에서 러닝하실 분 구합니다','2021-06-30');
+--다이어리 시퀀스 넣었어~~~
+drop sequence board_seq;
+create sequence board_seq;
+
+--이건 seq로 id 넣은 후 insert문~~~
+insert into healthy_board(board_id,member_id,crew_id,board_title,board_content,board_time) values(board_seq.nextval,'java',1,'7/1 la러닝 크루구합니다','7/1에 la에서 러닝하실 분 구합니다',sysdate);
+
+--이건 seq로 id 넣기 전 insert문~~~
+--insert into healthy_board values('ba','java','a','7/1 la러닝 크루구합니다','7/1에 la에서 러닝하실 분 구합니다','2021-06-30');
 
 --crew_board table 전체 검색
 select * from healthy_board;
 commit
 
 
---	AUTHORITY
+--   AUTHORITY
 
 --authorities table 삭제
 drop table authorities;
 
 --authorities table 생성
 create table authorities(
-	username varchar2(100) not null,
-	authority varchar2(30) not null,
-	constraint fk_authorities foreign key(username) references healthy_member(member_id),
-	constraint member_authorities primary key(username,authority)
+   username varchar2(100) not null,
+   authority varchar2(30) not null,
+   constraint fk_authorities foreign key(username) references healthy_member(member_id),
+   constraint member_authorities primary key(username,authority)
 )
+
+--authority 데이터 전체 삭제
+delete from authorities;
 
 --authorities table 전체 검색
 select * from authorities;
@@ -141,11 +163,14 @@ commit
 
 
 
+-----------ex 코드
 
+--아이디로 다이어리 내용 들고 오기
+select Diary_date, body_condition, Excercise_Content from healthy_diary where member_id ='java';
 
+select Diary_date, body_condition, Excercise_Content from healthy_diary;
 
-
-
+select count(*) from healthy_diary;
 
 
 

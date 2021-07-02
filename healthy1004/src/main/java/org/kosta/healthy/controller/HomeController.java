@@ -1,5 +1,6 @@
 package org.kosta.healthy.controller;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -7,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 	@RequestMapping(value={"/", "home"})
 	public String home() {
+		//spring security 권한 출력
+		System.out.println("home "+SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		return "home.tiles";
 	}
 	
@@ -25,8 +28,13 @@ public class HomeController {
 		return "crew_board/crewfind.tiles";
 	}
 	
-	@RequestMapping("signup") //크루 구하기
+	@RequestMapping("registerForm") //크루 구하기
 	public String signup() {
-		return "member/signup.tiles";
+		return "member/registerForm.tiles";
+	}
+	
+	@RequestMapping("accessDeniedView") //로그인 하였으나 권한 없는 요청할 때 페이지
+	public String accessDeniedView() {
+		return "auth/accessDeniedView";
 	}
 }

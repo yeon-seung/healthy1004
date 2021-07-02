@@ -1,9 +1,18 @@
 package org.kosta.healthy.model.service;
 
+import java.util.List;
+
+import org.kosta.healthy.model.vo.Authority;
 import org.kosta.healthy.model.vo.MemberVO;
 
 public interface MemberService {
 
-	MemberVO login(String memberId);
+	MemberVO findMemberById(String id);
+
+	String idcheck(String id);
+
+	List<Authority> selectAuthorityByUsername(String username);
+
+	void registerMember(MemberVO vo);
 
 }
