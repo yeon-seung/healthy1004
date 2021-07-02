@@ -28,11 +28,11 @@
 				<li class="nav-item active " id="home"><a
 					href="#" class="nav-link">Home</a></li>
 				<li class="nav-item active" id="crewfind"><a
-					href="#" class="nav-link">크루 찾기</a></li>
+					href="#" class="nav-link">Find Crew</a></li>
 				<li class="nav-item active" id="diary"><a
-					href="#" class="nav-link">다이어리</a></li>
+					href="#" class="nav-link">Diary</a></li>
 				<li class="nav-item active" id="mypage"><a
-					href="#" class="nav-link ">마이 페이지</a></li>
+					href="#" class="nav-link ">My Page</a></li>
 		<!--	<li class="nav-item active" id="blog"><a
 					href="#" class="nav-link">Blog</a></li>
 				<li class="nav-item active" id="contact"><a

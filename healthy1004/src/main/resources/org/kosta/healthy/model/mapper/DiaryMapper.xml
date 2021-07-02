@@ -4,7 +4,25 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.healthy.model.mapper.DiaryMapper">
+	
+	<resultMap id="Diary" type="org.kosta.healthy.model.vo.DiaryVO">
+		<result property="diaryDate" column="diary_date"/>
+		<result property="bodyCondition" column="body_condition"/>
+		<result property="bodyConditionDetail" column="body_condition_detail"/>
+		<result property="excerciseContent" column="excercise_content"/>
+	</resultMap>
+	
+ 	<sql id="selectDiary">
+ 		select diary_id,member_id,diary_date,body_condition,excercise_content from healthy_diary
+ 	</sql>
  	
+ 	<select id="getUserDiaryByIdTest" resultMap="Diary">
+ 		select Diary_date, Body_condition, body_condition_detail, Excercise_Content from healthy_diary 
+ 	</select>
+ 	
+ 	<select id ="getUserDiaryById" resultMap="Diary">
+ 		select Diary_date, Body_condition, Excercise_Content from healthy_diary where member_id =#{id}
+ 	</select>
 </mapper>
  
  

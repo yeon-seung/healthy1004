@@ -85,9 +85,10 @@ drop table healthy_diary;
 create table healthy_diary (
 	diary_id varchar2(100) primary key,
 	member_id varchar2(100) not null,
-	diary_date varchar2(100) not null,
+	diary_date varchar2(100) not null, 
 	body_condition varchar2(100) not null,
-	excercise_content varchar2(100) not null,
+	body_condition_detail varchar2(100) not null,
+	excercise_content varchar2(100) default '운동안함' ,
 	constraint fk_diary_member_id foreign key(member_id) references healthy_member(member_id)
 )
 
@@ -96,8 +97,9 @@ drop sequence diary_seq;
 create sequence diary_seq;
 
 --이건 seq로 id 넣은 후 insert문~~~
-insert into healthy_diary(diary_id,member_id,diary_date,body_condition,excercise_content) values(diary_seq.nextval,'java','2021-06-27','다리가 부음','러닝 100분');
-
+insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail,excercise_content) values(diary_seq.nextval,'java','2021-07-01','상','다리가 부음','러닝 100분');
+insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail) values(diary_seq.nextval,'java','2021-07-27','하','다리가 부음');
+insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail,excercise_content) values(diary_seq.nextval,'java','2021-07-17','중','다리가 부음','러닝 100분');
 --이건 seq로 id 넣기 전 insert문~~~
 --insert into healthy_diary values('da','java','2021-06-27','다리가 부음','러닝 100분');
 
@@ -155,12 +157,14 @@ create table authorities(
 select * from authorities;
 commit
 
+-----------ex 코드
 
+--아이디로 다이어리 내용 들고 오기
+select Diary_date, body_condition, Excercise_Content from healthy_diary where member_id ='java';
 
+select Diary_date, body_condition, Excercise_Content from healthy_diary;
 
-
-
-
+select count(*) from healthy_diary;
 
 
 
