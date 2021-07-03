@@ -46,4 +46,12 @@ public class MemberServiceImpl implements MemberService {
 	public List<Authority> selectAuthorityByUsername(String username) {
 		return memberMapper.selectAuthorityByUsername(username);
 	}
+
+	@Override
+	public void updateMember(MemberVO vo) {
+		// 변경할 비밀번호를 암호화한다
+		String encodePassword = passwordEncoder.encode(vo.getPassword());
+		vo.setPassword(encodePassword);
+		memberMapper.updateMember(vo);
+	}
 }

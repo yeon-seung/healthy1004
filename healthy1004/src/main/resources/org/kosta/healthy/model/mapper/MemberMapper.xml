@@ -29,6 +29,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="registerRole" parameterType="authority">
 		insert into authorities(username,authority) values(#{username},#{authority})
 	</insert>
+	<update id="updateMember" parameterType="memberVO">
+		update healthy_member 
+		set password=#{password}, address=#{address}, height=#{height}, weight=#{weight}, age=#{age}, phone=#{phone}
+		where member_id=#{memberId}
+	</update>
 </mapper>
 
 

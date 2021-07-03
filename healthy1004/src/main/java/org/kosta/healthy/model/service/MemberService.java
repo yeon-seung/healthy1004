@@ -14,5 +14,6 @@ public interface MemberService {
 	List<Authority> selectAuthorityByUsername(String username);
 
 	void registerMember(MemberVO vo);
-
+	
+	void updateMember(MemberVO vo);
 }

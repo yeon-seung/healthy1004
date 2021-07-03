@@ -15,7 +15,7 @@
 							class="fa fa-chevron-right"></i></a></span> <span>Course Lists <i
 						class="fa fa-chevron-right"></i></span>
 				</p> --%>
-				<h1 class="mb-0 bread">마이 페이지</h1>
+				<h1 class="mb-0 bread">My Page</h1>
 			</div>
 		</div>
 	</div>
@@ -54,7 +54,8 @@
 				</div>
 
 				<div class="sidebar-box bg-white p-4 ftco-animate">
-					<h3 class="heading-sidebar" ><a href="#" style="color: black; !important">회원 정보 수정</a></h3>
+					<h3 class="heading-sidebar" >
+					<a href="${pageContext.request.contextPath}/member/updateForm" style="color: black; !important">회원 정보 수정</a></h3>
 					<!-- <form action="#" class="browse-form">
 						<label for="option-instructor-1"><input type="checkbox"
 							id="option-instructor-1" name="vehicle" value="" checked>
@@ -194,61 +195,7 @@
 							</div>
 						</div>
 					</div>
-					<%-- <div class="col-md-6 d-flex align-items-stretch ftco-animate">
-						<div class="project-wrap">
-							<a href="#" class="img"
-								style="background-image: url(${pageContext.request.contextPath}/healthy/images/work-5.jpg);">
-								<span class="price">Software</span>
-							</a>
-							<div class="text p-4">
-								<h3>
-									<a href="#">Design for the web with adobe photoshop</a>
-								</h3>
-								<p class="advisor">
-									Advisor <span>Tony Garret</span>
-								</p>
-								<ul class="d-flex justify-content-between">
-									<li><span class="flaticon-shower"></span>2300</li>
-									<li class="price">$199</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 d-flex align-items-stretch ftco-animate">
-						<div class="project-wrap">
-							<a href="#" class="img"
-								style="background-image: url(${pageContext.request.contextPath}/healthy/images/work-6.jpg);">
-								<span class="price">Software</span>
-							</a>
-							<div class="text p-4">
-								<h3>
-									<a href="#">Design for the web with adobe photoshop</a>
-								</h3>
-								<p class="advisor">
-									Advisor <span>Tony Garret</span>
-								</p>
-								<ul class="d-flex justify-content-between">
-									<li><span class="flaticon-shower"></span>2300</li>
-									<li class="price">$199</li>
-								</ul>
-							</div>
-						</div>
-					</div> --%>
 				</div>
-				<!-- <div class="row mt-5">
-					<div class="col">
-						<div class="block-27">
-							<ul>
-								<li><a href="#">&lt;</a></li>
-								<li class="active"><span>1</span></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#">&gt;</a></li>
-							</ul>
-						</div>
-					</div>-->
 				</div> 
 			</div>
 		</div>
