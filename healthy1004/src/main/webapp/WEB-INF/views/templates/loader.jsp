@@ -37,4 +37,9 @@
 	src="${pageContext.request.contextPath}/healthy/js/bootstrap-datepicker.js"></script>
 <script
 	src="${pageContext.request.contextPath}/healthy/js/scrollax.min.js"></script>
+	
+	<!-- services와 clusterer, drawing 라이브러리 불러오기 -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=97115187be3f975968a24a96c9e00988&libraries=services,clusterer,drawing"></script>
+<script src="${pageContext.request.contextPath}/healthy/js/map.js"></script>
+
 <script src="${pageContext.request.contextPath}/healthy/js/main.js"></script>
