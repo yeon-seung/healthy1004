@@ -13,6 +13,8 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
 	rel="stylesheet">
@@ -40,9 +42,6 @@
 	href="${pageContext.request.contextPath}/healthy/css/flaticon.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/healthy/css/style.css">
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script type="text/javascript">
 	var left = {
