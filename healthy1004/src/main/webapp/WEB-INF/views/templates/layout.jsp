@@ -13,6 +13,8 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
 	rel="stylesheet">
@@ -29,265 +31,22 @@
 	href="${pageContext.request.contextPath}/healthy/css/owl.theme.default.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/healthy/css/magnific-popup.css">
-
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/healthy/css/bootstrap-datepicker.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/healthy/css/jquery.timepicker.css">
-
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/healthy/css/bootstrap-datepicker.css">
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/healthy/css/flaticon.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/healthy/css/style.css">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<%-- fullcalender --%>
+<link href='${pageContext.request.contextPath}/fullcalendar/main.css'
+	rel='stylesheet' />
 
-<!-- fullcalender -->
-
-<link href='${pageContext.request.contextPath}/fullcalendar/main.css' rel='stylesheet' />
-<script src='${pageContext.request.contextPath}/fullcalendar/main.js'></script>
-<script src='${pageContext.request.contextPath}/fullcalendar/locales/ko.js'></script>
-<script class="cssdesk" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js" type="text/javascript"></script>
-
-<script>
-<%--$.ajax({
-	url: '/getUserDiaryTest',
-	type: 'GET',
-	success: function(data){
-		   var list = data;
-		  for(var i=0;i<list.length;i++){
-           console.log(list);
-		  }
-		  var calendarEl = document.getElementById('calendar');
-		  var events = list.map(function(item) {
-				return {
-					title : item.Excercise_Content,
-					start : item.Diary_date
-				}
-			});
-	
-     // document.addEventListener('DOMContentLoaded', function() {
-       
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          	events : events,
-        	initialView: 'dayGridMonth',
-        	// 달력 툴
-  			headerToolbar: {
-  			      left: 'prev',
-  			      center: 'title',
-  			      right: 'next today'
-  			 },
-  			editable: true,     // 드래그 수정 가능
-  			 // 요일 클릭 이벤트
-  			dateClick : function() {
-  				alert('요일 클릭!');
-  			},	
-  			// 일정 클릭 이벤트
-  			eventClick : function() {
-  				alert('일정 클릭!');
-  			}, 
-  		});	
-    	 // 데이터 삽입방식
-		calendar.addEvent({'title':'고객1-컷팅', 'start':'2021-07-16T15:00'});
-        calendar.render();
-      //});
-	}
-});--%>
-
-<%--document.addEventListener('DOMContentLoaded', function() {
-    
-	var calendarEl = document.getElementById('calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-    	
-      	events : [
-            {
-                title : 'dd',
-                start : '2021-07-03'
-            }],
-      
-    	initialView: 'dayGridMonth',
-    	// 달력 툴
-			headerToolbar: {
-			      left: 'prev',
-			      center: 'title',
-			      right: 'next today'
-			 },
-			editable: true,     // 드래그 수정 가능
-			 // 요일 클릭 이벤트
-			dateClick : function() {
-				alert('요일 클릭!');
-			},	
-			// 일정 클릭 이벤트
-			eventClick : function() {
-				alert('일정 클릭!');
-			}, 
-		});	
-	 // 데이터 삽입방식
-	calendar.addEvent({'title':'고객1-컷팅', 'start':'2021-07-16T15:00'});
-    calendar.render();
-  });
-
-</script>
---%>
-document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');   
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-    	initialView: 'dayGridMonth',
-    	// 달력 툴
-			headerToolbar: {
-			      left: 'prev',
-			      center: 'title',
-			      right: 'next today'
-			 },
-			 <%--select: function(startDate, endDate, jsEvent, view) {
-		          
-		          $(".fc-scrollgrid-sync-table").unbind('click');
-		          $(".fc-scrollgrid-sync-table").on('click', 'td', function (e) {
-		              
-		        	  $("#contextMenu")
-		              .addClass("contextOpened")
-		              .css({
-		                display: "block",
-		                left: e.pageX,
-		                top: e.pageY
-		              });
-		            return false;
-		          });
-		          
-		        //날짜 클릭시 카테고리 선택메뉴
-		          var $contextMenu = $("#contextMenu");
-		          $contextMenu.on("click", "a", function (e) {
-		            e.preventDefault();
-
-		            //닫기 버튼이 아닐때
-		            if ($(this).data().role !== 'close') {
-		              newEvent(startDate, endDate, $(this).html());
-		            }
-
-		            $contextMenu.removeClass("contextOpened");
-		            $contextMenu.hide();
-		          });
-
-		          $('body').on('click', function () {
-		            $contextMenu.removeClass("contextOpened");
-		            $contextMenu.hide();
-		          });
-		         
-		        },--%>
-		        //요일
-		        dateClick : function() {
-		        	 $(".fc-scrollgrid-section.fc-scrollgrid-section-body.fc-scrollgrid-section-liquid").unbind('click');
-			          $(".fc-scrollgrid-section.fc-scrollgrid-section-body.fc-scrollgrid-section-liquid").on('click', 'td', function (e) {
-			              
-			        	  $("#contextMenu")
-			              .addClass("contextOpened")
-			              .css({
-			                display: "block",
-			                left: e.pageX,
-			                top: e.pageY/3
-			              });
-			            return false;
-			          });
-			        	 
-				},	
-	  			// 일정 클릭 이벤트
-	  			eventClick : function() {
-	  				alert('일정 클릭!');
-	  			},
-        	events:function(info, successCallback, failureCallback){
-            $.ajax({
-                   url: '/getUserDiaryTest',
-                   dataType: 'json',
-                   success: 
-                       function(result) {
-                           var events = [];
-                          
-                           if(result!=null){
-                               
-                                   $.each(result, function(index, element) {
-                                    
-                                    var startdate=moment(element.diaryDate).format('YYYY-MM-DD');
-                                    var enddate=moment(element.diaryDate).format('YYYY-MM-DD');
-                                    var conditionLevel = element.bodyCondition;
-                                    
-                                    // 컨디션 레벨별로 color 설정
-                                    if (conditionLevel == "상"){
-                                        events.push({
-                                               title: element.excerciseContent,
-                                               start: startdate,
-                                               end: enddate,
-                                                  color:"#BAFFB3",
-                                                  textColor : "#000000"
-                                            }); //.push()
-                                    }
-                                    else if (conditionLevel == "중"){
-                                        events.push({
-                                               title: element.excerciseContent,
-                                               start: startdate,
-                                               end: enddate,
-                                                  color:"#FFE08C" , 
-                                                  textColor : "#000000"
-                                            }); //.push()
-                                    }
-                                    
-                                    else if (conditionLevel == "하"){
-                                        events.push({
-                                               title: element.excerciseContent,
-                                               start: startdate,
-                                               end: enddate,
-                                                  color:"#FF9999" ,    
-                                                  textColor : "#000000"
-                                            }); //.push()
-                                    }
-                                    
-                                    <%--else if (realmname == "연극"){
-                                        events.push({
-                                               title: element.title,
-                                               start: startdate,
-                                               end: enddate,
-                                                  url: "${pageContext.request.contextPath }/detail.do?seq="+element.seq,
-                                                  color:"#008d62"                                                   
-                                            }); //.push()
-                                    }
-                                    
-                                    else if (realmname == "음악"){
-                                        events.push({
-                                               title: element.title,
-                                               start: startdate,
-                                               end: enddate,
-                                                  url: "${pageContext.request.contextPath }/detail.do?seq="+element.seq,
-                                                  color:"#6937a1"                                                   
-                                            }); //.push()
-                                    }
-                                    
-                                    else{
-                                        events.push({
-                                               title: element.title,
-                                               start: startdate,
-                                               end: enddate,
-                                                  url: "${pageContext.request.contextPath }/detail.do?seq="+element.seq,
-                                                  color:"#ff3399"                                                   
-                                            }); //.push()
-                                    }--%>
-                                    
-                               }); //.each()
-                               
-                               console.log(events);
-                               
-                           }//if end                           
-                           successCallback(events);                               
-                       }//success: function end                          
-            }); //ajax end
-        }, //events:function end--%>
-        
-   });//new FullCalendar end
-   //calendar.addEvent({'title':'고객1-컷팅', 'start':'2021-07-16T15:00'});
-   calendar.render();
-   
-  });
- </script>
+<%-- datetimepicker 설정 --%>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.standalone.min.css">
 
 <script type="text/javascript">
 	var left = {

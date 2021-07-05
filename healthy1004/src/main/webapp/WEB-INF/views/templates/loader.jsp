@@ -37,8 +37,14 @@
 	src="${pageContext.request.contextPath}/healthy/js/bootstrap-datepicker.js"></script>
 <script
 	src="${pageContext.request.contextPath}/healthy/js/scrollax.min.js"></script>
-<script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script
-	src="${pageContext.request.contextPath}/healthy/js/google-map.js"></script>
 <script src="${pageContext.request.contextPath}/healthy/js/main.js"></script>
+
+<%-- fullcalender  --%>
+<script src='${pageContext.request.contextPath}/fullcalendar/main.js'></script>
+<script class="cssdesk"
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"
+	type="text/javascript"></script>
+<script
+	src='${pageContext.request.contextPath}/fullcalendar/addEvent.js'></script>
+<script
+	src='${pageContext.request.contextPath}/fullcalendar/diary.js'></script>
