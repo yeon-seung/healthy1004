@@ -29,15 +29,13 @@
 					<div class="wrapper">
 						<div class="contact-wrap w-100 p-md-5 p-4">
 							<h3 class="mb-4">Crew List</h3>
-							지역명 <input type="text" name="crewSearchName" size="10"
+							<input type="text" name="crewSearchName" size="10" placeholder="지역명"
 					id="crewFindKeyword"> <input type="button" value="검색"
 					id="crewFindBtn">
 							 <span id="crewFindResult"></span>
-
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 </section>

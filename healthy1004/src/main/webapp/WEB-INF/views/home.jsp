@@ -16,15 +16,15 @@
 				<span class="subheading">Welcome to Healthy</span>
 				<h1 class="mb-4">Healthy와 즐거운 운동을!</h1>
 				<p class="caps">
-					운동 다이어리로 규칙적인 관리를 하세요. <br> 크루 만나기를 통해 크루원들을 만나 즐거운 운동을 해보세요.
-					<br> 이 모든 것들은 Healthy 회원이 되신다면 즐길 수 있어요. <br> 당장 가입해
+					운동 다이어리로 규칙적인 관리를 하세요. <br> 크루 찾기를 통해 크루원들을 만나 즐거운 운동을 해보세요.
+					<br> 이 모든 것들은 HealthySexy 회원이 되신다면 누릴 수 있답니다. <br>
 				</p>
 				<p class="mb-0">
 				<sec:authorize access="isAuthenticated()!=false">
 					<a href="${pageContext.request.contextPath}/diary"
 						class="btn btn-primary">다이어리</a> <a
 						href="${pageContext.request.contextPath}/crewfind"
-						class="btn btn-white">크루 만나기</a>
+						class="btn btn-white">크루 찾기</a>
 				</sec:authorize>
 				</p>
 			</div>
