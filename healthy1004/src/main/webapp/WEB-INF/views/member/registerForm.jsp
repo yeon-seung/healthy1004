@@ -31,7 +31,7 @@
                 },
 				success:function(data){	
 					if(data=="fail"){
-						alert("fail이여요~");
+// 						alert("fail이여요~");
 						$("#idCheckView").html(id+" 사용불가!").css("background","red");
 						checkResultId="";
 					}else{						
