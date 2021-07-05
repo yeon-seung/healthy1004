@@ -54,4 +54,14 @@ public class MemberServiceImpl implements MemberService {
 		vo.setPassword(encodePassword);
 		memberMapper.updateMember(vo);
 	}
+
+	@Override
+	public List<MemberVO> findMemberListByMemberId(String memberId) {
+		return memberMapper.findMemberListByMemberId(memberId);
+	}
+
+	@Override
+	public void deleteMember(MemberVO vo) {
+		memberMapper.deleteMember(vo);
+	}
 }

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.kosta.healthy.model.service.MemberService;
 import org.kosta.healthy.model.vo.MemberVO;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,13 +59,13 @@ public class MemberController {
 		return "member/login_fail";
 	}
 
-	// @Secured("ROLE_MEMBER")
+	//@Secured("ROLE_MEMBER")
 	@RequestMapping("member/updateForm")
 	public String updateForm() {
 		return "member/updateForm.tiles";
 	}
 
-	// @Secured("ROLE_MEMBER")
+	//@Secured("ROLE_MEMBER")
 	@RequestMapping("updateMemberAction")
 	public String updateMemberAction(HttpServletRequest request, MemberVO memberVO) {
 		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -81,4 +82,9 @@ public class MemberController {
 		return "member/update_result.tiles";
 	}
 
+	@Secured("ROLE_ADMIN")
+	@RequestMapping("member/deleteForm")
+	public String deleteForm() {
+		return "member/deleteForm.tiles";
+	}
 }

@@ -56,7 +56,7 @@
 				$("#pageName").val("diary");
 			} else if (menu === "crewfind") {
 				$("#frm").attr("action",
-						"${pageContext.request.contextPath}/crewfind"); 
+						"${pageContext.request.contextPath}/crewfind");
 				$("#pageName").val("crewfind");
 			} else if (menu === "mypage") {
 				$("#frm").attr("action",
@@ -66,6 +66,10 @@
 				$("#frm").attr("action",
 						"${pageContext.request.contextPath}/signup");
 				$("#pageName").val("signup");
+			} else if (menu === "admin") {
+				$("#frm").attr("action",
+						"${pageContext.request.contextPath}/admin");
+				$("#pageName").val("admin");
 			}
 			$("#frm").submit();
 

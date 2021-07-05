@@ -32,8 +32,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateMember" parameterType="memberVO">
 		update healthy_member 
 		set password=#{password}, address=#{address}, height=#{height}, weight=#{weight}, age=#{age}, phone=#{phone}
-		where member_id=#{memberId}
+		where member_id=#{value}
 	</update>
+	<update id="deleteMember" parameterType="memberVO">
+		update healthy_member
+		set enabled=0
+		where member_id=#{value}
+	</update>
+	<select id="findMemberListByMemberId" parameterType="memberVO">
+		select member_id, password, member_name, address, email, height, weight, age, phone
+		where member_id=#{value}
+	</select>
 </mapper>
 
 
