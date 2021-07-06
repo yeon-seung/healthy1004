@@ -12,6 +12,8 @@ class HealthyPracticeApplicationTests {
 	 
 		@Test
 		void contextLoads() {
-			System.out.println(crewMapper.findCrewListByName("송파"));
+//			System.out.println(crewMapper.findCrewListByName("송파"));
+
+//			System.out.println(crewMapper.joinCrew(뭐넣냐));
 		}
 }

@@ -70,7 +70,9 @@ create table healthy_crew_member (
    constraint pk_crew_member primary key(member_id, crew_id)
 )
 
-insert into healthy_crew_member values('java','a','2021-06-28');
+-- 동은이 테스트용
+-- insert into healthy_crew_member values('java','a','2021-06-28');
+insert into healthy_crew_member values('dong','1',sysdate);
 
 --crew_member table 전체 검색
 select * from healthy_crew_member;
@@ -98,14 +100,11 @@ drop sequence diary_seq;
 create sequence diary_seq;
 
 --이건 seq로 id 넣은 후 insert문~~~
-<<<<<<< HEAD
 insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail,excercise_content) values(diary_seq.nextval,'java','2021-07-01','상','다리가 부음','러닝 100분');
 insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail) values(diary_seq.nextval,'java','2021-07-27','하','다리가 부음');
 insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail,excercise_content) values(diary_seq.nextval,'java','2021-07-17','중','다리가 부음','러닝 100분');
-=======
 insert into healthy_diary(diary_id,member_id,diary_date,body_condition,excercise_content) values(diary_seq.nextval,'java','2021-06-27','다리가 부음','러닝 100분');
 
->>>>>>> branch 'main' of https://github.com/yeon-seung/healthy1004.git
 --이건 seq로 id 넣기 전 insert문~~~
 --insert into healthy_diary values('da','java','2021-06-27','다리가 부음','러닝 100분');
 
@@ -137,6 +136,7 @@ create sequence board_seq;
 
 --이건 seq로 id 넣은 후 insert문~~~
 insert into healthy_board(board_id,member_id,crew_id,board_title,board_content,board_time) values(board_seq.nextval,'java',1,'7/1 la러닝 크루구합니다','7/1에 la에서 러닝하실 분 구합니다',sysdate);
+
 
 --이건 seq로 id 넣기 전 insert문~~~
 --insert into healthy_board values('ba','java','a','7/1 la러닝 크루구합니다','7/1에 la에서 러닝하실 분 구합니다','2021-06-30');
