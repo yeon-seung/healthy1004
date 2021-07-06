@@ -39,11 +39,11 @@
 				<li class="nav-item active " id="home"><a href="#"
 					class="nav-link">Home</a></li>
 				<li class="nav-item active" id="crewfind"><a href="#"
-					class="nav-link">크루 찾기</a></li>
+					class="nav-link">Find crew</a></li>
 				<li class="nav-item active" id="diary"><a href="#"
-					class="nav-link">다이어리</a></li>
+					class="nav-link">Diary</a></li>
 				<li class="nav-item active" id="mypage"><a href="#"
-					class="nav-link ">마이 페이지</a></li>
+					class="nav-link ">Mypage</a></li>
 				<!--	<li class="nav-item active" id="blog"><a
 					href="#" class="nav-link">Blog</a></li>
 				<li class="nav-item active" id="contact"><a
@@ -56,7 +56,7 @@
 								$("#logoutForm").submit();
 							});
 						});
-					</script> <a href="#" id="logoutAction" style="color: white">로그아웃</a>
+					</script> <a href="#" id="logoutAction" style="color: white">Logout</a>
 						<form id="logoutForm"
 							action="${pageContext.request.contextPath}/logout" method="post"
 							style="display: none">
