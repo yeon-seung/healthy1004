@@ -1,3 +1,16 @@
+let eventModal = $('#eventModal');
+
+let modalTitle = $('#modal-title');
+let diaryDate = $('#diary_date');
+let bodyCondition = $('#body_condition');
+let bodyConditionDetail = $('#body_condition_detail');
+let excerciseContent = $('#excercise_content');
+
+let addBtnContainer = $('.modalBtnContainer-addEvent');
+let modifyBtnContainer = $('.modalBtnContainer-modifyEvent');
+
+
+
 // 날짜 포맷 정리 함수
 function dateFo(date) {
 	var year = date.getFullYear().toString();
@@ -11,13 +24,6 @@ function dateFo(date) {
 /* ****************
  *  새로운 일정 생성
  * ************** */
-let eventModal = $('#eventModal');
-
-let diaryDate = $('#diary_date');
-let bodyCondition = $('#body_condition');
-let bodyConditionDetail = $('#body_condition_detail');
-let excerciseContent = $('#excercise_content');
-
 let newEvent = function() {
 	//let addBtnContainer = $('.modalBtnContainer-addEvent');
 	//let modifyBtnContainer = $('.modalBtnContainer-modifyEvent');
@@ -36,6 +42,8 @@ let newEvent = function() {
 	bodyConditionDetail.val('');
 	excerciseContent.val('');
 
+	addBtnContainer.show();
+    modifyBtnContainer.hide();
 	eventModal.modal("show");
 
 	diaryDate.datepicker({
@@ -88,7 +96,6 @@ let newEvent = function() {
 			dataType: 'text',
 			success: function() {
 				alert("안냥"); 	// 왜 안돼 ㅠ
-				calender.render();
 				//DB연동시 중복이벤트 방지를 위한 (리로드 해줌.) // 지금 안먹엉 ㅠㅠ
 				//$('#calendar').fullCalendar('removeEvents');// 안먹어
 				//$("#calendar").refetchEvents();	// 안먹어

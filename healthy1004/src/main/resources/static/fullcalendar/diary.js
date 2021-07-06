@@ -23,8 +23,9 @@ document.addEventListener(
 					}
 				},
 				// 일정 클릭 이벤트
-				eventClick: function() {
-					alert('일정 클릭!');
+				eventClick: function (calEvent, jsEvent, view) {
+					 detailEvent(calEvent);
+					 
 				},
 				events: function(info, successCallback, failureCallback) {
 					$.ajax({
@@ -48,6 +49,8 @@ document.addEventListener(
 												title: element.excerciseContent,
 												start: startdate,
 												end: enddate,
+												type : conditionLevel,
+												detail:element.bodyConditionDetail,
 												color: "#BAFFB3",
 												textColor: "#000000"
 											}); //.push()
@@ -57,6 +60,8 @@ document.addEventListener(
 												title: element.excerciseContent,
 												start: startdate,
 												end: enddate,
+												type : conditionLevel,
+												detail:element.bodyConditionDetail,
 												color: "#FFE08C",
 												textColor: "#000000"
 											}); //.push()
@@ -67,6 +72,8 @@ document.addEventListener(
 												title: element.excerciseContent,
 												start: startdate,
 												end: enddate,
+												type : conditionLevel,
+												detail:element.bodyConditionDetail,
 												color: "#FF9999",
 												textColor: "#000000"
 											}); //.push()

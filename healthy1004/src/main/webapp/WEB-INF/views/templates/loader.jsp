@@ -48,3 +48,5 @@
 	src='${pageContext.request.contextPath}/fullcalendar/addEvent.js'></script>
 <script
 	src='${pageContext.request.contextPath}/fullcalendar/diary.js'></script>
+<script
+	src='${pageContext.request.contextPath}/fullcalendar/detailEvent.js'></script>

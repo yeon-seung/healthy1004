@@ -82,6 +82,11 @@
 					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 					<button type="button" class="btn btn-primary" id="save-event">저장</button>
 				</div>
+				<div class="modal-footer modalBtnContainer-modifyEvent">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                        <button type="button" class="btn btn-danger" id="deleteEvent">삭제</button>
+                        <button type="button" class="btn btn-primary" id="updateEvent">수정</button>
+                    </div>
 			</div>
 			<%-- /.modal-content --%>
 		</div>
