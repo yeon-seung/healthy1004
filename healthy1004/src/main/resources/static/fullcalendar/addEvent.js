@@ -29,9 +29,8 @@ let newEvent = function() {
 	//let modifyBtnContainer = $('.modalBtnContainer-modifyEvent');
 
 	$("#contextMenu").hide(); //메뉴 숨김
-
-	//alert(eventType);
-
+	modalTitle.html('다이어리 추가');
+	
 	bodyCondition.val('상');
 
 	// 오늘 날씨 구하기
@@ -43,7 +42,7 @@ let newEvent = function() {
 	excerciseContent.val('');
 
 	addBtnContainer.show();
-    modifyBtnContainer.hide();
+	modifyBtnContainer.hide();
 	eventModal.modal("show");
 
 	diaryDate.datepicker({
@@ -56,16 +55,23 @@ let newEvent = function() {
 		//diaryDate.val();
 	});
 
+	
+
 	//새로운 일정 저장버튼 클릭
 	$('#save-event').unbind();
 	$('#save-event').on('click', function() {
-		//salert("안냥하세요");
+		//alert("안냥하세요");
+		// excerciseContent.val()에 아무것도 없으면
+		let exercise = "";
+		if(excerciseContent.val()===""||excerciseContent.val()===null){
+			exercise = '운동안함';
+		}
 		var eventData = { // 회원 id는..?
-			memberId : 'java',	// 추후에 memberId가져오기
-			diaryDate : diaryDate.val(),
+			memberId: 'java',	// 추후에 memberId가져오기
+			diaryDate: diaryDate.val(),
 			bodyCondition: bodyCondition.val(),
 			bodyConditionDetail: bodyConditionDetail.val(),
-			excerciseContent: excerciseContent.val()
+			excerciseContent: exercise
 		};
 		//alert(eventData.memberId);
 		//alert(eventData.diaryDate);
@@ -78,13 +84,13 @@ let newEvent = function() {
 			return false;
 		}
 
-			//$("#calendar").addEvent( {'title': eventData.bodyConditionDetail, 'start': eventData.diaryDate}); // 얘도 안먹음
+		//$("#calendar").addEvent( {'title': eventData.bodyConditionDetail, 'start': eventData.diaryDate}); // 얘도 안먹음
 		//$("#calendar").addEvent(eventData);	// 얘도 안먹어
 		//$("#calendar").fullCalendar('eventRender', eventData, true);		// 이거 안먹음 v3?
 		//$('#calendar').fullCalendar('renderEvent', eventData, true);		// 이것도 안댕 v4?
 		//eventModal.find('input, textarea').val('');
 		//$("#calendar").rerenderEvents()
-		
+
 		//$("#calendar").fullCalendar('renderEvent', eventData, true);
 		eventModal.modal("hide");
 
@@ -107,11 +113,11 @@ let newEvent = function() {
 				//$("#calendar").getEventSources().refetch(); //안먹어
 				//$("#calendar").addEvent(eventData);
 				//alert(document.getElementById('calendar').fullCalendar("destroy"));
-				
+
 				alert("리로드하라고~~");
 			}
 		});
-		
+
 		// 이제 할 일...
 		// memberId 받아와서 넣기!!!!
 		// event 뿌리기

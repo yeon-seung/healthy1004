@@ -88,7 +88,7 @@ create table healthy_diary (
 	diary_date varchar2(100) not null, 
 	body_condition varchar2(100) not null,
 	body_condition_detail varchar2(100) not null,
-	excercise_content varchar2(100) default '운동안함' ,
+	excercise_content varchar2(100) default '운동안함',
 	constraint fk_diary_member_id foreign key(member_id) references healthy_member(member_id)
 )
 
