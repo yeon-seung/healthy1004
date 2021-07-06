@@ -105,7 +105,7 @@ $(document).ready(function() {
 							+ "<br>정원: " + list[i].crewSize + "명"
 							+ "<br>위치: " + list[i].crewLocation
 							+ "<br>소개: " + list[i].crewInfo
-							+ "<br><a href=\"#\" class=\"btn btn-primary\" style=\"float: right; margin: 0.5rem 0.25rem 1rem 0;\">참가</a>"
+							+ "<br><a href=\"/joinCrew\" class=\"btn btn-primary\" style=\"float: right; margin: 0.5rem 0.25rem 1rem 0;\">참가</a>"
 							+ "</div></div><br>");
 						// 주소로 좌표 변환하는 코드
 						geocoder.addressSearch(list[i].crewLocation, function(result, status) {
@@ -185,7 +185,7 @@ $(document).ready(function() {
 							+ "<br>정원: " + list[i].crewSize + "명"
 							+ "<br>위치: " + list[i].crewLocation
 							+ "<br>소개: " + list[i].crewInfo
-							+ "<br><a href=\"#\" class=\"btn btn-primary\" style=\"float: right; margin: 0.5rem 0.25rem 1rem 0;\">참가</a>"
+							+ "<br><a href=\"/joinCrew\" class=\"btn btn-primary\" style=\"float: right; margin: 0.5rem 0.25rem 1rem 0;\">참가</a>"
 							+ "</div></div><br>");
 							// 주소로 좌표 변환하는 코드
 							geocoder.addressSearch(list[i].crewLocation, function(result, status) {

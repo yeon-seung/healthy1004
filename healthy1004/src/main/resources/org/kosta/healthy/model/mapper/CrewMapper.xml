@@ -14,9 +14,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="crewVO">
 		select * from healthy_crew
 	</select>
-	<insert id="joinCrew" parameterType="hashmap">
-		insert into healthy_crew(member_id, crew_id, join_date)
-		values(#{item1}, #{item2}, sysdate)
+	<insert id="joinCrew" parameterType="HashMap">
+		insert into healthy_crew_member(member_id, crew_id, join_date)
+		values(#{memberId}, #{crewId}, sysdate)
 	</insert>
 </mapper>
  

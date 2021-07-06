@@ -64,7 +64,7 @@ drop table healthy_crew_member;
 create table healthy_crew_member (
    member_id varchar2(100) not null,
    crew_id varchar2(100) not null,
-   join_date varchar2(100) not null,
+   join_date date not null,
    constraint fk_member_id foreign key(member_id) references healthy_member(member_id),
    constraint fk_crew_id foreign key(crew_id) references healthy_crew(crew_id),
    constraint pk_crew_member primary key(member_id, crew_id)
