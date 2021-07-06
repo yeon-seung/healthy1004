@@ -11,4 +11,6 @@ public interface DiaryService {
 	List<DiaryVO> getUserDiaryById(String id); 
 	
 	List<DiaryVO> getUserDiaryByIdTest();
+
+	void registerDiary(DiaryVO dvo);
 }

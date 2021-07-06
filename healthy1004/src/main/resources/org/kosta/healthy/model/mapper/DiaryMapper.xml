@@ -23,6 +23,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id ="getUserDiaryById" resultMap="Diary">
  		select Diary_date, Body_condition, Excercise_Content from healthy_diary where member_id =#{id}
  	</select>
+ 	
+ 	<insert id="registerDiary" parameterType="diaryVO">
+ 		insert into healthy_diary
+ 		values(diary_seq.nextval, #{memberId}, #{diaryDate}, #{bodyCondition}, #{bodyConditionDetail}, #{excerciseContent})
+ 	</insert>
 </mapper>
  
  

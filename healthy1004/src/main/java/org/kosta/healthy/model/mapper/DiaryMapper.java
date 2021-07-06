@@ -11,4 +11,6 @@ public interface DiaryMapper {
 	List<DiaryVO> getUserDiaryById(String id);
 	
 	List<DiaryVO> getUserDiaryByIdTest();
+
+	void registerDiary(DiaryVO dvo);
 }

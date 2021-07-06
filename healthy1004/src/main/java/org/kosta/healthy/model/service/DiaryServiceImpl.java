@@ -22,6 +22,10 @@ public class DiaryServiceImpl implements DiaryService {
 	public List<DiaryVO> getUserDiaryByIdTest() {
 		return diaryMapper.getUserDiaryByIdTest();
 	}
+	@Override
+	public void registerDiary(DiaryVO dvo) {
+		diaryMapper.registerDiary(dvo);
+	}
 	
 
 }

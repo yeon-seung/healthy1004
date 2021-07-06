@@ -12,6 +12,7 @@ import org.kosta.healthy.model.mapper.DiaryMapper;
 import org.kosta.healthy.model.service.DiaryService;
 import org.kosta.healthy.model.vo.DiaryVO;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -31,5 +32,11 @@ public class DiaryController {
 	public List<DiaryVO> getUserDiaryByIdTest() {
 		List<DiaryVO> list = diaryService.getUserDiaryByIdTest();
 		return list;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/diary/registerDiary", method = RequestMethod.POST)
+	public void registerDiary(DiaryVO dvo) {
+		diaryService.registerDiary(dvo);
 	}
 }

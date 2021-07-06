@@ -74,7 +74,7 @@
 						<div class="col-md-12">
 							<label class="col-md-4" for="excercise_content">운동 설명</label>
 							<textarea rows="4" cols="50" class="inputModal" maxlength="100"
-								name="excercise_content" id="excercise_content"></textarea>
+								name="excercise_content" id="excercise_content" placeholder="기본 값은 운동안함으로 들어갑니다."></textarea>
 						</div>
 					</div>
 				</div>

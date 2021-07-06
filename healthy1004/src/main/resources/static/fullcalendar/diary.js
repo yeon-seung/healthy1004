@@ -6,6 +6,7 @@ document.addEventListener(
 			calendarEl,
 			{
 				initialView: 'dayGridMonth',
+				dayMaxEvents: 2,	// 2개까지만 보이고 3개 이상부터는 more로
 				selectable: true, // 선택 가능하도록
 				// 달력 툴
 				headerToolbar: {
