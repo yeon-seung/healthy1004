@@ -52,6 +52,7 @@ public class MemberServiceImpl implements MemberService {
 		// 변경할 비밀번호를 암호화한다
 		String encodePassword = passwordEncoder.encode(vo.getPassword());
 		vo.setPassword(encodePassword);
+		System.out.println("noob");
 		memberMapper.updateMember(vo);
 	}
 

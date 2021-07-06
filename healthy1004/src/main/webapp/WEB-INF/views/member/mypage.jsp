@@ -72,37 +72,6 @@
 							Harry Potter</label><br>
 					</form> -->
 				</div>
-<!-- 
-				<div class="sidebar-box bg-white p-4 ftco-animate">
-					<h3 class="heading-sidebar">Course Type</h3>
-					<form action="#" class="browse-form">
-						<label for="option-course-type-1"><input type="checkbox"
-							id="option-course-type-1" name="vehicle" value="" checked>
-							Basic</label><br> <label for="option-course-type-2"><input
-							type="checkbox" id="option-course-type-2" name="vehicle" value="">
-							Intermediate</label><br> <label for="option-course-type-3"><input
-							type="checkbox" id="option-course-type-3" name="vehicle" value="">
-							Advanced</label><br>
-					</form>
-				</div>
-
-				<div class="sidebar-box bg-white p-4 ftco-animate">
-					<h3 class="heading-sidebar">Software</h3>
-					<form action="#" class="browse-form">
-						<label for="option-software-1"><input type="checkbox"
-							id="option-software-1" name="vehicle" value="" checked>
-							Adobe Photoshop</label><br> <label for="option-software-2"><input
-							type="checkbox" id="option-software-2" name="vehicle" value="">
-							Adobe Illustrator</label><br> <label for="option-software-3"><input
-							type="checkbox" id="option-software-3" name="vehicle" value="">
-							Sketch</label><br> <label for="option-software-4"><input
-							type="checkbox" id="option-software-4" name="vehicle" value="">
-							WordPress</label><br> <label for="option-software-5"><input
-							type="checkbox" id="option-software-5" name="vehicle" value="">
-							HTML &amp; CSS</label><br>
-					</form>
-				</div>
-				 -->
 			</div>
 			<div class="col-lg-9">
 				<div class="row">

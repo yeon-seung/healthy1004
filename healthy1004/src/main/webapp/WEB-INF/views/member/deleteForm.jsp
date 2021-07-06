@@ -23,17 +23,38 @@
 		</div>
 	</section>
 
-	<div class="staff">
-		<div class="img-wrap d-flex align-items-stretch">
-			<div class="img align-self-stretch"
-				style="background-image: url(images/teacher-1.jpg);"></div>
-		</div>
+	<!-- <div class="sidebar-box bg-white p-4 ftco-animate"> -->
 		<div class="text pt-3">
-			<h3>
-				<a href="instructor-details.html">Bianca Wilson</a>
-			</h3>
-			<span class="position mb-2">Business</span>
-			<div class="faded">
+			<h3 style="text-align: center;">회원 목록</h3>
+			<form method="POST" action="${pageContext.request.contextPath}/member/registerMember" id="regForm">
+			<sec:csrfInput/>
+			<table border="1">
+				<tr>
+					<td>아이디</td>
+					<td>패스워드</td>
+					<td>이름</td>
+					<td>주소</td>
+					<td>이메일</td>
+					<td>키</td>
+					<td>몸무게</td>
+					<td>나이</td>
+					<td>전화번호</td>
+				</tr>
+				<c:forEach items="${memberList}" var="list">
+					<tr>
+						<td><c:out value="${list.memberId}"/></td>
+						<td><c:out value="${list.password}"/></td>
+						<td><c:out value="${list.memberName}"/></td>
+						<td><c:out value="${list.address}"/></td>
+						<td><c:out value="${list.email}"/></td>
+						<td><c:out value="${list.height}"/></td>
+						<td><c:out value="${list.weight}"/></td>
+						<td><c:out value="${list.age}"/></td>
+						<td><c:out value="${list.phone}"/></td>
+				</c:forEach>
+			</table>
+			<!-- <span class="position mb-2">Business</span> -->
+			<!-- <div class="faded">
 				<p>I am an ambitious workaholic, but apart from that, pretty
 					simple person.</p>
 				<ul class="ftco-social text-center">
@@ -46,8 +67,8 @@
 					<li class="ftco-animate"><a href="#"><span
 							class="fa fa-instagram"></span></a></li>
 				</ul>
-			</div>
+			</div> -->
 		</div>
-	</div>
+	<!-- </div> -->
 
 </sec:authorize>
