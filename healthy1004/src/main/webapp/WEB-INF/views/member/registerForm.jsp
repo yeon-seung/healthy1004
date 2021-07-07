@@ -2,22 +2,58 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <script type="text/javascript">
  	$(document).ready(function(){
 		var checkResultId="";		
 		$("#regForm").submit(function(){				
 			if(checkResultId==""){
-				alert("아이디 중복확인을 하세요");
+				alert("모든 항목을 작성하세요");
 				return false;
-			}		
+			}	
+			if($('#name').val() == null || $('#name').val()=="") {
+				alert("이름을 입력해주세요");
+				return false;
+			}
+			if($('#password1').val() == null || $('#password1').val()=="") {
+				alert("비밀번호를 입력해주세요");
+				return false;
+			}
+			if($('#password2').val() == null || $('#password2').val()=="") {
+				alert("비밀번호 확인을 입력해주세요");
+				return false;
+			}
+			if($('#email').val() == null || $('#email').val()=="") {
+				alert("이메일을 입력해주세요");
+				return false;
+			}
+			if($('#address').val() == null || $('#address').val()=="") {
+				alert("주소를 입력해주세요");
+				return false;
+			}
+			if($('#phone').val() == null || $('#phone').val()=="") {
+				alert("전화번호를 입력해주세요");
+				return false;
+			}
+			if($('#height').val() == null || $('#height').val()=="") {
+				alert("키를 입력해주세요");
+				return false;
+			}
+			if($('#weight').val() == null || $('#weight').val()=="") {
+				alert("몸무게를 입력해주세요");
+				return false;
+			}
+			if($('#age').val() == null || $('#age').val()=="") {
+				alert("나이를 입력해주세요");
+				return false;
+			}
 		});
 		$("#regForm :input[name=memberId]").keyup(function(){
 			var id=$(this).val().trim();
-			//alert("id입니댱 호호: " + id);
 			if(id.length<4 || id.length>10){
-				$("#idCheckView").html("아이디는 4자이상 10자 이하여야 함!").css(
-						"background","pink");
+				$("#idCheckView").html("아이디는 4글자 이상 10글자 이하여야 합니다").css(
+						"color","skyblue");
 				checkResultId="";
 				return;
 			}
@@ -31,18 +67,29 @@
                 },
 				success:function(data){	
 					if(data=="fail"){
-						alert("fail이여요~");
-						$("#idCheckView").html(id+" 사용불가!").css("background","red");
+						alert("아이디가 중복됩니다");
+						$("#idCheckView").html(id+" 사용불가!").css("color","red");
 						checkResultId="";
 					}else{						
 						$("#idCheckView").html(id+" 사용가능!").css(
-								"background","yellow");		
+								"color","blue");		
 						checkResultId=id;
 					}					
 				}//callback			
 			});//ajax
 		});//keyup
 	});//ready 
+	$(function() {
+		$('#password2').blur(function() {
+			if($('#password1').val() != $('#password2').val()) {
+				if($('#password2').val() != '') {
+					alert("비밀번호가 일치하지 않습니다.");
+					$('#password2').val('');
+					$('#password2').focus();
+				}
+			}
+		})
+	});
 </script>
 <section class="hero-wrap hero-wrap-2"
 	style="background-image: url('${pageContext.request.contextPath}/healthy/images/bg_2.jpg');">
@@ -68,65 +115,48 @@
 							class="col-lg-8 col-md-7 order-md-last d-flex align-items-stretch">
 							<div class="contact-wrap w-100 p-md-5 p-4">
 								<h3 class="mb-4">회원가입</h3>
-								<form method="POST" name="contactForm"
-									class="contactForm" action="${pageContext.request.contextPath}/member/registerMember" id="regForm">
-									<sec:csrfInput/>
+								<form method="POST" name="contactForm" class="contactForm"
+									action="${pageContext.request.contextPath}/member/registerMember"
+									id="regForm">
+									<sec:csrfInput />
 									<div class="row">
-									
+
 										<div class="col-md-10">
 											<div class="form-group">
-												<label class="label" for="id">ID</label> <input
-													type="text" class="form-control" name="memberId" id="id"
-													placeholder="아이디를 입력하세요">
-													<span id="idCheckView"></span>
+												<label class="label" for="id">ID</label> <input type="text"
+													class="form-control" name="memberId" id="id"
+													placeholder="아이디를 입력하세요"> <span id="idCheckView"></span>
 											</div>
 										</div>
-										
-									<!-- 	<div class="col-md-2">
-											<div class="form-group">
-												<input type="submit" value="중복확인"
-													class="btn btn-primary">
-												<div class="submitting"></div>
-											</div>
-										</div> -->
-										
+
 										<div class="col-md-12">
 											<div class="form-group">
 												<label class="label" for="name">NAME</label> <input
-													type="text" class="form-control" name="MemberName" id="name"
-													placeholder="이름을 입력하세요">
+													type="text" class="form-control" name="MemberName"
+													id="name" placeholder="이름을 입력하세요">
 											</div>
 										</div>
-										
+
 										<div class="col-md-12">
 											<div class="form-group">
 												<label class="label" for="password">PASSWORD</label> <input
-													type="password" class="form-control" name="password" id="password1"
-													placeholder="비밀번호를 입력하세요">
+													type="password" class="form-control" name="password"
+													id="password1" placeholder="비밀번호를 입력하세요">
 											</div>
 											<div class="form-group">
-												<input
-													type="password" class="form-control" name="password2" id="password2"
-													placeholder="비밀번호를 확인해주세요">
+												<input type="password" class="form-control" name="password2"
+													id="password2" placeholder="비밀번호를 확인해주세요">
 											</div>
 										</div>
-										
-										<!-- <div class="col-md-2">
-											<div class="form-group">
-												<input type="submit" value="중복확인"
-													class="btn btn-primary">
-												<div class="submitting"></div>
-											</div>
-										</div> -->
-										
+
 										<div class="col-md-12">
 											<div class="form-group">
 												<label class="label" for="email">Email</label> <input
-													type="text" class="form-control" name="email"
-													id="email" placeholder="이메일을 입력해주세요">
+													type="text" class="form-control" name="email" id="email"
+													placeholder="이메일을 입력해주세요">
 											</div>
 										</div>
-										
+
 										<div class="col-md-12">
 											<div class="form-group">
 												<label class="label" for="address">ADDRESS</label> <input
@@ -134,57 +164,57 @@
 													id="address" placeholder="주소를 입력해주세요">
 											</div>
 										</div>
-										
+
 										<div class="col-md-12">
 											<div class="form-group">
 												<label class="label" for="phone">PHONE</label> <input
-													type="text" class="form-control" name="phone"
-													id="phone" placeholder="전화번호를 입력해주세요">
+													type="text" class="form-control" name="phone" id="phone"
+													placeholder="전화번호를 입력해주세요">
 											</div>
 										</div>
-										
+
 										<div class="col-md-4">
 											<div class="form-group">
 												<label class="label" for="height">HEIGHT</label> <input
-													type="text" class="form-control" name="height"
-													id="height" placeholder="키를 입력해주세요">
+													type="text" class="form-control" name="height" id="height"
+													placeholder="키를 입력해주세요">
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group">
 												<label class="label" for="weight">WEIGHT</label> <input
-													type="text" class="form-control" name="weight"
-													id="weight" placeholder="몸무게를 입력해주세요">
+													type="text" class="form-control" name="weight" id="weight"
+													placeholder="몸무게를 입력해주세요">
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group">
 												<label class="label" for="age">AGE</label> <input
-													type="text" class="form-control" name="age"
-													id="age" placeholder="나이를 입력해주세요">
+													type="text" class="form-control" name="age" id="age"
+													placeholder="나이를 입력해주세요">
 											</div>
 										</div>
-										
-										
+
+
 										<div class="col-md-12">
 											<div class="form-group">
-											<br><br>
-												<input type="submit" value="sign up"
+												<br>
+												<br> <input type="submit" value="sign up"
 													class="btn btn-primary">
 												<div class="submitting"></div>
 											</div>
 										</div>
-										
+
 									</div>
 								</form>
 							</div>
 						</div>
-						
+
 						<div class="col-lg-4 col-md-5 d-flex align-items-stretch">
 							<div class="info-wrap bg-primary w-100 p-md-5 p-4">
 								<h3>HEALTHY SEXY</h3>
 								<p class="mb-4">회원가입을 할 시 서비스를 이용할 수 있습니다.</p>
-								
+
 								<div class="dbox w-100 d-flex align-items-center">
 									<div
 										class="icon d-flex align-items-center justify-content-center">
@@ -196,7 +226,7 @@
 										</p>
 									</div>
 								</div>
-								
+
 								<div class="dbox w-100 d-flex align-items-center">
 									<div
 										class="icon d-flex align-items-center justify-content-center">
@@ -208,7 +238,7 @@
 										</p>
 									</div>
 								</div>
-								
+
 							</div>
 						</div>
 					</div>

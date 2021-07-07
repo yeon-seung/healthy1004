@@ -4,6 +4,33 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@taglib prefix="sec"  uri="http://www.springframework.org/security/tags"%>   
  <sec:authorize access="hasRole('ROLE_MEMBER')">
+<script type="text/javascript">
+ 	$(document).ready(function(){
+		var checkResultId="";		
+		$("#regForm").submit(function(){					
+			if($('#password1').val() == null || $('#password1').val()=="") {
+				alert("비밀번호를 입력해주세요");
+				return false;
+			}
+			if($('#password2').val() == null || $('#password2').val()=="") {
+				alert("비밀번호 확인을 입력해주세요");
+				return false;
+			}
+		});
+	});//ready 
+	
+	$(function() {
+		$('#password2').blur(function() {
+			if($('#password1').val() != $('#password2').val()) {
+				if($('#password2').val() != '') {
+					alert("비밀번호가 일치하지 않습니다.");
+					$('#password2').val('');
+					$('#password2').focus();
+				}
+			}
+		})
+	});
+</script>
 <section class="hero-wrap hero-wrap-2"
 	style="background-image: url('${pageContext.request.contextPath}/healthy/images/bg_2.jpg');">
 	<div class="overlay"></div>
@@ -29,7 +56,8 @@
 							<div class="contact-wrap w-100 p-md-5 p-4">
 								<h3 class="mb-4">UPDATE INFO</h3>
 								<form method="POST" name="contactForm"
-									class="contactForm" action="${pageContext.request.contextPath}/updateMemberAction">
+									class="contactForm" action="${pageContext.request.contextPath}/updateMemberAction"
+									id="regForm"6>
 									<div class="row">
 									<sec:csrfInput/>
 										<input type="hidden" name="command" value="update">
