@@ -28,7 +28,7 @@ public class HomeController {
 		return "crew_board/crewfind.tiles";
 	}
 	
-	@RequestMapping("registerForm") //크루 구하기
+	@RequestMapping("registerForm") //회원가입
 	public String signup() {
 		return "member/registerForm.tiles";
 	}
