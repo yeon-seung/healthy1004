@@ -48,8 +48,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			위의 지정한 url 에는 permitAll() 로그인 인증없이 서비스 되고 
 			그 외의 요청에는 anyRequest().authenticated()  로그인 인증된 사용자만 접근할 수 있다 
 		 */
-		http.authorizeRequests() .antMatchers("/", "/home", "/healthy/**", "/member/**") .permitAll().anyRequest().authenticated();
-		
+		http.authorizeRequests() .antMatchers("/", "/home", "/healthy/**", "/member/**", "/crew_board/**") .permitAll().anyRequest().authenticated();
+		/**
+	     * 로그인 disable 처리
+	     */
+//		security.httpBasic().disable();
+//		http.cors().and();
+//		http.csrf().disable();
+
+
 		// 인증(authentication): 로그인을 위한 설정
 		http.formLogin().loginPage("/home") // 로그인 폼이 있는 url
 				.loginProcessingUrl("/login")// login form 의 action 경로 

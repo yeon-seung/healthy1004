@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <section class="hero-wrap hero-wrap-2"
 	style="background-image: url('${pageContext.request.contextPath}/healthy/images/bg_2.jpg');">
@@ -32,7 +32,8 @@
 							<input type="text" name="crewSearchName" size="10" placeholder="지역명"
 					id="crewFindKeyword"> <input type="button" value="검색"
 					id="crewFindBtn">
-							 <span id="crewFindResult"></span>
+							<span id="crewFindResult"></span>
+							<span id="csrfInput"><sec:csrfInput/> </span>
 						</div>
 					</div>
 				</div>

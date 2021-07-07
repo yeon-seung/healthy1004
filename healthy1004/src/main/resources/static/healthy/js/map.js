@@ -9,21 +9,8 @@ var searchPositions = [];
 var positions = [/*
     {
         title: '오리역', 
-        latlng: new kakao.maps.LatLng(37.338879, 127.109358)
-    },
-    {
-		// 얘는 링크 다는 방식
-        title: '<div style="padding:5px;">근린공원 <br><a href="https://www.naver.com/" style="color:blue" target="_blank">네이버링크~ㅋ</a></div>',
-        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
-    },
-    {
-        title: '인호네',
-        latlng: new kakao.maps.LatLng(37.3344138, 126.842143)
-    },
-    {
-        title: '<div style="padding:5px;">요니~ <br><a href="https://www.naver.com/" style="color:blue" target="_blank">네이버링크~ㅋ</a></div>',
-        latlng: new kakao.maps.LatLng(37.5175475, 127.136363)
-    }*/
+        latlng: new kakao.maps.LatLng(37.338879, 127.109358 )
+    },*/
 ];
 var scripts= document.getElementsByTagName('script');
 var path= scripts[scripts.length-1].src.split('?')[0];      // remove any ?query
@@ -95,17 +82,27 @@ $(document).ready(function() {
 //			    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				url: "/getAllCrewList",
 				dataType: "JSON",
+				
 				success: function(list){
 					for(let i=0; i<list.length; i++){
 						$("#crewFindResult").append(
 							"<div class=\"staff\" style=\"margin-bottom: -1rem;\">"
 							+ "<div class=\"text pt-3\">"
+							+ "<form action=\"/joinCrew\" method=\"post\">"
+							+ $("#csrfInput").html()
 							+ "<a href=\"#\"><h3 style=\"margin-bottom: -1rem;\">" +  list[i].crewName
 							+ "</h3></a>"
 							+ "<br>정원: " + list[i].crewSize + "명"
 							+ "<br>위치: " + list[i].crewLocation
 							+ "<br>소개: " + list[i].crewInfo
-							+ "<br><a href=\"/joinCrew\" class=\"btn btn-primary\" style=\"float: right; margin: 0.5rem 0.25rem 1rem 0;\">참가</a>"
+							+ "<span style=\"display: none;\">" + list[i].crewId + "</span>"
+							+ "<br><input type=\"submit\" class=\"btn btn-primary\" name=\"crewId\" value="
+							+ list[i].crewId
+//							+ "\">"
+//							+ "<br><a href=\"/joinCrew\" class=\"btn btn-primary\" id=\"crewJoinBtn\" onclick=\""
+//							+ alert(list[i].crewId)
+//							+ "\" style=\"float: right; margin: 0.5rem 0.25rem 1rem 0;\">참가</a>"
+							+ "></form>"
 							+ "</div></div><br>");
 						// 주소로 좌표 변환하는 코드
 						geocoder.addressSearch(list[i].crewLocation, function(result, status) {
@@ -180,12 +177,20 @@ $(document).ready(function() {
 						$("#crewFindResult").append(
 							"<div class=\"staff\" style=\"margin-bottom: -1rem;\">"
 							+ "<div class=\"text pt-3\">"
+							+ "<form action=\"/joinCrew\" method=\"post\">"
 							+ "<a href=\"#\"><h3 style=\"margin-bottom: -1rem;\">" +  list[i].crewName
 							+ "</h3></a>"
 							+ "<br>정원: " + list[i].crewSize + "명"
 							+ "<br>위치: " + list[i].crewLocation
 							+ "<br>소개: " + list[i].crewInfo
-							+ "<br><a href=\"/joinCrew\" class=\"btn btn-primary\" style=\"float: right; margin: 0.5rem 0.25rem 1rem 0;\">참가</a>"
+							+ "<span style=\"display: none;\">" + list[i].crewId + "</span>"
+							+ "<br><input type=\"submit\" class=\"btn btn-primary\" name=\"crewId\" value="
+							+ list[i].crewId
+//							+ "\">"
+//							+ "<br><a href=\"/joinCrew\" class=\"btn btn-primary\" id=\"crewJoinBtn\" onclick=\""
+//							+ alert(list[i].crewId)
+//							+ "\" style=\"float: right; margin: 0.5rem 0.25rem 1rem 0;\">참가</a>"
+							+ "></form>"
 							+ "</div></div><br>");
 							// 주소로 좌표 변환하는 코드
 							geocoder.addressSearch(list[i].crewLocation, function(result, status) {

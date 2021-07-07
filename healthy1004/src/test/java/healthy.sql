@@ -78,6 +78,8 @@ insert into healthy_crew_member values('dong','1',sysdate);
 select * from healthy_crew_member;
 commit
 
+-- crew_member table 전체 삭제
+delete from healthy_crew_member;
 
 --   DIARY
 
