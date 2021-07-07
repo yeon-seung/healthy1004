@@ -19,18 +19,6 @@
 
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav ml-auto">
-				<!-- ${pageContext.request.contextPath }/ -->
-				<%-- <li class="nav-item" id="home"><a
-					href="${pageContext.request.contextPath}/home" class="nav-link">Home</a></li>
-				<li class="nav-item" id="instructor"><a
-					href="${pageContext.request.contextPath}/instructor"
-					class="nav-link">Instructor</a></li>
-				<li class="nav-item" id="blog"><a
-					href="${pageContext.request.contextPath}/blog" class="nav-link">Blog</a></li>
-				<li class="nav-item" id="contact"><a
-					href="${pageContext.request.contextPath}/contact" class="nav-link">Contact</a></li> --%>
-
-				
 				<sec:authorize access="isAuthenticated()">
 					<div style="font-size: 15px; padding-top: 1.5rem; padding-bottom: 1.5rem;padding-left: 20px;padding-right: 20px;color: #fff;font-weight: 500;">
 					<li><sec:authentication property="principal.memberName" />님 안녕하세요</li></div>
@@ -44,11 +32,7 @@
 					class="nav-link">Diary</a></li>
 				<li class="nav-item active" id="mypage"><a href="#"
 					class="nav-link ">Mypage</a></li>
-				<!--	<li class="nav-item active" id="blog"><a
-					href="#" class="nav-link">Blog</a></li>
-				<li class="nav-item active" id="contact"><a
-					href="#" class="nav-link">Contact</a></li>	-->
-					
+
 				<div style="font-size: 15px; padding-top: 1.5rem; padding-bottom: 1.5rem;padding-left: 20px;padding-right: 20px;color: #fff;font-weight: 500;">
 					<li><script type="text/javascript">
 						$(document).ready(function() {

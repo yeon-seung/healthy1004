@@ -4,6 +4,45 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.healthy.model.mapper.DiaryMapper">
+	
+<!-- application.properties내에 mybatis.configuration.map-underscore-to-camel-case=true 넣으면 됨 -->
+<!--<resultMap id="Diary" type="org.kosta.healthy.model.vo.DiaryVO">
+		<result property="diaryDate" column="diary_date"/>
+		<result property="bodyCondition" column="body_condition"/>
+		<result property="bodyConditionDetail" column="body_condition_detail"/>
+		<result property="excerciseContent" column="excercise_content"/>
+	</resultMap>
+-->
+	
+ 	<sql id="selectDiary">
+ 		select diary_id,member_id,diary_date,body_condition,excercise_content from healthy_diary
+ 	</sql>
+ 	
+ 	<select id="getUserDiaryByIdTest" resultType="diaryVO">
+ 		select diary_id,diary_date, body_condition, body_condition_detail, excercise_content from healthy_diary where member_id ='java'
+ 	</select>
+ 	
+ 	<select id ="getUserDiaryById" resultType="diaryVO">
+ 		select diary_id, diary_date, body_condition, body_condition_detail, excercise_content from healthy_diary where member_id =#{id}
+ 	</select>
+ 	
+ 	<insert id="registerDiary" parameterType="diaryVO">
+ 		insert into healthy_diary
+ 		values(diary_seq.nextval, #{memberId}, #{diaryDate}, #{bodyCondition}, #{bodyConditionDetail}, #{excerciseContent})
+ 	</insert>
+ 	
+ 	<update id="updateDiary" parameterType="diaryVO">
+ 		update healthy_diary set
+            diary_date = #{diaryDate},
+            body_condition = #{bodyCondition},
+            body_condition_detail = #{bodyConditionDetail},
+            excercise_content = #{excerciseContent}
+        where diary_id = #{diaryId}
+ 	</update>
+ 	
+ 	<delete id="deleteDiary"  parameterType="string"> 
+ 		delete from healthy_diary where diary_id=#{value} 
+ 	</delete>
  	
 </mapper>
  

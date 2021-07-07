@@ -38,3 +38,15 @@
 <script
 	src="${pageContext.request.contextPath}/healthy/js/scrollax.min.js"></script>
 <script src="${pageContext.request.contextPath}/healthy/js/main.js"></script>
+
+<%-- fullcalender  --%>
+<script src='${pageContext.request.contextPath}/fullcalendar/main.js'></script>
+<script class="cssdesk"
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.0/moment.min.js"
+	type="text/javascript"></script>
+<script
+	src='${pageContext.request.contextPath}/fullcalendar/addEvent.js'></script>
+<script
+	src='${pageContext.request.contextPath}/fullcalendar/diary.js'></script>
+<script
+	src='${pageContext.request.contextPath}/fullcalendar/detailEvent.js'></script>

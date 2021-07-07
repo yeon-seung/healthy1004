@@ -84,28 +84,28 @@ drop table healthy_diary;
 
 --diary table 생성
 create table healthy_diary (
-   diary_id varchar2(100) primary key,
-   member_id varchar2(100) not null,
-   diary_date varchar2(100) not null, 
-   body_condition varchar2(100) not null,
-   body_condition_detail varchar2(100) not null,
-   excercise_content varchar2(100) default '운동안함' ,
-   constraint fk_diary_member_id foreign key(member_id) references healthy_member(member_id)
+    diary_id varchar2(100) primary key,
+	member_id varchar2(100) not null,
+	diary_date varchar2(100) not null, 
+	body_condition varchar2(100) not null,
+	body_condition_detail varchar2(100) not null,
+	excercise_content varchar2(100) default '운동안함',
+	constraint fk_diary_member_id foreign key(member_id) references healthy_member(member_id)
 )
+	
+
 
 --다이어리 시퀀스 넣었어~~~
 drop sequence diary_seq;
 create sequence diary_seq;
 
 --이건 seq로 id 넣은 후 insert문~~~
-<<<<<<< HEAD
 insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail,excercise_content) values(diary_seq.nextval,'java','2021-07-01','상','다리가 부음','러닝 100분');
 insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail) values(diary_seq.nextval,'java','2021-07-27','하','다리가 부음');
 insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail,excercise_content) values(diary_seq.nextval,'java','2021-07-17','중','다리가 부음','러닝 100분');
-=======
+
 insert into healthy_diary(diary_id,member_id,diary_date,body_condition,excercise_content) values(diary_seq.nextval,'java','2021-06-27','다리가 부음','러닝 100분');
 
->>>>>>> branch 'main' of https://github.com/yeon-seung/healthy1004.git
 --이건 seq로 id 넣기 전 insert문~~~
 --insert into healthy_diary values('da','java','2021-06-27','다리가 부음','러닝 100분');
 
@@ -177,7 +177,20 @@ select Diary_date, body_condition, Excercise_Content from healthy_diary;
 
 select count(*) from healthy_diary;
 
+update healthy_diary set
+            diary_date = #{diaryDate},
+            body_condition = #{bodyCondition},
+            body_condition_detail = #{bodyConditionDetail},
+            excercise_content = #{excerciseContent}
+        where diary_id = #{diaryId} AND member_id = #{memberId};
 
+ update healthy_diary set
+            diary_date = '2021-07-02',
+            body_condition = '하',
+            body_condition_detail = '팔아픔',
+            excercise_content = '수영20분'
+        where diary_id = '15' AND member_id = 'java';
+       
 
 
 
