@@ -58,7 +58,7 @@ let detailEvent = function (calEvent, element, view) {
 	    
 	    $('#deleteEvent').unbind();
 
-		$("#registerDiaryForm").attr("action", "/diary/deleteDiary?diaryId="+diaryid);
+		$("#registerDiaryForm").attr("action", "/diary/deleteDiary");
 		$("#registerDiaryForm").submit();
 		
 
