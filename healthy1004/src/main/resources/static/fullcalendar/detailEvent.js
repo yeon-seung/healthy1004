@@ -7,10 +7,10 @@ let detailEvent = function (calEvent, element, view) {
     $(element).popover("hide");
     modalTitle.html('다이어리 상세 및 수정');
 	
-	console.log(calEvent.event);
 	//상세 정보 들고오기
 	var date = calEvent.event.start;
 	var diaryid =calEvent.event._def.extendedProps.diaryid; 
+	diaryId.val(diaryid);
 	diaryDate.val(dateFo(date));
 	bodyCondition.val(calEvent.event._def.extendedProps.type);
 	bodyConditionDetail.val(calEvent.event._def.extendedProps.detail);
@@ -24,7 +24,6 @@ let detailEvent = function (calEvent, element, view) {
 		todayHighlight : true
 	}).on("changeDate", function(e){
 		diaryDate.val(dateFo(e.date));
-		//diaryDate.val();
 	});
 	
     addBtnContainer.hide();
@@ -35,63 +34,35 @@ let detailEvent = function (calEvent, element, view) {
     $('#updateEvent').unbind();
     $('#updateEvent').on('click', function () {
 		
+		if(diaryDate.val()===""){
+			alert("날짜를 지정해주세요");
+			return;
+		}
+		if(bodyConditionDetail.val()===""){
+			alert("컨디션 설명을 기재해주세요");
+			return;
+		}
 		// excerciseContent.val()에 아무것도 없으면
-		if(excerciseContent.val()===""||excerciseContent.val()===null){
-			excerciseContent.val() = '운동안함';
+		if(excerciseContent.val()===""){
+			excerciseContent.val('운동안함');
 		}
 		
-		var eventData = { // 회원 id는..?
-			memberId: 'java',	// 추후에 memberId가져오기
-			diaryId: diaryid,
-			diaryDate: diaryDate.val(),
-			bodyCondition: bodyCondition.val(),
-			bodyConditionDetail: bodyConditionDetail.val(),
-			excerciseContent: excerciseContent.val()
-		};
-		
-   		if (eventData.bodyConditionDetail === '') {
-			alert('컨디션 설명은 필수입니다.');
-			return false;
-		}
+		$("#registerDiaryForm").attr("action", "/diary/updateDiary");
+		$("#registerDiaryForm").submit();
 
         eventModal.modal('hide');
-
-        //일정 업데이트
-        $.ajax({
-            type: "POST",
-            url: "/diary/updateDiary",
-            data: eventData,
-			dataType: 'text',
-			success: function() {
-                alert('수정되었습니다.')
-            }
-        });
-
     });
 
 	// 삭제버튼
 	$('#deleteEvent').on('click', function () {
 	    
 	    $('#deleteEvent').unbind();
+
+		$("#registerDiaryForm").attr("action", "/diary/deleteDiary?diaryId="+diaryid);
+		$("#registerDiaryForm").submit();
+		
+
 	    eventModal.modal('hide');
-		
-		var deleteData = {
-			memberId: 'java',	// 추후에 memberId가져오기
-			diaryId: diaryid
-		};
-		
-		console.log(deleteData);
-		
-	    //삭제시
-	    $.ajax({
-	        type: "POST",
-	        url: "/diary/deleteDiary",
-	        data: deleteData,
-			dataType: 'text',
-			success: function() {
-	            alert('삭제되었습니다.')
-	        }
-	    });
 	});
 
 };

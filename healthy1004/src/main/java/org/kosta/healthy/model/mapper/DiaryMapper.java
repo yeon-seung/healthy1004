@@ -16,5 +16,5 @@ public interface DiaryMapper {
 	
 	void updateDiary(DiaryVO dvo);
 
-	void deleteDiary(DiaryVO dvo);
+	void deleteDiary(String diaryId);
 }

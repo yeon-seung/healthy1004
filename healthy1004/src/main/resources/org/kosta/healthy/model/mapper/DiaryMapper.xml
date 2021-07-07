@@ -37,11 +37,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             body_condition = #{bodyCondition},
             body_condition_detail = #{bodyConditionDetail},
             excercise_content = #{excerciseContent}
-        where diary_id = #{diaryId} AND member_id = #{memberId}
+        where diary_id = #{diaryId}
  	</update>
  	
- 	<delete id="deleteDiary"  parameterType="diaryVO"> 
- 		delete from healthy_diary where member_id=#{memberId} and diary_id= #{diaryId} 
+ 	<delete id="deleteDiary"  parameterType="string"> 
+ 		delete from healthy_diary where diary_id=#{value} 
  	</delete>
  	
 </mapper>

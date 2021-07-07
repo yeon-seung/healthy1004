@@ -32,8 +32,8 @@ public class DiaryServiceImpl implements DiaryService {
 		
 	}
 	@Override
-	public void deleteDiary(DiaryVO dvo) {
-		diaryMapper.deleteDiary(dvo);	
+	public void deleteDiary(String diaryId) {
+		diaryMapper.deleteDiary(diaryId);	
 	}
 
 }

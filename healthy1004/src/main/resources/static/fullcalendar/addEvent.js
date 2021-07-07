@@ -1,10 +1,11 @@
 let eventModal = $('#eventModal');
 
 let modalTitle = $('#modal-title');
-let diaryDate = $('#diary_date');
-let bodyCondition = $('#body_condition');
-let bodyConditionDetail = $('#body_condition_detail');
-let excerciseContent = $('#excercise_content');
+let diaryId = $('#diaryId');
+let diaryDate = $('#diaryDate');
+let bodyCondition = $('#bodyCondition');
+let bodyConditionDetail = $('#bodyConditionDetail');
+let excerciseContent = $('#excerciseContent');
 
 let addBtnContainer = $('.modalBtnContainer-addEvent');
 let modifyBtnContainer = $('.modalBtnContainer-modifyEvent');
@@ -25,8 +26,6 @@ function dateFo(date) {
  *  새로운 일정 생성
  * ************** */
 let newEvent = function() {
-	//let addBtnContainer = $('.modalBtnContainer-addEvent');
-	//let modifyBtnContainer = $('.modalBtnContainer-modifyEvent');
 
 	$("#contextMenu").hide(); //메뉴 숨김
 	modalTitle.html('다이어리 추가');
@@ -52,7 +51,6 @@ let newEvent = function() {
 		todayHighlight: true
 	}).on("changeDate", function(e) {
 		diaryDate.val(dateFo(e.date));
-		//diaryDate.val();
 	});
 
 	
@@ -60,65 +58,22 @@ let newEvent = function() {
 	//새로운 일정 저장버튼 클릭
 	$('#save-event').unbind();
 	$('#save-event').on('click', function() {
-		//alert("안냥하세요");
+		if(diaryDate.val()===""){
+			alert("날짜를 지정해주세요");
+			return;
+		}
+		if(bodyConditionDetail.val()===""){
+			alert("컨디션 설명을 기재해주세요");
+			return;
+		}
 		// excerciseContent.val()에 아무것도 없으면
-		if(excerciseContent.val()===""||excerciseContent.val()===null){
-			excerciseContent.val() = '운동안함';
+		if(excerciseContent.val()===""){
+			excerciseContent.val('운동안함');
 		}
-		var eventData = { // 회원 id는..?
-			memberId: 'java',	// 추후에 memberId가져오기
-			diaryDate: diaryDate.val(),
-			bodyCondition: bodyCondition.val(),
-			bodyConditionDetail: bodyConditionDetail.val(),
-			excerciseContent: excerciseContent.val()
-		};
-		//alert(eventData.memberId);
-		//alert(eventData.diaryDate);
-		//alert(eventData.bodyCondition);
-		//alert(eventData.bodyConditionDetail);
-		//alert(eventData.excerciseContent);
-
-		if (eventData.bodyConditionDetail === '') {
-			alert('컨디션 설명은 필수입니다.');
-			return false;
-		}
-
-		//$("#calendar").addEvent( {'title': eventData.bodyConditionDetail, 'start': eventData.diaryDate}); // 얘도 안먹음
-		//$("#calendar").addEvent(eventData);	// 얘도 안먹어
-		//$("#calendar").fullCalendar('eventRender', eventData, true);		// 이거 안먹음 v3?
-		//$('#calendar').fullCalendar('renderEvent', eventData, true);		// 이것도 안댕 v4?
-		//eventModal.find('input, textarea').val('');
-		//$("#calendar").rerenderEvents()
-
-		//$("#calendar").fullCalendar('renderEvent', eventData, true);
+		
+		$("#registerDiaryForm").attr("action", "/diary/registerDiary");
+		$("#registerDiaryForm").submit();
+		
 		eventModal.modal("hide");
-
-		//새로운 일정 저장 (DB에 저장)
-		$.ajax({
-			type: "POST",
-			url: "diary/registerDiary",
-			data: eventData,
-			dataType: 'text',
-			success: function() {
-				alert("안냥"); 	// 왜 안돼 ㅠ
-				//DB연동시 중복이벤트 방지를 위한 (리로드 해줌.) // 지금 안먹엉 ㅠㅠ
-				//$('#calendar').fullCalendar('removeEvents');// 안먹어
-				//$("#calendar").refetchEvents();	// 안먹어
-				//calendar.refetchEvents();	// 안먹어
-				//alert("안냥333333333"); 
-				//$("#calendar").fullCalendar('destroy'); // 기존 fullcalendar 삭제
-				//getEvents	();
-				//$("#calendar").refetchEvents()
-				//$("#calendar").getEventSources().refetch(); //안먹어
-				//$("#calendar").addEvent(eventData);
-				//alert(document.getElementById('calendar').fullCalendar("destroy"));
-
-				alert("리로드하라고~~");
-			}
-		});
-
-		// 이제 할 일...
-		// memberId 받아와서 넣기!!!!
-		// event 뿌리기
 	});
 };

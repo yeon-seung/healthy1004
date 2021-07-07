@@ -11,9 +11,11 @@ import javax.annotation.Resource;
 import org.kosta.healthy.model.mapper.DiaryMapper;
 import org.kosta.healthy.model.service.DiaryService;
 import org.kosta.healthy.model.vo.DiaryVO;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class DiaryController {
@@ -34,21 +36,21 @@ public class DiaryController {
 		return list;
 	}
 
-	@ResponseBody
-	@RequestMapping(value = "/diary/registerDiary", method = RequestMethod.POST)
-	public void registerDiary(DiaryVO dvo) {
+	@PostMapping("/diary/registerDiary")
+	public RedirectView registerDiary(DiaryVO dvo) {
 		diaryService.registerDiary(dvo);
+		return new RedirectView("/diary");
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/diary/updateDiary", method = RequestMethod.POST)
-	public void updateDiary(DiaryVO dvo) {
+	@PostMapping("/diary/updateDiary")
+	public RedirectView updateDiary(DiaryVO dvo) {
 		diaryService.updateDiary(dvo);
+		return new RedirectView("/diary");
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/diary/deleteDiary", method = RequestMethod.POST)
-	public void deleteDiary(DiaryVO dvo) {
-		diaryService.deleteDiary(dvo);
+	@PostMapping("/diary/deleteDiary")
+	public RedirectView deleteDiary(String diaryId) {
+		diaryService.deleteDiary(diaryId);
+		return new RedirectView("/diary");
 	}
 }

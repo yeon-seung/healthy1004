@@ -44,49 +44,57 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
-					<div class="row">
-						<div class="col-md-12">
-							<label class="col-md-4" for="diary_date">날짜</label> <input
-								class="inputModal" type="text" name="diary_date" id="diary_date" />
+				<form action="/diary/registerDiary" method="post"
+					id="registerDiaryForm">
+					<div class="modal-body">
+						<%-- value에 principal.memberName?? Id넣기 --%>
+						<input type="hidden" name="memberId" id="memberId" value="java" /> 
+						<input type="hidden" name="diaryId" id="diaryId" value="" />
+						<div class="row">
+							<div class="col-md-12">
+								<label class="col-md-4" for="diaryDate">날짜</label> <input
+									class="inputModal" type="text" name="diaryDate"
+									required="required" id="diaryDate" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<label class="col-md-4" for="bodyCondition">컨디션</label> <select
+									class="inputModal" type="text" name="bodyCondition"
+									required="required" id="bodyCondition">
+									<option value="상">상</option>
+									<option value="중">중</option>
+									<option value="하">하</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<label class="col-md-4" for="bodyConditionDetail">컨디션 설명</label>
+								<textarea rows="2" cols="50" class="inputModal" maxlength="100"
+									name="bodyConditionDetail" id="bodyConditionDetail"
+									required="required"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<label class="col-md-4" for="excerciseContent">운동 설명</label>
+								<textarea rows="4" cols="50" class="inputModal" maxlength="100"
+									name="excerciseContent" id="excerciseContent"
+									required="required" placeholder="기본 값은 운동안함으로 들어갑니다."></textarea>
+							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<label class="col-md-4" for="body_condition">컨디션</label> <select
-								class="inputModal" type="text" name="body_condition"
-								id="body_condition">
-								<option value="상">상</option>
-								<option value="중">중</option>
-								<option value="하">하</option>
-							</select>
-						</div>
+					<div class="modal-footer modalBtnContainer-addEvent">
+						<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+						<button type="button" class="btn btn-primary" id="save-event">저장</button>
 					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<label class="col-md-4" for="body_condition_detail">컨디션
-								설명</label>
-							<textarea rows="2" cols="50" class="inputModal" maxlength="100"
-								name="body_condition_detail" id="body_condition_detail"></textarea>
-						</div>
+					<div class="modal-footer modalBtnContainer-modifyEvent">
+						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+						<button type="button" class="btn btn-danger" id="deleteEvent">삭제</button>
+						<button type="button" class="btn btn-primary" id="updateEvent">수정</button>
 					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<label class="col-md-4" for="excercise_content">운동 설명</label>
-							<textarea rows="4" cols="50" class="inputModal" maxlength="100"
-								name="excercise_content" id="excercise_content" placeholder="기본 값은 운동안함으로 들어갑니다."></textarea>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer modalBtnContainer-addEvent">
-					<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-					<button type="button" class="btn btn-primary" id="save-event">저장</button>
-				</div>
-				<div class="modal-footer modalBtnContainer-modifyEvent">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-                        <button type="button" class="btn btn-danger" id="deleteEvent">삭제</button>
-                        <button type="button" class="btn btn-primary" id="updateEvent">수정</button>
-                    </div>
+				</form>
 			</div>
 			<%-- /.modal-content --%>
 		</div>
