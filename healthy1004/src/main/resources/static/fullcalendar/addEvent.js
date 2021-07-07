@@ -6,6 +6,7 @@ let diaryDate = $('#diaryDate');
 let bodyCondition = $('#bodyCondition');
 let bodyConditionDetail = $('#bodyConditionDetail');
 let excerciseContent = $('#excerciseContent');
+let memberId = $('#memberId').val();
 
 let addBtnContainer = $('.modalBtnContainer-addEvent');
 let modifyBtnContainer = $('.modalBtnContainer-modifyEvent');

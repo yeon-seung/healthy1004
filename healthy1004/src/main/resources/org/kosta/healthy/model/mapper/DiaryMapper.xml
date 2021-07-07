@@ -17,13 +17,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<sql id="selectDiary">
  		select diary_id,member_id,diary_date,body_condition,excercise_content from healthy_diary
  	</sql>
- 	
- 	<select id="getUserDiaryByIdTest" resultType="diaryVO">
- 		select diary_id,diary_date, body_condition, body_condition_detail, excercise_content from healthy_diary where member_id ='java'
- 	</select>
- 	
+
  	<select id ="getUserDiaryById" resultType="diaryVO">
- 		select diary_id, diary_date, body_condition, body_condition_detail, excercise_content from healthy_diary where member_id =#{id}
+ 		select diary_id, diary_date, body_condition, body_condition_detail, excercise_content from healthy_diary where member_id =#{memberId}
  	</select>
  	
  	<insert id="registerDiary" parameterType="diaryVO">

@@ -5,6 +5,7 @@ document.addEventListener(
 		var calendar = new FullCalendar.Calendar(
 			calendarEl,
 			{
+				
 				initialView: 'dayGridMonth',
 				dayMaxEvents: 2,	// 2개까지만 보이고 3개 이상부터는 more로
 				selectable: true, // 선택 가능하도록
@@ -29,14 +30,16 @@ document.addEventListener(
 				},
 				events: function(info, successCallback, failureCallback) {
 					$.ajax({
-						url: '/getUserDiaryTest',
+						type:"post",
+						url:"/getUserDiary",	
 						dataType: 'json',
+						data:"memberId="+memberId,
 						success:
 							function(result) {
 								var events = [];
 
 								if (result != null) {
-				
+									
 									$.each(result, function(index, element) {
 										
 										var startdate = moment(element.diaryDate).format('YYYY-MM-DD');

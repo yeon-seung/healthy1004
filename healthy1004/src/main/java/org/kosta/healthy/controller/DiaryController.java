@@ -23,16 +23,9 @@ public class DiaryController {
 	private DiaryService diaryService;
 	@ResponseBody
 	@RequestMapping("/getUserDiary") 
-	public List<DiaryVO> getUserDiaryById( String id,Model model) {
-		//이부분 모르겠음
-		List<DiaryVO> list = diaryService.getUserDiaryById(id);
-		return list;
-	}
-	
-	@ResponseBody
-	@RequestMapping("/getUserDiaryTest") 
-	public List<DiaryVO> getUserDiaryByIdTest() {
-		List<DiaryVO> list = diaryService.getUserDiaryByIdTest();
+	public List<DiaryVO> getUserDiaryById(String memberId) {
+		System.out.println(memberId);
+		List<DiaryVO> list = diaryService.getUserDiaryById(memberId);
 		return list;
 	}
 

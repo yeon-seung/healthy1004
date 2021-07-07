@@ -8,9 +8,7 @@ import org.kosta.healthy.model.vo.DiaryVO;
 @Mapper
 public interface DiaryMapper {
 
-	List<DiaryVO> getUserDiaryById(String id);
-	
-	List<DiaryVO> getUserDiaryByIdTest();
+	List<DiaryVO> getUserDiaryById(String memberId);
 
 	void registerDiary(DiaryVO dvo);
 	

@@ -15,12 +15,8 @@ public class DiaryServiceImpl implements DiaryService {
 	private DiaryMapper diaryMapper;
 	
 	@Override
-	public List<DiaryVO> getUserDiaryById(String id) {
-		return diaryMapper.getUserDiaryById(id);
-	}
-	@Override
-	public List<DiaryVO> getUserDiaryByIdTest() {
-		return diaryMapper.getUserDiaryByIdTest();
+	public List<DiaryVO> getUserDiaryById(String memberId) {
+		return diaryMapper.getUserDiaryById(memberId);
 	}
 	@Override
 	public void registerDiary(DiaryVO dvo) {
