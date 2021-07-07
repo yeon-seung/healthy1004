@@ -36,16 +36,18 @@ document.addEventListener(
 								var events = [];
 
 								if (result != null) {
-
+				
 									$.each(result, function(index, element) {
-
+										
 										var startdate = moment(element.diaryDate).format('YYYY-MM-DD');
 										var enddate = moment(element.diaryDate).format('YYYY-MM-DD');
 										var conditionLevel = element.bodyCondition;
-
+										console.log(element);
+											
 										// 컨디션 레벨별로 color 설정
 										if (conditionLevel == "상") {
 											events.push({
+												diaryid:element.diaryId,
 												title: element.excerciseContent,
 												start: startdate,
 												end: enddate,
@@ -57,6 +59,7 @@ document.addEventListener(
 										}
 										else if (conditionLevel == "중") {
 											events.push({
+												diaryid:element.diaryId,
 												title: element.excerciseContent,
 												start: startdate,
 												end: enddate,
@@ -69,6 +72,7 @@ document.addEventListener(
 
 										else if (conditionLevel == "하") {
 											events.push({
+												diaryid:element.diaryId,
 												title: element.excerciseContent,
 												start: startdate,
 												end: enddate,

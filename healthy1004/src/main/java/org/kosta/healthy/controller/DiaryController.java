@@ -39,4 +39,16 @@ public class DiaryController {
 	public void registerDiary(DiaryVO dvo) {
 		diaryService.registerDiary(dvo);
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/diary/updateDiary", method = RequestMethod.POST)
+	public void updateDiary(DiaryVO dvo) {
+		diaryService.updateDiary(dvo);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/diary/deleteDiary", method = RequestMethod.POST)
+	public void deleteDiary(DiaryVO dvo) {
+		diaryService.deleteDiary(dvo);
+	}
 }

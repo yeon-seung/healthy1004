@@ -26,6 +26,14 @@ public class DiaryServiceImpl implements DiaryService {
 	public void registerDiary(DiaryVO dvo) {
 		diaryMapper.registerDiary(dvo);
 	}
-	
+	@Override
+	public void updateDiary(DiaryVO dvo) {
+		diaryMapper.updateDiary(dvo);
+		
+	}
+	@Override
+	public void deleteDiary(DiaryVO dvo) {
+		diaryMapper.deleteDiary(dvo);	
+	}
 
 }

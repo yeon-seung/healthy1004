@@ -166,8 +166,23 @@ select Diary_date, body_condition, Excercise_Content from healthy_diary;
 
 select count(*) from healthy_diary;
 
+select * from healthy_diary;
 
 
+update healthy_diary set
+            diary_date = #{diaryDate},
+            body_condition = #{bodyCondition},
+            body_condition_detail = #{bodyConditionDetail},
+            excercise_content = #{excerciseContent}
+        where diary_id = #{diaryId} AND member_id = #{memberId};
+
+ update healthy_diary set
+            diary_date = '2021-07-02',
+            body_condition = '하',
+            body_condition_detail = '팔아픔',
+            excercise_content = '수영20분'
+        where diary_id = '15' AND member_id = 'java';
+       
 
 
 

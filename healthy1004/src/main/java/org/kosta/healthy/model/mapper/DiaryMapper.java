@@ -13,4 +13,8 @@ public interface DiaryMapper {
 	List<DiaryVO> getUserDiaryByIdTest();
 
 	void registerDiary(DiaryVO dvo);
+	
+	void updateDiary(DiaryVO dvo);
+
+	void deleteDiary(DiaryVO dvo);
 }

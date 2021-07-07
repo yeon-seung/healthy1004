@@ -62,16 +62,15 @@ let newEvent = function() {
 	$('#save-event').on('click', function() {
 		//alert("안냥하세요");
 		// excerciseContent.val()에 아무것도 없으면
-		let exercise = "";
 		if(excerciseContent.val()===""||excerciseContent.val()===null){
-			exercise = '운동안함';
+			excerciseContent.val() = '운동안함';
 		}
 		var eventData = { // 회원 id는..?
 			memberId: 'java',	// 추후에 memberId가져오기
 			diaryDate: diaryDate.val(),
 			bodyCondition: bodyCondition.val(),
 			bodyConditionDetail: bodyConditionDetail.val(),
-			excerciseContent: exercise
+			excerciseContent: excerciseContent.val()
 		};
 		//alert(eventData.memberId);
 		//alert(eventData.diaryDate);
