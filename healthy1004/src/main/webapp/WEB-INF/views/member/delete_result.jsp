@@ -6,6 +6,6 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <script type="text/javascript" charset="UTF-8">
 	<sec:authentication property="principal.memberName" var="name"/>
-	alert("${name}님 회원정보수정되었습니다");
-	location.href = "${pageContext.request.contextPath}/mypage";
+	alert("${name}님 탈퇴시켰습니다.");
+	location.href = "${pageContext.request.contextPath}/deleteForm";
 </script>

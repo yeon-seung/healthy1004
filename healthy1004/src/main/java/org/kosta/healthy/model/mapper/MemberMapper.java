@@ -20,7 +20,7 @@ public interface MemberMapper {
 	
 	void registerRole(Authority authority);
 	
-	List<MemberVO> findMemberListByMemberId(String memberId);
+	List<MemberVO> memberList();
 	
 	void deleteMember(MemberVO vo);
 }

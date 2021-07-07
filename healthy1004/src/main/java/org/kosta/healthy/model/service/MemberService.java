@@ -17,7 +17,7 @@ public interface MemberService {
 	
 	void updateMember(MemberVO vo);
 	
-	List<MemberVO> findMemberListByMemberId(String memberId);
+	List<MemberVO> memberList();
 	
 	void deleteMember(MemberVO vo);
 }

@@ -1,5 +1,7 @@
 package org.kosta.healthy.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -85,15 +87,17 @@ public class MemberController {
 
 	@Secured("ROLE_ADMIN")
 	@RequestMapping("member/deleteForm")
-	public String deleteForm() {
+	public String deleteForm(Model model) {
+		List<MemberVO> list = memberService.memberList();
+		model.addAttribute("list", list);
 		return "member/deleteForm.tiles";
 	}
 
-	/*
-	@RequestMapping("member/memberList") 
-	public String memberList(MemberVO memberVO) { 
-		model.
-		return "member/deleteForm.tiles"; 
+	@Secured("ROLE_ADMIN")
+	@RequestMapping(value = "member/deleteMember")
+	public String deleteMember(MemberVO vo) {
+		memberService.deleteMember(vo);
+		return "member/delete_result.tiles";
 	}
-	*/
+
 }

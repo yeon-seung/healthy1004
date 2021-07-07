@@ -24,7 +24,7 @@
 							class="fa fa-chevron-right"></i></a></span> <span>Course Lists <i
 						class="fa fa-chevron-right"></i></span>
 				</p> --%>
-					<h1 class="mb-0 bread">Delete Member</h1>
+					<h1 class="mb-0 bread">Delete Crew</h1>
 				</div>
 			</div>
 		</div>
@@ -33,7 +33,7 @@
 	<!-- <div class="sidebar-box bg-white p-4 ftco-animate"> -->
 	<div class="text pt-3">
 		<div class="container">
-			<h3 style="text-align: center; color:gray"  >회원 목록</h3><br><br>
+			<h3 style="text-align: center; color:gray" >크루 목록</h3><br><br>
 			<form method="POST"
 				action="${pageContext.request.contextPath}/member/deleteMember" id="regForm">
 				<sec:csrfInput />
@@ -41,24 +41,19 @@
 					<tr>
 						<td>아이디</td>
 						<td>이름</td>
-						<td>주소</td>
-						<td>이메일</td>
-						<td>키</td>
-						<td>몸무게</td>
-						<td>나이</td>
-						<td>전화번호</td>
+						<td>정보</td>
+						<td>인원</td>
+						<td>위치</td>
 					</tr>
 					<c:forEach items="${list}" var="list">
 						<tr>
 							<td><a
 								href="${pageContext.request.contextPath}/member/deleteMember?memberId=${list.memberId}">${list.memberId}</a></td>
-							<td><c:out value="${list.memberName}" /></td>
-							<td><c:out value="${list.address}" /></td>
-							<td><c:out value="${list.email}" /></td>
-							<td><c:out value="${list.height}" /></td>
-							<td><c:out value="${list.weight}" /></td>
-							<td><c:out value="${list.age}" /></td>
-							<td><c:out value="${list.phone}" /></td>
+							<td><c:out value="${list.crewId}" /></td>
+							<td><c:out value="${list.crewName}" /></td>
+							<td><c:out value="${list.crewInfo}" /></td>
+							<td><c:out value="${list.crewSize}" /></td>
+							<td><c:out value="${list.crewLocation}" /></td>
 						</tr>
 					</c:forEach>
 				</table>
