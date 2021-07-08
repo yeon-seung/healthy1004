@@ -58,28 +58,36 @@
 				$("#frm").attr("action",
 						"${pageContext.request.contextPath}/home"); //form 의 action 값을 /로 변경			
 				$("#pageName").val("home");
+				$("#frm").submit();
 			} else if (menu === "diary") {
 				$("#frm").attr("action",
 						"${pageContext.request.contextPath}/diary");
 				$("#pageName").val("diary");
+				$("#frm").submit();
 			} else if (menu === "crewfind") {
 				$("#frm").attr("action",
 						"${pageContext.request.contextPath}/crewfind");
 				$("#pageName").val("crewfind");
+				$("#frm").submit();
 			} else if (menu === "mypage") {
 				$("#frm").attr("action",
 						"${pageContext.request.contextPath}/mypage");
 				$("#pageName").val("mypage");
+				$("#frm").submit();
 			} else if (menu === "signup") {
 				$("#frm").attr("action",
 						"${pageContext.request.contextPath}/signup");
 				$("#pageName").val("signup");
+				$("#frm").submit();
 			} else if (menu === "admin") {
 				$("#frm").attr("action",
 						"${pageContext.request.contextPath}/admin");
 				$("#pageName").val("admin");
+				$("#frm").submit();
+			}else if(menu ==="logoutAction"){
+				$("#pageName").val("logoutAction");
+				$("#logoutForm").submit();
 			}
-			$("#frm").submit();
 
 		}
 	}

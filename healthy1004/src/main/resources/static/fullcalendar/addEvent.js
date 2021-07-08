@@ -62,7 +62,11 @@ let newEvent = function() {
 		if(diaryDate.val()===""){
 			alert("날짜를 지정해주세요");
 			return;
+		}else if(diaryDate.val()>dateFo(today)){
+			alert("현재보다 앞선 날짜에는 운동기록을 할 수 없습니다");
+			return;
 		}
+		
 		if(bodyConditionDetail.val()===""){
 			alert("컨디션 설명을 기재해주세요");
 			return;

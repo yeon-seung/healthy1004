@@ -22,10 +22,9 @@
 
 				<sec:authorize access="isAuthenticated()">
 
-					<div
-						style="font-size: 15px; padding-top: 1.5rem; padding-bottom: 1.5rem; padding-left: 20px; padding-right: 20px; color: #fff; font-weight: 500;">	
-							<sec:authorize access="hasRole('ROLE_MEMBER') and !hasRole('ROLE_ADMIN')"><li><sec:authentication property="principal.memberName" />님 </li></sec:authorize>
-							<sec:authorize access="hasRole('ROLE_ADMIN')"><li><sec:authentication property="principal.memberName" /> 관리자님 </li></sec:authorize>
+					<div class="nav-item" id="home">
+							<sec:authorize access="hasRole('ROLE_MEMBER') and !hasRole('ROLE_ADMIN')"><li class="nav-link disabled" tabindex="-1" aria-disabled="true"><sec:authentication property="principal.memberName" />님 </li></sec:authorize>
+							<sec:authorize access="hasRole('ROLE_ADMIN')"><li class="nav-link disabled" tabindex="-1" aria-disabled="true"><sec:authentication property="principal.memberName" /> 관리자님 </li></sec:authorize>
 					</div>
 
 
@@ -44,22 +43,14 @@
 						</sec:authorize>
 					</li>
 
-					<div
-						style="font-size: 15px; padding-top: 1.5rem; padding-bottom: 1.5rem; padding-left: 20px; padding-right: 20px; color: #fff; font-weight: 500;">
-						<li><script type="text/javascript">
-							$(document).ready(function() {
-								$("#logoutAction").click(function() {
-									$("#logoutForm").submit();
-								});
-							});d
-					</script> <a href="#" id="logoutAction" style="color: white">Logout</a>
+					<li  class="nav-item"  id="logoutAction" >
+						 <a class="nav-link" href="#" id="logoutAction" style="color: white">Logout</a>
 						<form id="logoutForm"
 							action="${pageContext.request.contextPath}/logout" method="post"
 							style="display: none">
 							<sec:csrfInput />
 						</form>
-				</li>
-				</div>
+					</li>
 
 				</sec:authorize>
 			</ul>
