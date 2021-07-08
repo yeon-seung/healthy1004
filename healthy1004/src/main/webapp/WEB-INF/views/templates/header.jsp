@@ -19,27 +19,39 @@
 
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav ml-auto">
-				<sec:authorize access="isAuthenticated()">
-					<div style="font-size: 15px; padding-top: 1.5rem; padding-bottom: 1.5rem;padding-left: 20px;padding-right: 20px;color: #fff;font-weight: 500;">
-					<li><sec:authentication property="principal.memberName" />님 안녕하세요</li></div>
-					
-				
-				<li class="nav-item active " id="home"><a href="#"
-					class="nav-link">Home</a></li>
-				<li class="nav-item active" id="crewfind"><a href="#"
-					class="nav-link">Find crew</a></li>
-				<li class="nav-item active" id="diary"><a href="#"
-					class="nav-link">Diary</a></li>
-				<li class="nav-item active" id="mypage"><a href="#"
-					class="nav-link ">Mypage</a></li>
 
-				<div style="font-size: 15px; padding-top: 1.5rem; padding-bottom: 1.5rem;padding-left: 20px;padding-right: 20px;color: #fff;font-weight: 500;">
-					<li><script type="text/javascript">
-						$(document).ready(function() {
-							$("#logoutAction").click(function() {
-								$("#logoutForm").submit();
-							});
-						});
+				<sec:authorize access="isAuthenticated()">
+
+					<div
+						style="font-size: 15px; padding-top: 1.5rem; padding-bottom: 1.5rem; padding-left: 20px; padding-right: 20px; color: #fff; font-weight: 500;">	
+							<sec:authorize access="hasRole('ROLE_MEMBER') and !hasRole('ROLE_ADMIN')"><li><sec:authentication property="principal.memberName" />님 </li></sec:authorize>
+							<sec:authorize access="hasRole('ROLE_ADMIN')"><li><sec:authentication property="principal.memberName" /> 관리자님 </li></sec:authorize>
+					</div>
+
+
+					<li class="nav-item active " id="home"><a href="#"
+						class="nav-link">Home</a></li>
+					<li class="nav-item active" id="crewfind"><a href="#"
+						class="nav-link">Find Crew</a></li>
+					<li class="nav-item active" id="diary"><a href="#"
+						class="nav-link">Diary</a></li>
+					<sec:authorize access="hasRole('ROLE_MEMBER') and !hasRole('ROLE_ADMIN')">
+					<li class="nav-item active" id="mypage"><a href="#"
+						class="nav-link">MyPage</a></li>
+					</sec:authorize>
+					<li class="nav-item active" id="admin"><sec:authorize access="hasRole('ROLE_ADMIN')">
+						<a href="#" class="nav-link">Admin Page</a>
+						</sec:authorize>
+					</li>
+
+					<div
+						style="font-size: 15px; padding-top: 1.5rem; padding-bottom: 1.5rem; padding-left: 20px; padding-right: 20px; color: #fff; font-weight: 500;">
+						<li><script type="text/javascript">
+							$(document).ready(function() {
+								$("#logoutAction").click(function() {
+									$("#logoutForm").submit();
+								});
+							});d
 					</script> <a href="#" id="logoutAction" style="color: white">Logout</a>
 						<form id="logoutForm"
 							action="${pageContext.request.contextPath}/logout" method="post"
@@ -48,6 +60,7 @@
 						</form>
 				</li>
 				</div>
+
 				</sec:authorize>
 			</ul>
 			<form id="frm" method="get" action="">

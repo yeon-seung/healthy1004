@@ -28,6 +28,7 @@ public class HomeController {
 		return "crew_board/crewfind.tiles";
 	}
 	
+
 	@RequestMapping("registerForm") //회원가입
 	public String signup() {
 		return "member/registerForm.tiles";
@@ -36,5 +37,10 @@ public class HomeController {
 	@RequestMapping("accessDeniedView") //로그인 하였으나 권한 없는 요청할 때 페이지
 	public String accessDeniedView() {
 		return "auth/accessDeniedView";
+	}
+	
+	@RequestMapping("admin")
+	public String adminMain() {
+		return "admin/admin_home.tiles";
 	}
 }

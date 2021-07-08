@@ -20,6 +20,11 @@ create table healthy_member (
 --member 데이터 전체 삭제
 delete from healthy_member;
 
+--member 탈퇴 enabled=0으로 만드는 test용 sql
+update healthy_member
+		set enabled=1
+		where member_id='dong';
+
 --member table 전체 검색 
 select * from healthy_member;
 commit
@@ -166,6 +171,8 @@ delete from authorities;
 select * from authorities;
 commit
 
+--관리자 권한
+update authorities set authority='ROLE_ADMIN' where username='admin';
 
 
 -----------ex 코드

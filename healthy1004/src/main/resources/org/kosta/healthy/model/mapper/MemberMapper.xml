@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findMemberById" resultType="memberVO">
  		SELECT	member_id, password, member_name, address, email, height, weight, age, phone, enabled
 		FROM	healthy_member
-		WHERE 	member_id=#{value}	
+		WHERE 	member_id=#{memberId}	
 		AND		enabled=1 		
  	</select>
 	<!-- Spring Security에서 권한 체크를 위해 사용 -->
@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{memberId}, #{password}, #{memberName}, #{address}, #{email}, #{height}, #{weight}, #{age}, #{phone})
 	</insert>
 	<select id="idcheck" resultType="int">
-		select count(*) from healthy_member where member_id=#{value}
+		select count(*) from healthy_member where member_id=#{memberId}
 	</select>
 	<insert id="registerRole" parameterType="authority">
 		insert into authorities(username,authority) values(#{username},#{authority})
@@ -34,6 +34,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set password=#{password}, address=#{address}, height=#{height}, weight=#{weight}, age=#{age}, phone=#{phone}
 		where member_id=#{memberId}
 	</update>
+	<update id="deleteMember" parameterType="memberVO">
+		update healthy_member
+		set enabled=0
+		where member_id=#{memberId}
+	</update>
+	<select id="memberList" resultType="memberVO">
+		select h.member_id, h.member_name, h.address, h.email, h.height, h.weight, h.age, h.phone
+		from healthy_member h, authorities a
+		where h.member_id=a.username and enabled=1 and a.authority='ROLE_MEMBER'
+	</select>
 </mapper>
 
 

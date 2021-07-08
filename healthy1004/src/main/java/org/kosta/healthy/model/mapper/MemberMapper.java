@@ -19,4 +19,8 @@ public interface MemberMapper {
 	List<Authority> selectAuthorityByUsername(String username);
 	
 	void registerRole(Authority authority);
+	
+	List<MemberVO> memberList();
+	
+	void deleteMember(MemberVO vo);
 }

@@ -51,14 +51,14 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 		String id = authentication.getName();// 사용자가 로그인시 입력한 ID 반환
 		// System.out.println("id: " + authentication.getName());
 		MemberVO member = memberService.findMemberById(id);
-		System.out.println("집에 보내조 아이디싫어~~" + member);
+		//System.out.println("집에 보내조 아이디싫어~~" + member);
 		if (member == null) {
 			throw new UsernameNotFoundException("회원 아이디가 존재하지 않습니다");
 		}
 		String password = (String) authentication.getCredentials();
-		System.out.println(password + " " + password.length());
-		System.out.println(member.getPassword());
-		System.out.println(passwordEncoder.matches(password, member.getPassword()));
+		//System.out.println(password + " " + password.length());
+		//System.out.println(member.getPassword());
+		//System.out.println(passwordEncoder.matches(password, member.getPassword()));
 		// 사용자가 입력한 패스워드 반환
 		// 3.패스워드 비교
 
@@ -67,7 +67,7 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 		 */
 
 		if (!passwordEncoder.matches(password, member.getPassword()))
-			throw new BadCredentialsException("비밀번호 불일치~~~"); 
+			throw new BadCredentialsException("비밀번호가 불일치합니다"); 
 		// 4.사용자 권한 조회
 		List<Authority> list = memberService.selectAuthorityByUsername(id);
 		if (list.size() == 0) {

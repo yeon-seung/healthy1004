@@ -1,10 +1,13 @@
 package org.kosta.healthy.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.kosta.healthy.model.service.MemberService;
 import org.kosta.healthy.model.vo.MemberVO;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,6 +74,7 @@ public class MemberController {
 		System.out.println("Spring Security 세션 수정 전 회원정보:" + pvo);
 		memberService.updateMember(memberVO);// service에서 변경될 비밀번호를 암호화한다
 		// 수정한 회원정보로 Spring Security 세션 회원정보를 업데이트한다
+		System.out.println(memberVO);
 		pvo.setPassword(memberVO.getPassword());
 		pvo.setAddress(memberVO.getAddress());
 		pvo.setHeight(memberVO.getHeight());
@@ -79,6 +83,21 @@ public class MemberController {
 		pvo.setPhone(memberVO.getPhone());
 		System.out.println("Spring Security 세션 수정 후 회원정보:" + pvo);
 		return "member/update_result.tiles";
+	}
+
+	@Secured("ROLE_ADMIN")
+	@RequestMapping("member/deleteForm")
+	public String deleteForm(Model model) {
+		List<MemberVO> list = memberService.memberList();
+		model.addAttribute("list", list);
+		return "member/deleteForm.tiles";
+	}
+
+	@Secured("ROLE_ADMIN")
+	@RequestMapping(value = "member/deleteMember")
+	public String deleteMember(MemberVO vo) {
+		memberService.deleteMember(vo);
+		return "member/delete_result.tiles";
 	}
 
 }
