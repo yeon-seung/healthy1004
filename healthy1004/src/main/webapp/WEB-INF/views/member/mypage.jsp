@@ -23,12 +23,6 @@
 		<div class="row">
 			<div class="col-lg-3 sidebar">
 				<div class="sidebar-box bg-white ftco-animate">
-					<form action="#" class="search-form">
-						<div class="form-group">
-							<span class="icon fa fa-search"></span> <input type="text"
-								class="form-control" placeholder="Search...">
-						</div>
-					</form>
 				</div>
 
 				<div class="sidebar-box bg-white p-4 ftco-animate">
@@ -45,19 +39,20 @@
 			</div>
 			
 			<div class="col-lg-9">
-				<div class="row">
+							<sec:authentication property="principal.memberId" var="id"/>
+							<input type="hidden" name="memberId" id="memberId" value="${id}">
+							<span id="myCrewResult" class="row"></span>
+					
+			</div> 
+			
+			
+			
+			
+			
+	
 			
 				
 				
-					<div class="col-md-6 d-flex align-items-stretch ftco-animate">
-						 <div class="project-wrap">
-							<sec:authentication property="principal.memberId" var="id"/>
-							<input type="hidden" name="memberId" id="memberId" value="${id}">
-							<span id="myCrewResult"></span>
-						</div>
-					</div>
-				</div>
-				</div> 
 			</div>
 		</div>
 </section>
