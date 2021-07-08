@@ -13,26 +13,36 @@ import org.springframework.stereotype.Service;
 public class CrewServiceImpl implements CrewService {
 	@Resource
 	private CrewMapper crewMapper;
-
+	
+	//검색 후 크루리스트
 	@Override
 	public Object findCrewListByName(String crewSearchName) {
 		return crewMapper.findCrewListByName(crewSearchName);
 	}
 
+	//전체 크루리스트
 	@Override
 	public List<CrewVO> getAllCrewList() {
 		return crewMapper.getAllCrewList();
 	}
 
+	//크루참가
 	@Override
 	public void joinCrew(HashMap<String, Object> hashMap) {
 		crewMapper.joinCrew(hashMap);
 	}
 
+	//참가 시 중복확인
 	@Override
 	public boolean crewMemberCheck(HashMap<String, Object> hashMap) {
 		boolean flag = false;
 		return flag;
+	}
+	
+	//내가 가입한 크루리스트
+	@Override
+	public List<CrewVO> getMyCrewList(String memberId) {
+		return crewMapper.getMyCrewList(memberId);
 	}
 
 }

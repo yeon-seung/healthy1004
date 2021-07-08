@@ -8,7 +8,15 @@ import org.kosta.healthy.model.vo.CrewVO;
 
 @Mapper
 public interface CrewMapper {
+	//검색 후 크루리스트
 	List<CrewVO> findCrewListByName(String crewId);
+	
+	//전체 크루리스트
 	List<CrewVO> getAllCrewList();
+	
+	//크루 참가
 	void joinCrew(HashMap<String, Object> hashMap);
+	
+	//내가 가입한 크루리스트
+	List<CrewVO> getMyCrewList(String memberId);
 }
