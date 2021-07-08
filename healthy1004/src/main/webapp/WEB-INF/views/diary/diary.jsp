@@ -50,7 +50,7 @@
 					<sec:csrfInput/>
 					<div class="modal-body">
 						<%-- value에 principal.memberName?? Id넣기 --%>
-						<input type="hidden" name="memberId" id="memberId" value="<sec:authentication property="principal.memberName" />"/>
+						<input type="hidden" name="memberId" id="memberId" value="<sec:authentication property="principal.memberId" />"/>
 						<input type="hidden" name="diaryId" id="diaryId" value="" />
 						<div class="row">
 							<div class="col-md-12">
