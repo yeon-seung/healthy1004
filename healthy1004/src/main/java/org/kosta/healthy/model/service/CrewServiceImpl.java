@@ -2,6 +2,7 @@ package org.kosta.healthy.model.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -16,14 +17,14 @@ public class CrewServiceImpl implements CrewService {
 	
 	//검색 후 크루리스트
 	@Override
-	public Object findCrewListByName(String crewSearchName) {
-		return crewMapper.findCrewListByName(crewSearchName);
+	public List<CrewVO> findCrewListByName(Map<String, Object> findCrew) {
+		return crewMapper.findCrewListByName(findCrew);
 	}
 
-	//전체 크루리스트
+	//전체 크루리스트 - 참가한 크루는 제외
 	@Override
-	public List<CrewVO> getAllCrewList() {
-		return crewMapper.getAllCrewList();
+	public List<CrewVO> getAllCrewList(String memberId) {
+		return crewMapper.getAllCrewList(memberId);
 	}
 
 	//크루참가

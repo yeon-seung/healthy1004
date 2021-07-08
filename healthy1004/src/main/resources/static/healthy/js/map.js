@@ -1,3 +1,4 @@
+let memberIdForCrew = $('#memberId').val();
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(37.5175475, 127.136363), // 지도의 중심좌표
@@ -77,11 +78,11 @@ function makeOverListener(map, marker, infowindow) {
 $(document).ready(function() {
 		// 로딩시 모든 크루 위치 마커 표시
 		$.ajax({
-				type: "get",
+				type: "post",
 //			    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				url: "/getAllCrewList",
-				dataType: "JSON",
-				
+				dataType: "json",
+				data:"memberId="+memberIdForCrew,
 				success: function(list){
 					for(let i=0; i<list.length; i++){
 						$("#crewFindResult").append(
@@ -157,11 +158,11 @@ $(document).ready(function() {
 			
 			// 검색어로 크루 리스트 출력
 			$.ajax({
-				type: "get",
-			    //contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				type: "POST",
 				url: "/findCrewListByName",
 				dataType: "JSON",
-				data: "crewSearchName="+ keyword,
+				data: {"crewSearchName": keyword,
+					"memberId": memberIdForCrew},
 				success: function(list){ console.log(list);
 					if (list.length == 0) {
 						alert(keyword + " 지역에는 아직 크루가 존재하지 않습니다!");

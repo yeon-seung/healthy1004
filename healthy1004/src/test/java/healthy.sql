@@ -48,6 +48,8 @@ insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location
 insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '송파 수영 크루','sexy 물개 모여라','10','서울시 송파구 신천동 32');
 insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '주짓수 크루','주짓수 국대 되고 싶은 사람 모여라','5','서울시 송파구 양재대로 1218');
 insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '오리역 복싱 크루','록키 보고 오세요','23','성남시 분당구 성남대로 34');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '송파 바보 크루','애인괌','10','서울시 송파구 중대로12길 35');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '송파 자전거 크루','sexy 물개 모여라','10','서울시 송파구 신천동 32');
 
 
 -- 아이디 시퀀스로 바꾸기 전 insert문

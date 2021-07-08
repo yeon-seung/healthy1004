@@ -29,7 +29,6 @@
 					<div class="wrapper">
 						<div class="contact-wrap w-100 p-md-5 p-4">
 							<h3 class="mb-4">Crew List</h3>
-							
 							<form action="#" class="search-form">
 							<div class="form-group" style="margin-bottom: -1rem;">
 								<span id="crewFindBtn" class="icon fa fa-search"></span>
@@ -40,6 +39,7 @@
 <!-- 							<input type="text" name="crewSearchName" size="10" class="form-control" placeholder="지역명" -->
 <!-- 					id="crewFindKeyword"> <input type="button" value="검색" -->
 <!-- 					id="crewFindBtn"> -->
+							<input type="hidden" name="memberId" id="memberId" value="<sec:authentication property="principal.memberId" />"/>
 							<span id="crewFindResult"></span>
 							<span id="csrfInput"><sec:csrfInput/> </span>
 						</div>

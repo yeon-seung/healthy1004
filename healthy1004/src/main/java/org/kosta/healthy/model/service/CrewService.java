@@ -2,15 +2,16 @@ package org.kosta.healthy.model.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.kosta.healthy.model.vo.CrewVO;
 
 public interface CrewService {
 	//검색 후 크루리스트
-	Object findCrewListByName(String crewSearchName);
+	List<CrewVO> findCrewListByName(Map<String, Object> findCrew);
 	
-	//전체 크루리스트
-	List<CrewVO> getAllCrewList();
+	//전체 크루리스트 - 참가한 크루 제외
+	List<CrewVO> getAllCrewList(String memberId);
 
 	//크루참가
 	void joinCrew(HashMap<String, Object> hashMap);

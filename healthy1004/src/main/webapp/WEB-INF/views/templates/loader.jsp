@@ -15,6 +15,21 @@
 
 <script
 	src="${pageContext.request.contextPath}/healthy/js/jquery.min.js"></script>
+<!-- '${_csrf.headerName}'을 사용하기 위해서는 jsp 파일 내에 들어가야 하므로 여기에 존재해야 함  -->
+<!-- 또한, jquery가 로드되고 사용되어야하므로 jquery.js 파일 밑에 들어가야함 -->
+<!-- options.type.toLowerCase() 함수를 통해서 post, Post, POST 등 다양한 대소문자의 POST를 소문자로 만들어준다. -->
+<script>
+	$.ajaxPrefilter(function(options) {
+		let headerName = '${_csrf.headerName}';
+		let token = '${_csrf.token}';
+		let type = options.type.toLowerCase();
+		if (type === 'post') {		
+			options.headers = {};
+			options.headers[headerName] = token;
+		}
+	});
+</script>
+
 <script
 	src="${pageContext.request.contextPath}/healthy/js/jquery-migrate-3.0.1.min.js"></script>
 <script

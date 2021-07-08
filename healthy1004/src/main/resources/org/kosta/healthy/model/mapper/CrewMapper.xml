@@ -6,17 +6,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="org.kosta.healthy.model.mapper.CrewMapper">
 
 	<!-- 검색 후 크루리스트 -->
-	<select id="findCrewListByName" parameterType="string"
+	<select id="findCrewListByName" parameterType="map"
 		resultType="crewVO">
 		select *
 		from healthy_crew
-		where crew_location like '%' || #{value} || '%'
+		where crew_id not in(
+		   select crew_id
+		   from healthy_crew_member
+		   where member_id=#{memberId}
+		)and crew_location like '%'|| #{crewSearchName} ||'%'
 	</select>
 	
-	<!-- 전체 크루리스트 -->
+	<!-- 전체 크루리스트 - 참가한 부분 제외-->
 	<select id="getAllCrewList" parameterType="string"
 		resultType="crewVO">
-		select * from healthy_crew order by crew_id desc
+		select * from healthy_crew where crew_id not in( select crew_id from healthy_crew_member where member_id=#{memberId})
 	</select>
 	
 	<!-- 크루 참가 -->

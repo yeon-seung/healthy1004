@@ -2,6 +2,7 @@ package org.kosta.healthy.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -26,18 +27,20 @@ public class CrewController {
 //	private CrewMapper crewMapper;
 	private CrewService crewService;
 	
-	//검색 후 크루리스트
+	//검색 후 크루리스트 - 참가한 크루는 제외
 	@RequestMapping("/findCrewListByName")
 	@ResponseBody
-	public Object findCrewListByName(String crewSearchName) {
-		return crewService.findCrewListByName(crewSearchName);
+	public List<CrewVO> findCrewListByName(@RequestParam Map<String, Object> findCrew) {
+		List<CrewVO> list =  crewService.findCrewListByName(findCrew);
+		return list;
 	}
 	
-	//전체 크루리스트
+	//전체 크루리스트 - 참가한 크루는 제외
 	@RequestMapping("/getAllCrewList")
 	@ResponseBody
-	public List<CrewVO> getAllCrewList() {
-		return crewService.getAllCrewList();
+	public List<CrewVO> getAllCrewList(String memberId) {
+		List<CrewVO> list = crewService.getAllCrewList(memberId);
+		return list;
 	}
 	
 //	@RequestMapping(value = "/crewMemberCheck", method = RequestMethod.POST)
