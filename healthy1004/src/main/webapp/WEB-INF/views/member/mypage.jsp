@@ -4,7 +4,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 
 <section class="hero-wrap hero-wrap-2"
-	style="background-image: url('${pageContext.request.contextPath}/healthy/images/bg_2.jpg');">
+	style="background-image: url('${pageContext.request.contextPath}/healthy/images/run2.jpg');background-size: cover; ">
 	<div class="overlay"></div>
 	<div class="container">
 		<div

@@ -6,7 +6,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <div class="hero-wrap js-fullheight"
-	style="background-image: url('${pageContext.request.contextPath}/healthy/images/exercise_background3.jpg');">
+	style="background-image: url('${pageContext.request.contextPath}/healthy/images/first_page.jpg');">
 	<div class="overlay"></div>
 	<div class="container">
 		<div
