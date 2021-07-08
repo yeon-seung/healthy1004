@@ -95,8 +95,10 @@ public class MemberController {
 
 	@Secured("ROLE_ADMIN")
 	@RequestMapping(value = "member/deleteMember")
-	public String deleteMember(MemberVO vo) {
+	public String deleteMember(MemberVO vo, Model model) {
 		memberService.deleteMember(vo);
+		String name = vo.getMemberId();
+		model.addAttribute("name",name);
 		return "member/delete_result.tiles";
 	}
 

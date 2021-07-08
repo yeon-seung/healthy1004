@@ -5,6 +5,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <script type="text/javascript" charset="UTF-8">
-	alert("탈퇴되었습니다.");
+	var name = '${name}';
+	alert(name + "님이 탈퇴되었습니다.");
 	location.href = "${pageContext.request.contextPath}/member/deleteForm";
 </script>
