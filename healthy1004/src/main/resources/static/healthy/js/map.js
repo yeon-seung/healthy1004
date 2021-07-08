@@ -85,18 +85,18 @@ $(document).ready(function() {
 				success: function(list){
 					for(let i=0; i<list.length; i++){
 						$("#crewFindResult").append(
-							"<div class=\"staff\" style=\"margin-bottom: -1rem;\">"
-							+ "<div class=\"text pt-3\">"
-							+ "<form action=\"/joinCrew\" method=\"post\">"
+							"<div class='staff' style='margin-bottom: -1rem;'>"
+							+ "<div class='text pt-3'>"
+							+ "<form action='/joinCrew' method='post'>"
 							+ $("#csrfInput").html()
-							+ "<a href=\"#\"><h3 style=\"margin-bottom: -1rem;\">" +  list[i].crewName
+							+ "<a href='#'><h3 style='margin-bottom: -1rem;'>" +  list[i].crewName
 							+ "</h3></a>"
 							+ "<br>정원: " + list[i].crewSize + "명"
 							+ "<br>위치: " + list[i].crewLocation
 							+ "<br>소개: " + list[i].crewInfo
 							+ "<input type='hidden' name='crewId' value='" + list[i].crewId + "'>"
-							+ "<br><input type=\"submit\" value=\"참가\" class=\"btn btn-primary\" id=\"crewJoinBtn\""
-							+ "style=\"float: right; margin: 0.5rem 0.25rem 1rem 0;\">"
+							+ "<br><input type='submit\' value='참가' class='btn btn-primary' id='crewJoinBtn'"
+							+ "style='float: right; margin: 0.5rem 0.25rem 1rem 0;'>"
 							+ "</form>"
 							+ "</div></div><br>");
 						// 주소로 좌표 변환하는 코드
@@ -148,7 +148,7 @@ $(document).ready(function() {
 
 					}
 				}
-			})
+			});
 		
 		// 검색어로 크루 찾기
 		$("#crewFindBtn").click(function() {
@@ -232,7 +232,7 @@ $(document).ready(function() {
 					}
 					
 				}
-			})
+			});
 
 		});
 	});

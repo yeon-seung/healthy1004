@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 전체 크루리스트 -->
 	<select id="getAllCrewList" parameterType="string"
 		resultType="crewVO">
-		select * from healthy_crew
+		select * from healthy_crew order by crew_id desc
 	</select>
 	
 	<!-- 크루 참가 -->

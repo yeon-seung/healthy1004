@@ -29,9 +29,17 @@
 					<div class="wrapper">
 						<div class="contact-wrap w-100 p-md-5 p-4">
 							<h3 class="mb-4">Crew List</h3>
-							<input type="text" name="crewSearchName" size="10" placeholder="지역명"
-					id="crewFindKeyword"> <input type="button" value="검색"
-					id="crewFindBtn">
+							
+							<form action="#" class="search-form">
+							<div class="form-group" style="margin-bottom: -1rem;">
+								<span id="crewFindBtn" class="icon fa fa-search"></span>
+								<input id="crewFindKeyword" name="crewSearchName" type="text" class="form-control" placeholder="지역명을 입력하세용">
+							</div>
+						</form>
+						<hr>
+<!-- 							<input type="text" name="crewSearchName" size="10" class="form-control" placeholder="지역명" -->
+<!-- 					id="crewFindKeyword"> <input type="button" value="검색" -->
+<!-- 					id="crewFindBtn"> -->
 							<span id="crewFindResult"></span>
 							<span id="csrfInput"><sec:csrfInput/> </span>
 						</div>
