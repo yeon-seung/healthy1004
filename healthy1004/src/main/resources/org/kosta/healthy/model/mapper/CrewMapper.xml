@@ -18,6 +18,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into healthy_crew_member(member_id, crew_id, join_date)
 		values(#{memberId}, #{crewId}, sysdate)
 	</insert>
+	<select id="crewMemberCheck" parameterType="HashMap" resultType="int">	
+		select count(*) from healthy_crew_member
+		where member_id = #{memberId} and crew_id = #{crewId}
+	</select>
 </mapper>
  
  

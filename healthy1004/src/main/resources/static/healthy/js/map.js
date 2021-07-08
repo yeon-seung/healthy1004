@@ -66,7 +66,6 @@ for (var i = 0; i < positions.length; i ++) {
 // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
 function makeOverListener(map, marker, infowindow) {
     return function() {
-	
 		// 마커에 클릭이벤트를 등록합니다
 		kakao.maps.event.addListener(marker, 'click', function() {
 		      // 마커 위에 인포윈도우를 표시합니다
@@ -95,14 +94,10 @@ $(document).ready(function() {
 							+ "<br>정원: " + list[i].crewSize + "명"
 							+ "<br>위치: " + list[i].crewLocation
 							+ "<br>소개: " + list[i].crewInfo
-							+ "<span style=\"display: none;\">" + list[i].crewId + "</span>"
-							+ "<br><input type=\"submit\" class=\"btn btn-primary\" name=\"crewId\" value="
-							+ list[i].crewId
-//							+ "\">"
-//							+ "<br><a href=\"/joinCrew\" class=\"btn btn-primary\" id=\"crewJoinBtn\" onclick=\""
-//							+ alert(list[i].crewId)
-//							+ "\" style=\"float: right; margin: 0.5rem 0.25rem 1rem 0;\">참가</a>"
-							+ "></form>"
+							+ "<input type='hidden' name='crewId' value='" + list[i].crewId + "'>"
+							+ "<br><input type=\"submit\" value=\"참가\" class=\"btn btn-primary\" id=\"crewJoinBtn\""
+							+ "style=\"float: right; margin: 0.5rem 0.25rem 1rem 0;\">"
+							+ "</form>"
 							+ "</div></div><br>");
 						// 주소로 좌표 변환하는 코드
 						geocoder.addressSearch(list[i].crewLocation, function(result, status) {
@@ -167,30 +162,27 @@ $(document).ready(function() {
 				url: "/findCrewListByName",
 				dataType: "JSON",
 				data: "crewSearchName="+ keyword,
-				success: function(list){
-					if (keyword === "") {
+				success: function(list){ console.log(list);
+					if (list.length == 0) {
+						alert(keyword + " 지역에는 아직 크루가 존재하지 않습니다!");
+					} else if (keyword == "") {
 						alert("검색어를 입력하세요!");
-					} 
-//					$("#crewFindResult").append("<br>" + keyword + " 크루 검색 결과" + "<hr>");
-//					$("#crewFindResult").append("<hr>");
+					}
 					for(let i=0; i<list.length; i++){
 						$("#crewFindResult").append(
 							"<div class=\"staff\" style=\"margin-bottom: -1rem;\">"
 							+ "<div class=\"text pt-3\">"
 							+ "<form action=\"/joinCrew\" method=\"post\">"
+							+ $("#csrfInput").html()
 							+ "<a href=\"#\"><h3 style=\"margin-bottom: -1rem;\">" +  list[i].crewName
 							+ "</h3></a>"
 							+ "<br>정원: " + list[i].crewSize + "명"
 							+ "<br>위치: " + list[i].crewLocation
 							+ "<br>소개: " + list[i].crewInfo
-							+ "<span style=\"display: none;\">" + list[i].crewId + "</span>"
-							+ "<br><input type=\"submit\" class=\"btn btn-primary\" name=\"crewId\" value="
-							+ list[i].crewId
-//							+ "\">"
-//							+ "<br><a href=\"/joinCrew\" class=\"btn btn-primary\" id=\"crewJoinBtn\" onclick=\""
-//							+ alert(list[i].crewId)
-//							+ "\" style=\"float: right; margin: 0.5rem 0.25rem 1rem 0;\">참가</a>"
-							+ "></form>"
+							+ "<input type='hidden' name='crewId' value='" + list[i].crewId + "'>"
+							+ "<br><input type=\"submit\" value=\"참가\" class=\"btn btn-primary\" id=\"crewJoinBtn\""
+							+ "style=\"float: right; margin: 0.5rem 0.25rem 1rem 0;\">"
+							+ "</form>"
 							+ "</div></div><br>");
 							// 주소로 좌표 변환하는 코드
 							geocoder.addressSearch(list[i].crewLocation, function(result, status) {

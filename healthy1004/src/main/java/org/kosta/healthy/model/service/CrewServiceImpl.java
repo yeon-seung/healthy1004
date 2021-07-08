@@ -32,6 +32,9 @@ public class CrewServiceImpl implements CrewService {
 	@Override
 	public boolean crewMemberCheck(HashMap<String, Object> hashMap) {
 		boolean flag = false;
+		// 크멤 테이블에 존재하는 조합이면 true 반환~
+		if (crewMapper.crewMemberCheck(hashMap) >= 1)
+			flag = true;
 		return flag;
 	}
 

@@ -6,11 +6,9 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import org.kosta.healthy.model.mapper.CrewMapper;
 import org.kosta.healthy.model.service.CrewService;
 import org.kosta.healthy.model.vo.CrewVO;
 import org.kosta.healthy.model.vo.MemberVO;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,8 +34,20 @@ public class CrewController {
 		return crewService.getAllCrewList();
 	}
 	
+//	@RequestMapping(value = "/crewMemberCheck", method = RequestMethod.POST)
+//	public boolean crewMemberCheck(@RequestParam(value = "crewId") String crewId, HttpSession session ) {
+//		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		HashMap<String, Object> hashMap = new HashMap<String, Object>();
+//		hashMap.put("crewId", crewId);
+//		hashMap.put("memberId", pvo.getMemberId());
+//		System.out.println("엥??");
+//		System.out.println("중복확인 위한 크루아이디: " +hashMap.get("crewId") +", 멤버아이디: " + hashMap.get("memberId"));
+//		return crewService.crewMemberCheck(hashMap);
+//	}
+	
+	
 //	@Secured("ROLE_MEMBER")
-	@SuppressWarnings("unused")
+//	@SuppressWarnings("unused")
 	@RequestMapping(value = "/joinCrew", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 //	@ResponseBody
 	public String joinCrew(@RequestParam(value = "crewId") String crewId, HttpSession session) {
@@ -47,12 +57,12 @@ public class CrewController {
 		hashMap.put("crewId", crewId);
 		hashMap.put("memberId", pvo.getMemberId());
 		System.out.println("크루아이디: " +hashMap.get("crewId") +", 멤버아이디: " + hashMap.get("memberId"));
-		crewService.joinCrew(hashMap);
-		if (pvo == null)	// 세션정보 없거나 이미 참가한 크루면 fail 로 이동하도록~ 할 예정
-//		if (pvo == null || crewService.crewMemberCheck(hashMap)	// 세션정보 없거나 이미 참가한 크루면 fail 로 이동하도록~ 할 예정
+		if (pvo == null || crewService.crewMemberCheck(hashMap))	{// 세션정보 없거나 이미 참가한 크루면 안넣어줌
 			return "crew_board/crewJoin_fail";
-		else 
+		}
+		else {
+			crewService.joinCrew(hashMap);
 			return "crew_board/crewJoin_ok";
+		}
 	}
- 
 }

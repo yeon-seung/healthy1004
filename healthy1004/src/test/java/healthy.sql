@@ -46,6 +46,7 @@ create sequence crew_seq;
 -- 아이디 시퀀스로 바꾼 후 insert문
 insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '송파 러닝 크루','애인괌','10','서울시 송파구 중대로12길 35');
 insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '송파 수영 크루','sexy 물개 모여라','10','서울시 송파구 신천동 32');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '주짓수 크루','주짓수 국대 되고 싶은 사람 모여라','5','서울시 송파구 양재대로 1218');
 
 -- 아이디 시퀀스로 바꾸기 전 insert문
 -- insert into healthy_crew values('a','la러닝크루','la에서 러닝하실 분들 구합니다','10','캘리포니아');
@@ -74,6 +75,9 @@ create table healthy_crew_member (
 -- insert into healthy_crew_member values('java','a','2021-06-28');
 insert into healthy_crew_member values('dong','1',sysdate);
 
+select count(*) from healthy_crew_member
+where member_id='javaaa' and crew_id='1';
+
 --crew_member table 전체 검색
 select * from healthy_crew_member;
 commit
@@ -81,6 +85,18 @@ commit
 -- crew_member table 전체 삭제
 delete from healthy_crew_member;
 
+--리스트 뽑아내는거
+select *
+from healthy_crew
+where crew_id not in(
+   select crew_id
+   from healthy_crew_member
+   where member_id='jiye'
+)
+
+-----검색 후 리스트 출력
+
+------------------------------------
 --   DIARY
 
 --diary table 삭제

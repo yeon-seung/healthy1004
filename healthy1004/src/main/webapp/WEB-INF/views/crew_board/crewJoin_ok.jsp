@@ -4,6 +4,6 @@
 <%@taglib prefix="sec"  uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <script type="text/javascript">
-alert("크루 참가 성공!\n 마이페이지로 이동합니다.");
+alert("크루에 참가하였습니다.\n마이페이지로 이동합니다.");
 location.href="${pageContext.request.contextPath}/mypage";
 </script>
