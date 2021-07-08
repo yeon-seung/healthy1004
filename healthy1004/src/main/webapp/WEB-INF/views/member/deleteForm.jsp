@@ -6,6 +6,15 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<script type="text/javascript">
+	function alert() {
+		if(confirm("정말 이 회원을 탈퇴시키겠습니까?")==true) {
+			return "/member/delete_result";
+		} else {
+			return false;
+		}
+	}
+</script>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 	<section class="hero-wrap hero-wrap-2"
 		style="background-image: url('${pageContext.request.contextPath}/healthy/images/bg_2.jpg');">
@@ -30,8 +39,9 @@
 	<div class="text pt-3">
 		<div class="container">
 			<h3 style="text-align: center; color:gray"  >회원 목록</h3><br><br>
+			<p style="text-align: center; color:gray">회원 아이디를 누르면 탈퇴됩니다.</p>
 			<form method="POST"
-				action="${pageContext.request.contextPath}/member/deleteMember" id="regForm">
+				action="${pageContext.request.contextPath}/member/deleteMember">
 				<sec:csrfInput />
 				<table class="table table-hover">
 					<tr>
@@ -47,7 +57,8 @@
 					<c:forEach items="${list}" var="list">
 						<tr>
 							<td><a
-								href="${pageContext.request.contextPath}/member/deleteMember?memberId=${list.memberId}">${list.memberId}</a></td>
+								href="${pageContext.request.contextPath}/member/deleteMember?memberId=${list.memberId}" onclick="return alert();">
+								${list.memberId}</a></td>
 							<td><c:out value="${list.memberName}" /></td>
 							<td><c:out value="${list.address}" /></td>
 							<td><c:out value="${list.email}" /></td>
