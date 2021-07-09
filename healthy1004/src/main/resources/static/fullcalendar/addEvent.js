@@ -63,7 +63,7 @@ let newEvent = function() {
 			alert("날짜를 지정해주세요");
 			return;
 		}else if(diaryDate.val()>dateFo(today)){
-			alert("현재보다 앞선 날짜에는 운동기록을 할 수 없습니다");
+			alert("오늘까지의 운동만 기록할 수 있습니다.");
 			return;
 		}
 		

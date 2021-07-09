@@ -6,7 +6,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <section class="hero-wrap hero-wrap-2"
-	style="background-image: url('${pageContext.request.contextPath}/healthy/images/run2.jpg');background-size: cover; ">
+	style="background-image: url('${pageContext.request.contextPath}/healthy/images/bg_2.jpg');">
 	<div class="overlay"></div>
 	<div class="container">
 		<div
@@ -39,29 +39,6 @@
 							style="color: black; !important">회원 정보 수정</a>
 					</h3>
 				</div>
-<<<<<<< HEAD
-
-				<div class="sidebar-box bg-white p-4 ftco-animate">
-					<h3 class="heading-sidebar" >
-					<a href="${pageContext.request.contextPath}/member/updateForm" style="color: black; !important">회원 정보 수정</a></h3>
-					<!-- <form action="#" class="browse-form">
-						<label for="option-instructor-1"><input type="checkbox"
-							id="option-instructor-1" name="vehicle" value="" checked>
-							Ronald Jackson</label><br> <label for="option-instructor-2"><input
-							type="checkbox" id="option-instructor-2" name="vehicle" value="">
-							John Dee</label><br> <label for="option-instructor-3"><input
-							type="checkbox" id="option-instructor-3" name="vehicle" value="">
-							Nathan Messy</label><br> <label for="option-instructor-4"><input
-							type="checkbox" id="option-instructor-4" name="vehicle" value="">
-							Tony Griffin</label><br> <label for="option-instructor-5"><input
-							type="checkbox" id="option-instructor-5" name="vehicle" value="">
-							Ben Howard</label><br> <label for="option-instructor-6"><input
-							type="checkbox" id="option-instructor-6" name="vehicle" value="">
-							Harry Potter</label><br>
-					</form> -->
-				</div>
-=======
->>>>>>> refs/heads/map
 			</div>
 
 			<div class="col-lg-9">

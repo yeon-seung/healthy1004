@@ -17,7 +17,7 @@ document.addEventListener(
 				},
 				customButtons: { // 커스텀 버튼
 					addEventButton: {
-						text: '일정 추가',
+						text: '운동 기록하기',
 						click: function() {
 							newEvent();
 						}

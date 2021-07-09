@@ -13,19 +13,7 @@ select * from healthy_member;
 commit
 
 
---   CREW
-
--- 아이디 시퀀스로 바꾼 후 insert문
-insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '송파 러닝 크루','애인괌','10','서울시 송파구 중대로12길 35');
-insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '송파 수영 크루','sexy 물개 모여라','10','서울시 송파구 신천동 32');
-
-
---crew table 전체 검색
-select * from healthy_crew;
-commit
-
-
---   CREW_MEMBER
+-- CREW &   CREW_MEMBER
 
 
 insert into healthy_crew_member values('java','a','2021-06-28');
@@ -33,6 +21,63 @@ insert into healthy_crew_member values('java','a','2021-06-28');
 --crew_member table 전체 검색
 select * from healthy_crew_member;
 commit
+
+-- 아이디 시퀀스로 바꾼 후 insert문
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '송파 러닝 크루','애인괌','10','서울시 송파구 중대로12길 35');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '송파 수영 크루','sexy 물개 모여라','10','서울시 송파구 신천동 32');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '주짓수 크루','주짓수 국대 되고 싶은 사람 모여라','5','서울시 송파구 양재대로 1218');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '오리역 복싱 크루','록키 보고 오세요','23','성남시 분당구 성남대로 34');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '강남 수영 크루','20세 이상만 받아요^^','12','서울특별시 강남구 수서동 광평로51길 6-5');
+
+
+--crew table 전체 검색
+select * from healthy_crew;
+
+delete from healthy_crew;
+commit
+
+
+
+--크루 가입
+insert into healthy_crew_member values('java','5',sysdate);
+
+select * from healthy_crew
+
+select count(*) from healthy_crew_member
+where member_id='javaaa' and crew_id='1';
+
+--crew_member table 전체 검색
+select * from healthy_crew_member;
+commit
+
+-- crew_member table 전체 삭제
+drop table healthy_crew_member;
+delete from healthy_crew_member;
+
+--가입 안한 크루 리스트 뽑아내는거
+select *
+from healthy_crew
+where crew_id not in(
+   select crew_id
+   from healthy_crew_member
+   where member_id='jiye'
+)
+
+----가입한 크루 뽑아내기
+select crew.*
+from healthy_crew crew, healthy_crew_member crew_mem
+where crew.crew_id=crew_mem.crew_id and crew_mem.member_id='spring'
+order by crew_mem.join_date
+
+-----검색 후 리스트 출력
+select *
+from healthy_crew
+where crew_id not in(
+   select crew_id
+   from healthy_crew_member
+   where member_id='jiye'
+)and crew_location like '%안산%'
+
 
 
 --   DIARY

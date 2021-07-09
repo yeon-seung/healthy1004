@@ -40,7 +40,7 @@
 <!-- 							<input type="text" name="crewSearchName" size="10" class="form-control" placeholder="지역명" -->
 <!-- 					id="crewFindKeyword"> <input type="button" value="검색" -->
 <!-- 					id="crewFindBtn"> -->
-							<input type="hidden" name="memberId" id="memberId" value="<sec:authentication property="principal.memberId" />"/>
+							<input type="hidden" name="memberId" id="memberId" value='<sec:authentication property="principal.memberId" />'/>
 							<span id="crewFindResult"></span>
 							<span id="csrfInput"><sec:csrfInput/> </span>
 						</div>
