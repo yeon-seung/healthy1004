@@ -75,17 +75,14 @@ public class MemberController {
 	@RequestMapping("updateMemberAction")
 	public String updateMemberAction(HttpServletRequest request, MemberVO memberVO) {
 		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println("Spring Security 세션 수정 전 회원정보:" + pvo);
 		memberService.updateMember(memberVO);// service에서 변경될 비밀번호를 암호화한다
 		// 수정한 회원정보로 Spring Security 세션 회원정보를 업데이트한다
-		System.out.println(memberVO);
 		pvo.setPassword(memberVO.getPassword());
 		pvo.setAddress(memberVO.getAddress());
 		pvo.setHeight(memberVO.getHeight());
 		pvo.setWeight(memberVO.getWeight());
 		pvo.setAge(memberVO.getAge());
 		pvo.setPhone(memberVO.getPhone());
-		System.out.println("Spring Security 세션 수정 후 회원정보:" + pvo);
 		return "member/update_result.tiles";
 	}
 

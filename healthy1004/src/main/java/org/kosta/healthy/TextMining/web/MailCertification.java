@@ -19,8 +19,6 @@ public class MailCertification {
 	
 	@PostMapping("/member/CheckMail")
 	public Map<String,Object> SendMail(String mail,HttpSession session) {
-		System.out.println(mail);
-		System.out.println("안냥하세용~~~ 메일이엥룡~~");
 		Map<String,Object> map = new HashMap<>();
 		Random random = new Random();
 		String key = "";
