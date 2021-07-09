@@ -84,12 +84,12 @@
 											<div class="form-group">
 												<label class="label" for="password">PASSWORD</label> <input
 													type="password" class="form-control" name="password" id="password1"
-													placeholder="비밀번호를 입력하세요">
+													placeholder="비밀번호를 입력하세요" required="required">
 											</div>
 											<div class="form-group">
 												<input
 													type="password" class="form-control" name="password2" id="password2"
-													placeholder="비밀번호를 확인해주세요">
+													placeholder="비밀번호를 확인해주세요" required="required">
 											</div>
 										</div>
 										

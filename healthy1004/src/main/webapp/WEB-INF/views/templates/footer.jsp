@@ -42,12 +42,12 @@
 			
 			<div class="col-md pt-5" >
 				<div class="ftco-footer-widget pt-md-5 mb-4">
-					<h2 class="ftco-heading-2">Made With</h2>
+					<h2 class="ftco-heading-2">Made with 💖 by</h2>
 					<ul class="list-unstyled">
-						<li><a href="https://github.com/yeon-seung" class="py-2 d-block">seungyeon Lee</a></li>
-						<li><a href="https://github.com/dongooree" class="py-2 d-block">dongeun Bak</a></li>
-						<li><a href="https://github.com/jyb6311" class="py-2 d-block">jiye Bae</a></li>
-						<li><a href="https://github.com/shinjeonghea" class="py-2 d-block">jeonghee Shin</a></li>
+						<li><a href="https://github.com/yeon-seung" class="py-2 d-block" style="padding-top:0 !important; ">Seungyeon Lee</a></li>
+						<li><a href="https://github.com/dongooree" class="py-2 d-block">Dongeun Park</a></li>
+						<li><a href="https://github.com/jyb6311" class="py-2 d-block">Jiye Bae</a></li>
+						<li><a href="https://github.com/shinjeonghea" class="py-2 d-block">Jeonghee Shin</a></li>
 						<li><a href="https://github.com/mk2eeeeee" class="py-2 d-block">MinKyoung Kuan</a></li>
 					</ul>
 				</div>

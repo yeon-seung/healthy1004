@@ -4,7 +4,55 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.healthy.model.mapper.CrewMapper">
- 	
+
+	<!-- 검색 후 크루리스트 -->
+	<select id="findCrewListByName" parameterType="map"
+		resultType="crewVO">
+		select *
+		from healthy_crew
+		where crew_id not in(
+		   select crew_id
+		   from healthy_crew_member
+		   where member_id=#{memberId}
+		)and crew_location like '%'|| #{crewSearchName} ||'%'
+	</select>
+	
+	<!-- 전체 크루리스트 - 참가한 부분 제외-->
+	<select id="getAllCrewList" parameterType="string"
+		resultType="crewVO">
+		select * from healthy_crew where crew_id not in( select crew_id from healthy_crew_member where member_id=#{memberId})
+	</select>
+	
+	<!-- 크루 참가 -->
+	<insert id="joinCrew" parameterType="HashMap">
+		insert into healthy_crew_member(member_id, crew_id, join_date)
+		values(#{memberId}, #{crewId}, sysdate)
+	</insert>
+	<select id="crewMemberCheck" parameterType="HashMap" resultType="int">	
+		select count(*) from healthy_crew_member
+		where member_id = #{memberId} and crew_id = #{crewId}
+	</select>
+	
+	<!-- 내가 가입한 크루리스트 -->
+	<select id="getMyCrewList" parameterType="string"
+		resultType="crewVO">
+		select crew.*
+		from healthy_crew crew, healthy_crew_member crew_mem
+		where crew.crew_id=crew_mem.crew_id and crew_mem.member_id=#{memberId}
+		order by crew_mem.join_date
+	</select>
+	
+	<!-- 크루 생성 -->
+	<insert id="createCrew" parameterType="crewVO">
+		insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location)
+		values (crew_seq.nextval, #{crewName}, #{crewInfo}, #{crewSize}, #{crewLocation})
+	</insert>
+	
+	<!-- 생성한 크루에 자동 가입시키기 위해 seq.currval 반환하는 쿼리 -->
+	<select id="recentCrewId" resultType="int">
+		select max(crew_id) from healthy_crew
+	</select>
+	
 </mapper>
  
  

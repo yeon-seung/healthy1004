@@ -4,7 +4,20 @@
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-
+<script>
+	$(function() {
+		//모든 Ajax Post 요청에 대해 Http 헤더에 CSRF 토큰을 설정
+		$.ajaxPrefilter(function(options) {
+			let headerName = '${_csrf.headerName}';
+			let token = '${_csrf.token}';
+			if (options.type === 'post') {
+				
+				options.headers = {};
+				options.headers[headerName] = token;
+			}
+		});
+	});
+</script>
 <nav
 	class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 	id="ftco-navbar">
@@ -51,7 +64,6 @@
 							<sec:csrfInput />
 						</form>
 					</li>
-
 				</sec:authorize>
 			</ul>
 			<form id="frm" method="get" action="">

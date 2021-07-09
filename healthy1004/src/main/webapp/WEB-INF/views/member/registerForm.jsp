@@ -67,8 +67,11 @@
                 },
 				success:function(data){	
 					if(data=="fail"){
+						
 						alert("아이디가 중복됩니다");
 						$("#idCheckView").html(id+" 사용불가!").css("color","red");
+						
+
 						checkResultId="";
 					}else{						
 						$("#idCheckView").html(id+" 사용가능!").css(
