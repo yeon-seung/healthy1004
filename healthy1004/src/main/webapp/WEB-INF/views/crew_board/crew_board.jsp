@@ -5,7 +5,7 @@
 
 <script type="text/javascript">
 	function clickPostCrewBoardBtn(){
-		location.href="${pageContext.request.contextPath}/postCrewBoardForm";
+		location.href="${pageContext.request.contextPath}/postCrewBoardForm?crewId=${crewId}";
 	}
 </script>
 

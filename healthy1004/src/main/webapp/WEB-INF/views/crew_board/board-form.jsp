@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <section class="hero-wrap hero-wrap-2"
 	style="background-image: url('${pageContext.request.contextPath}/healthy/images/bg_2.jpg');">
@@ -25,7 +27,8 @@
 						<div class="contact-wrap w-100 p-md-5 p-4 ">
 							<h3 class="mb-4">게시글 작성하기</h3>
 							<form method="POST" id="contactForm" name="contactForm"
-								class="contactForm">
+								class="contactForm" action="postCrewBoard">
+								<sec:csrfInput/>
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
@@ -48,6 +51,8 @@
 											<div class="submitting"></div>
 										</div>
 									</div>
+									<input type="hidden" name="memberId" id="memberId" value="${ memberId }">
+									<input type="hidden" name="crewId" id="crewId" value="${ crewId }">
 								</div>
 							</form>
 						</div>

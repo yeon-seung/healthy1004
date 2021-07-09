@@ -6,6 +6,8 @@ import javax.annotation.Resource;
 
 import org.kosta.healthy.model.service.CrewBoardService;
 import org.kosta.healthy.model.vo.CrewBoardVO;
+import org.kosta.healthy.model.vo.MemberVO;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +33,7 @@ public class CrewBoardController {
 		List<CrewBoardVO> crewBoardList = crewBoardService.findCrewBoardListByCrewId(crewId);
 		//System.out.println("안녕" + crewBoardList);
 		model.addAttribute("crewBoardList", crewBoardList);
+		model.addAttribute("crewId", crewId);
 		return "crew_board/crew_board.tiles";
 	}
 	
@@ -46,15 +49,20 @@ public class CrewBoardController {
 	
 	// 게시글 작성 폼으로
 	@RequestMapping("postCrewBoardForm")
-	public String postCrewBoardForm() {
+	public String postCrewBoardForm(String crewId, Model model) {
+		model.addAttribute("crewId", crewId);
 		return "crew_board/board-form.tiles";
 	}
 	
 	// 게시글 작성 (Post와 redirect로...)
 	@PostMapping("postCrewBoard")
 	public RedirectView postCrewBoard(CrewBoardVO crewBoardVO, Model model) {
+		MemberVO mvo = (MemberVO)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println("안녕하시짖요?? " + mvo);
+		crewBoardVO.setMemberId(mvo.getMemberId());
+		System.out.println("안ㄴㅇ랴ㅓ랴ㅐㅓㅇㄹㅇ러 " + crewBoardVO);
 		crewBoardService.postCrewBoard(crewBoardVO);
 		model.addAttribute("crewBoardId", crewBoardVO.getBoardId());
-		return new RedirectView("crew_board_detail.tiles");
+		return new RedirectView("crew_board_detail");
 	}
 }
