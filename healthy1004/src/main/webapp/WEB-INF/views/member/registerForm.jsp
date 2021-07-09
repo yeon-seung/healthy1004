@@ -5,84 +5,171 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <script type="text/javascript">
- 	$(document).ready(function(){
-		var checkResultId="";		
-		$("#regForm").submit(function(){				
-			if(checkResultId==""){
-				alert("모든 항목을 작성하세요");
-				return false;
-			}	
-			if($('#name').val() == null || $('#name').val()=="") {
-				alert("이름을 입력해주세요");
-				return false;
-			}
-			if($('#password1').val() == null || $('#password1').val()=="") {
-				alert("비밀번호를 입력해주세요");
-				return false;
-			}
-			if($('#password2').val() == null || $('#password2').val()=="") {
-				alert("비밀번호 확인을 입력해주세요");
-				return false;
-			}
-			if($('#email').val() == null || $('#email').val()=="") {
-				alert("이메일을 입력해주세요");
-				return false;
-			}
-			if($('#address').val() == null || $('#address').val()=="") {
-				alert("주소를 입력해주세요");
-				return false;
-			}
-			if($('#phone').val() == null || $('#phone').val()=="") {
-				alert("전화번호를 입력해주세요");
-				return false;
-			}
-			if($('#height').val() == null || $('#height').val()=="") {
-				alert("키를 입력해주세요");
-				return false;
-			}
-			if($('#weight').val() == null || $('#weight').val()=="") {
-				alert("몸무게를 입력해주세요");
-				return false;
-			}
-			if($('#age').val() == null || $('#age').val()=="") {
-				alert("나이를 입력해주세요");
-				return false;
-			}
-		});
-		$("#regForm :input[name=memberId]").keyup(function(){
-			var id=$(this).val().trim();
-			if(id.length<4 || id.length>10){
-				$("#idCheckView").html("아이디는 4글자 이상 10글자 이하여야 합니다").css(
-						"color","skyblue");
-				checkResultId="";
-				return;
-			}
-			// spring security 적용시 ajax post 방식은 아래와 같이 beforeSend property에서 csrf 값을 셋팅해야 함 
-			$.ajax({
-				type:"post",
-				url:"${pageContext.request.contextPath}/member/idcheckAjax",				
-				data:"id="+id,	
-				beforeSend : function(xhr){   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
-                    xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-                },
-				success:function(data){	
-					if(data=="fail"){
-						alert("아이디가 중복됩니다");
-						$("#idCheckView").html(id+" 사용불가!").css("color","red");
-						checkResultId="";
-					}else{						
-						$("#idCheckView").html(id+" 사용가능!").css(
-								"color","blue");		
-						checkResultId=id;
-					}					
-				}//callback			
-			});//ajax
-		});//keyup
-	});//ready 
+	$(document)
+			.ready(
+					function() {
+						var checkResultId = "";
+						var isCertification = false;
+						var key = "";
+						$("#regForm").submit(
+								function() {
+									if (checkResultId == "") {
+										alert("모든 항목을 작성하세요");
+										return false;
+									}
+									if ($('#name').val() == null
+											|| $('#name').val() == "") {
+										alert("이름을 입력해주세요");
+										return false;
+									}
+									if ($('#password1').val() == null
+											|| $('#password1').val() == "") {
+										alert("비밀번호를 입력해주세요");
+										return false;
+									}
+									if ($('#password2').val() == null
+											|| $('#password2').val() == "") {
+										alert("비밀번호 확인을 입력해주세요");
+										return false;
+									}
+									if ($('#email').val() == null
+											|| $('#email').val() == "") {
+										alert("이메일을 입력해주세요");
+										return false;
+									}
+									if ($('#address').val() == null
+											|| $('#address').val() == "") {
+										alert("주소를 입력해주세요");
+										return false;
+									}
+									if ($('#phone').val() == null
+											|| $('#phone').val() == "") {
+										alert("전화번호를 입력해주세요");
+										return false;
+									}
+									if ($('#height').val() == null
+											|| $('#height').val() == "") {
+										alert("키를 입력해주세요");
+										return false;
+									}
+									if ($('#weight').val() == null
+											|| $('#weight').val() == "") {
+										alert("몸무게를 입력해주세요");
+										return false;
+									}
+									if ($('#age').val() == null
+											|| $('#age').val() == "") {
+										alert("나이를 입력해주세요");
+										return false;
+									}
+									if (isCertification == false) {
+										alert("메일 인증이 완료되지 않았습니다.");
+										return false;
+									}
+								});
+						$("#regForm :input[name=memberId]")
+								.keyup(
+										function() {
+											var id = $(this).val().trim();
+											if (id.length<4 || id.length>10) {
+												$("#idCheckView")
+														.html(
+																"아이디는 4글자 이상 10글자 이하여야 합니다")
+														.css("color", "skyblue");
+												checkResultId = "";
+												return;
+											}
+											// spring security 적용시 ajax post 방식은 아래와 같이 beforeSend property에서 csrf 값을 셋팅해야 함 
+											$
+													.ajax({
+														type : "post",
+														url : "${pageContext.request.contextPath}/member/idcheckAjax",
+														data : "id=" + id,
+														beforeSend : function(
+																xhr) { /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+															xhr
+																	.setRequestHeader(
+																			"${_csrf.headerName}",
+																			"${_csrf.token}");
+														},
+														success : function(data) {
+															if (data == "fail") {
+																alert("아이디가 중복됩니다");
+																$(
+																		"#idCheckView")
+																		.html(
+																				id
+																						+ " 사용불가!")
+																		.css(
+																				"color",
+																				"red");
+																checkResultId = "";
+															} else {
+																$(
+																		"#idCheckView")
+																		.html(
+																				id
+																						+ " 사용가능!")
+																		.css(
+																				"color",
+																				"blue");
+																checkResultId = id;
+															}
+														}//callback			
+													});//ajax
+										});//keyup
+
+						$("#sendMail")
+								.click(
+										function() {
+											var mail = $("#email").val(); //사용자의 이메일 입력값
+											if (mail == "") {
+												alert("메일이 입력되지 않았습니다.");
+											} else {
+												mail = mail + "@"
+														+ $(".domain").val();
+												alert(mail);
+												$
+														.ajax({
+															type : 'post',
+															url : '${pageContext.request.contextPath}/member/CheckMail',
+															data : {
+																mail : mail
+															},
+															async : "false",
+															dataType : 'json',
+															success : function(
+																	data) {
+																console
+																		.log(data.key);
+																key = data.key;
+															}
+														});
+												alert("인증번호가 전송되었습니다.이메일을 확인해주세요.");
+												$(".compare").css("display",
+														"inline");
+												$(".compare-text").css(
+														"display", "inline");
+											}
+										});
+						$(".compare").on(
+								"propertychange change keyup paste input",
+								function() {
+									if ($(".compare").val() == key) {
+										$(".compare-text").text("인증 성공").css(
+												"color", "blue");
+										isCertification = true;
+									} else {
+										$(".compare-text").text("인증번호 불일치")
+												.css("color", "red");
+										isCertification = false;
+									}
+								});
+					});//ready 
 	$(function() {
 		$('#password2').blur(function() {
-			if($('#password1').val() != $('#password2').val()) {
-				if($('#password2').val() != '') {
+			if ($('#password1').val() != $('#password2').val()) {
+				if ($('#password2').val() != '') {
 					alert("비밀번호가 일치하지 않습니다.");
 					$('#password2').val('');
 					$('#password2').focus();
@@ -149,14 +236,63 @@
 											</div>
 										</div>
 
-										<div class="col-md-12">
+										<%-- <div class="col-md-6">
 											<div class="form-group">
 												<label class="label" for="email">Email</label> <input
 													type="text" class="form-control" name="email" id="email"
-													placeholder="이메일을 입력해주세요">
+													placeholder="이메일을 입력해주세요">@<select name="domain"
+													class="domain form-control">
+													<option value="" selected>선택하세요</option>
+													<option value="gmail.com">gmail.com</option>
+													<option value="naver.com">naver.com</option>
+													<option value="daum.net">daum.net</option>
+												</select><input type="button" class="btn btn-primary" value="인증하기"
+													id="sendMail"><br>
+												<section class="check-section">
+													<input type="text" placeholder="인증 키 입력"
+														style="display: none;" class="compare"><span
+														class="compare-text" style="display: none">불일치</span>
+												</section>
+											</div>
+										</div>  --%>
+
+
+										<div class="col-md-4">
+											<label class="label" for="email">Email</label>
+											<div class="form-group">
+												<input type="text" class="form-control" name="email"
+													id="email" placeholder="이메일을 입력해주세요">
+
 											</div>
 										</div>
-
+										<div class="col-md-1">
+											<label class="label" for="aa"></label>
+											<p id="aa">@</p>
+										</div>
+										<div class="col-md-4">
+											<label class="label" for="selectDomain"></label> <select
+												name="domain" class="domain form-control" id="selectDomain">
+												<option value="" selected>선택하세요</option>
+												<option value="gmail.com">gmail.com</option>
+												<option value="naver.com">naver.com</option>
+												<option value="daum.net">daum.net</option>
+											</select>
+										</div>
+										<div class="col-md-1">
+											<label class="label" for="sendMail"></label> <input
+												type="button" class="btn btn-primary" value="인증하기"
+												id="sendMail">
+										</div>
+										<div class="col-md-5">
+										<section class="check-section">
+												<input type="text" placeholder="인증 키 입력"
+													style="display: none;" class="compare form-control">
+											</section>
+										</div>
+										<div class="col-md-3">
+										<span
+													class="compare-text" style="display: none">불일치</span>
+										</div>
 										<div class="col-md-12">
 											<div class="form-group">
 												<label class="label" for="address">ADDRESS</label> <input
@@ -198,8 +334,7 @@
 
 										<div class="col-md-12">
 											<div class="form-group">
-												<br>
-												<br> <input type="submit" value="sign up"
+												<br> <br> <input type="submit" value="sign up"
 													class="btn btn-primary">
 												<div class="submitting"></div>
 											</div>

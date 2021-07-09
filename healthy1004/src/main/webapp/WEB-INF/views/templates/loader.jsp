@@ -15,6 +15,17 @@
 
 <script
 	src="${pageContext.request.contextPath}/healthy/js/jquery.min.js"></script>
+<script>
+	$.ajaxPrefilter(function(options) {
+		let headerName = '${_csrf.headerName}';
+		let token = '${_csrf.token}';
+		let type = options.type.toLowerCase();
+		if (type === 'post') {
+			options.headers = {};
+			options.headers[headerName] = token;
+		}
+	});
+</script>
 <script
 	src="${pageContext.request.contextPath}/healthy/js/jquery-migrate-3.0.1.min.js"></script>
 <script
