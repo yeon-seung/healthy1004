@@ -262,7 +262,6 @@
 											<div class="form-group">
 												<input type="text" class="form-control" name="email"
 													id="email" placeholder="이메일을 입력해주세요">
-
 											</div>
 										</div>
 										<div class="col-md-1">
