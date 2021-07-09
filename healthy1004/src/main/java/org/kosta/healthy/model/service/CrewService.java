@@ -22,4 +22,7 @@ public interface CrewService {
 	//내가 가입한 크루 리스트
 	List<CrewVO> getMyCrewList(String memberId);
 
+	void createCrew(CrewVO cvo);
+	
+	int recentCrewId();
 }

@@ -234,6 +234,10 @@ $(document).ready(function() {
 					
 				}
 			});
-
+		});
+		
+		// 크루 생성할지 confirm
+		$("#createCrewBtn").click(function() {
+			return confirm("크루 생성시 자동으로 참가됩니다.\n진행하시겠습니까?");
 		});
 	});

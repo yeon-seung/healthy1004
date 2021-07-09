@@ -21,4 +21,10 @@ public interface CrewMapper {
 	
 	//내가 가입한 크루리스트
 	List<CrewVO> getMyCrewList(String memberId);
+
+	//크루 생성
+	void createCrew(CrewVO crewVO);
+
+	//크루 seq 최신값 받아오기 
+	int recentCrewId();
 }

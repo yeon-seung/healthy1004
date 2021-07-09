@@ -22,6 +22,7 @@
 		<div class="row justify-content-center">
 			<div class="col-md-8">
 				<div id="map" style="width: 100%; height: 500px;" class="bg-white"></div>
+				<a href="${pageContext.request.contextPath}/createCrewForm" id="createCrewBtn" class="btn btn-primary" style="margin: 1rem; float: right;">크루 생성</a>
 			</div>
 			<!-- End Map -->
 			
@@ -32,7 +33,7 @@
 							<form action="#" class="search-form">
 							<div class="form-group" style="margin-bottom: -1rem;">
 								<span id="crewFindBtn" class="icon fa fa-search"></span>
-								<input id="crewFindKeyword" name="crewSearchName" type="text" class="form-control" placeholder="지역명을 입력하세용">
+								<input id="crewFindKeyword" name="crewSearchName" type="text" class="form-control" placeholder="지역명을 입력하세요">
 							</div>
 						</form>
 						<hr>

@@ -32,7 +32,7 @@ drop table healthy_crew;
 
 --crew table 생성
 create table healthy_crew (
-   crew_id varchar2(100) primary key,
+   crew_id number primary key,
    crew_name varchar2(100) not null,
    crew_info varchar2(500) not null,
    crew_size number not null,
@@ -69,7 +69,7 @@ drop table healthy_crew_member;
 --crew_member table 생성
 create table healthy_crew_member (
    member_id varchar2(100) not null,
-   crew_id varchar2(100) not null,
+   crew_id number not null,
    join_date date not null,
    constraint fk_member_id foreign key(member_id) references healthy_member(member_id),
    constraint fk_crew_id foreign key(crew_id) references healthy_crew(crew_id),

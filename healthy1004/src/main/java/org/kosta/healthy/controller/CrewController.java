@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CrewController {
@@ -53,9 +54,8 @@ public class CrewController {
 //		System.out.println("중복확인 위한 크루아이디: " +hashMap.get("crewId") +", 멤버아이디: " + hashMap.get("memberId"));
 //		return crewService.crewMemberCheck(hashMap);
 //	}
-	
-	
 
+	
 	// 크루참가
 //	@Secured("ROLE_MEMBER")
 //	@SuppressWarnings("unused")
@@ -81,10 +81,29 @@ public class CrewController {
 	@RequestMapping("/getMyCrewList")
 	@ResponseBody
 	public List<CrewVO> getMyCrewList(String memberId, Model model,HttpServletRequest request){
-
 		List<CrewVO> list = crewService.getMyCrewList(memberId);
 		System.out.println("마이페이지 이거 나와야해ㅜㅜㅜ 젭알ㅜㅜㅜ : " +list);
-		
 		return list;	
 	}
+	
+	//크루 생성 폼으로 이동
+	@RequestMapping("/createCrewForm")
+	public String createCrewForm() {
+		return "crew_board/createCrewForm.tiles";
+	}
+
+	//크루 생성
+	@RequestMapping(value = "/createCrew", method = RequestMethod.POST)
+	public String createCrew(CrewVO cvo) {
+		crewService.createCrew(cvo);
+//		System.out.println(crewService.recentCrewId());
+		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		HashMap<String, Object> hashMap = new HashMap<String, Object>();
+		hashMap.put("crewId", crewService.recentCrewId());
+		hashMap.put("memberId", pvo.getMemberId());
+//		System.out.println(hashMap);
+		crewService.joinCrew(hashMap);
+		return "crew_board/createCrewResult";
+	}
+
 }

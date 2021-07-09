@@ -48,5 +48,17 @@ public class CrewServiceImpl implements CrewService {
 	public List<CrewVO> getMyCrewList(String memberId) {
 		return crewMapper.getMyCrewList(memberId);
 	}
+	
+	//크루생성
+	@Override
+	public void createCrew(CrewVO cvo) {
+		crewMapper.createCrew(cvo);
+	}
+
+	//크루생성 위해 최신크루id 반환
+	@Override
+	public int recentCrewId() {
+		return crewMapper.recentCrewId();
+	}
 
 }
