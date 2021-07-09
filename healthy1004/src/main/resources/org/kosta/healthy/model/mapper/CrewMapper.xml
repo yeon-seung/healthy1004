@@ -36,9 +36,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 내가 가입한 크루리스트 -->
 	<select id="getMyCrewList" parameterType="string"
 		resultType="crewVO">
-		select crew.crew_name, crew.crew_location, crew.crew_info, crew.crew_size
+		select crew.*
 		from healthy_crew crew, healthy_crew_member crew_mem
 		where crew.crew_id=crew_mem.crew_id and crew_mem.member_id=#{memberId}
+		order by crew_mem.join_date
 	</select>
 	
 	<!-- 크루 생성 -->
