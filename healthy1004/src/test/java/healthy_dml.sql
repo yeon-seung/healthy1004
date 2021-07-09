@@ -36,8 +36,6 @@ select * from healthy_crew;
 delete from healthy_crew;
 commit
 
-
-
 --크루 가입
 insert into healthy_crew_member values('java','5',sysdate);
 

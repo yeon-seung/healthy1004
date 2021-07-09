@@ -57,7 +57,11 @@
 										<div class="form-group">
 											<label class="label" for="crewLocation">crew location</label> <input
 												type="text" class="form-control" name="crewLocation"
-												id="crewLocation" placeholder="input crew location">
+												id="crewLocation" placeholder="input crew location">											
+											<%-- 맵도 찍어서 넣기 --%>
+											<div id="jusoAPI">
+											
+											</div>
 										</div>
 									</div>
 									<div class="col-md-12" align="right">
@@ -66,7 +70,6 @@
 											<div class="submitting"></div>
 										</div>
 									</div>
-									<%-- 맵도 찍어서 넣기 --%>
 								</div>
 							</form>
 						</div>
