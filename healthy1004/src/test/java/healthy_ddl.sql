@@ -83,7 +83,7 @@ drop table healthy_board;
 create table healthy_board(
    board_id varchar2(100) primary key,
    member_id varchar2(100) not null,
-   crew_id varchar2(100) not null,
+   crew_id number not null,
    board_title varchar2(100) not null,
    board_content varchar2(100) not null,
    board_time varchar2(100) not null,
@@ -94,8 +94,6 @@ create table healthy_board(
 --크루게시판 시퀀스
 drop sequence board_seq;
 create sequence board_seq;
-
-
 
 --   AUTHORITY
 
