@@ -12,7 +12,10 @@ $(document).ready(function() {
 						$("#myCrewResult").append(
 							"<div class='col-md-6 d-flex align-items-stretch'>"
 							+"<div class='project-wrap'>"
-							+"<a href='#' class='img' style='background-image: url(https://images.pexels.com/photos/34514/spot-runs-start-la.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);'>"
+							+"<a href='"
+							+ $("#pageContext").val() + "crew_board?crewId="
+							+ list[i].crewId 
+							+ "' class='img' style='background-image: url(https://images.pexels.com/photos/34514/spot-runs-start-la.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);'>"
 							+"</a>"
 							+"<div class='text p-4'>"
 							+"<h3><a href='#' style='color: #4986fc; font-weight: bold !important;'>"+list[i].crewName+"</a></h3>"
