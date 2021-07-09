@@ -44,6 +44,7 @@
 			<div class="col-lg-9">
 				<sec:authentication property="principal.memberId" var="id" />
 				<input type="hidden" name="memberId" id="memberId" value="${id}">
+				<input type="hidden" id="pageContext" value="${pageContext.request.contextPath}">
 				<span id="myCrewResult" class="row"></span>
 			</div>
 		</div>

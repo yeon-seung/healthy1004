@@ -3,8 +3,48 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.kosta.healthy.model.mapper.CrewBoardMapper">
- 	
+<mapper
+	namespace="org.kosta.healthy.model.mapper.CrewBoardMapper">
+	<sql id="findCrewBoard">
+		select *
+		from healthy_board
+	</sql>
+
+	<select id="findCrewBoardListByCrewId" parameterType="string"
+		resultType="CrewBoardVO">
+		<include refid="findCrewBoard"></include>
+		where crew_id=#{value}
+	</select>
+
+	<select id="findCrewBoardListByCrewIdTest"
+		parameterType="string" resultType="CrewBoardVO">
+		<include refid="findCrewBoard"></include>
+		where crew_id=1
+	</select>
+
+	<select id="findCrewBoardListByCrewIdAndMemberId"
+		parameterType="crewBoardVO" resultType="CrewBoardVO">
+		<include refid="findCrewBoard"></include>
+		where crew_id=#{crewId} and member_id=#{memberId}
+	</select>
+
+	<select id="findCrewBoardByCrewBoardId" parameterType="string"
+		resultType="CrewBoardVO">
+		<include refid="findCrewBoard"></include>
+		where board_id=#{value}
+	</select>
+
+	<select id="findCrewByCrewId" parameterType="string"
+		resultType="crewVO">
+		select *
+		from healthy_crew
+		where crew_id=#{value}
+	</select>
+
+	<insert id="postCrewBoard" parameterType="crewBoardVO">
+		insert into healthy_board
+		values(board_seq.nextval, #{memberId}, #{crewId}, #{boardTitle}, #{boardContent}, sysdate)
+	</insert>
 </mapper>
  
  

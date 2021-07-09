@@ -44,18 +44,6 @@ public class CrewController {
 		return list;
 	}
 	
-//	@RequestMapping(value = "/crewMemberCheck", method = RequestMethod.POST)
-//	public boolean crewMemberCheck(@RequestParam(value = "crewId") String crewId, HttpSession session ) {
-//		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		HashMap<String, Object> hashMap = new HashMap<String, Object>();
-//		hashMap.put("crewId", crewId);
-//		hashMap.put("memberId", pvo.getMemberId());
-//		System.out.println("엥??");
-//		System.out.println("중복확인 위한 크루아이디: " +hashMap.get("crewId") +", 멤버아이디: " + hashMap.get("memberId"));
-//		return crewService.crewMemberCheck(hashMap);
-//	}
-
-	
 	// 크루참가
 //	@Secured("ROLE_MEMBER")
 //	@SuppressWarnings("unused")
@@ -67,7 +55,6 @@ public class CrewController {
 		HashMap<String, Object> hashMap = new HashMap<String, Object>();
 		hashMap.put("crewId", crewId);
 		hashMap.put("memberId", pvo.getMemberId());
-		System.out.println("크루아이디: " +hashMap.get("crewId") +", 멤버아이디: " + hashMap.get("memberId"));
 		if (pvo == null || crewService.crewMemberCheck(hashMap))	{// 세션정보 없거나 이미 참가한 크루면 안넣어줌
 			return "crew_board/crewJoin_fail";
 		}
@@ -82,7 +69,6 @@ public class CrewController {
 	@ResponseBody
 	public List<CrewVO> getMyCrewList(String memberId, Model model,HttpServletRequest request){
 		List<CrewVO> list = crewService.getMyCrewList(memberId);
-		System.out.println("마이페이지 이거 나와야해ㅜㅜㅜ 젭알ㅜㅜㅜ : " +list);
 		return list;	
 	}
 	

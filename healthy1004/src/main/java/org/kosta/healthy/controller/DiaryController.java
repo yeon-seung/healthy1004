@@ -24,7 +24,6 @@ public class DiaryController {
 	@ResponseBody
 	@RequestMapping("/getUserDiary") 
 	public List<DiaryVO> getUserDiaryById(String memberId) {
-		System.out.println(memberId);
 		List<DiaryVO> list = diaryService.getUserDiaryById(memberId);
 		return list;
 	}
