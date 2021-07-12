@@ -80,14 +80,12 @@ public class CrewController {
 
 	//크루 생성
 	@RequestMapping(value = "/createCrew", method = RequestMethod.POST)
-	public String createCrew(CrewVO cvo) {
+	public String createCrew(CrewVO cvo) {		
 		crewService.createCrew(cvo);
-//		System.out.println(crewService.recentCrewId());
 		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		HashMap<String, Object> hashMap = new HashMap<String, Object>();
-		hashMap.put("crewId", crewService.recentCrewId());
+		hashMap.put("crewId", cvo.getCrewId());
 		hashMap.put("memberId", pvo.getMemberId());
-//		System.out.println(hashMap);
 		crewService.joinCrew(hashMap);
 		return "crew_board/createCrewResult";
 	}
