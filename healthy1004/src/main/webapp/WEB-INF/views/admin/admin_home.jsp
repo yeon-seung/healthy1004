@@ -30,7 +30,7 @@
 				<div class="col-lg-3 sidebar">
 					<div class="sidebar-box bg-white p-4 ftco-animate">
 						<h3 class="heading-sidebar">
-							<a href="${pageContext.request.contextPath}/member/deleteForm"
+							<a href="${pageContext.request.contextPath}/admin/memberDeleteFormPaging"
 								style="color: black; !important">회원 탈퇴시키기</a>
 						</h3>
 					</div>
@@ -44,7 +44,7 @@
 
 					<div class="sidebar-box bg-white p-4 ftco-animate">
 						<h3 class="heading-sidebar">
-							<a href="${pageContext.request.contextPath}/member/updateForm"
+							<a href="${pageContext.request.contextPath}/admin/updateForm"
 								style="color: black; !important">회원 크루에서 탈퇴시키기</a>
 						</h3>
 					</div>

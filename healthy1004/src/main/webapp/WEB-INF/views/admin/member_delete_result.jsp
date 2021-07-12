@@ -7,5 +7,5 @@
 <script type="text/javascript" charset="UTF-8">
 	var name = '${name}';
 	alert(name + "님이 탈퇴되었습니다.");
-	location.href = "${pageContext.request.contextPath}/member/deleteForm";
+	location.href = "${pageContext.request.contextPath}/admin/memberDeleteFormPaging";
 </script>

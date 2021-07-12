@@ -9,7 +9,7 @@
 <script type="text/javascript">
 	function alert() {
 		if(confirm("정말 이 회원을 탈퇴시키겠습니까?")==true) {
-			return "/member/delete_result";
+			return "/admin/member_delete_result_paging";
 		} else {
 			return false;
 		}
@@ -41,7 +41,7 @@
 			<h3 style="text-align: center; color:gray"  >회원 목록</h3><br><br>
 			<p style="text-align: center; color:gray">회원 아이디를 누르면 탈퇴됩니다.</p>
 			<form method="POST"
-				action="${pageContext.request.contextPath}/member/deleteMember">
+				action="${pageContext.request.contextPath}/admin/deleteMember">
 				<sec:csrfInput />
 				<table class="table table-hover">
 					<tr>
@@ -54,10 +54,10 @@
 						<td>나이</td>
 						<td>전화번호</td>
 					</tr>
-					<c:forEach items="${list}" var="list">
+					<c:forEach items="${listpaging}" var="list">
 						<tr>
 							<td><a
-								href="${pageContext.request.contextPath}/member/deleteMember?memberId=${list.memberId}" onclick="return alert();">
+								href="${pageContext.request.contextPath}/admin/deleteMember?memberId=${list.memberId}" onclick="return alert();">
 								${list.memberId}</a></td>
 							<td><c:out value="${list.memberName}" /></td>
 							<td><c:out value="${list.address}" /></td>
@@ -70,6 +70,32 @@
 					</c:forEach>
 				</table>
 			</form>
+			
+			<!-- <div style="display: block; text-align: center;">	-->
+			<div class="row mt-5">
+				<div class="col text-center">
+					<div class="block-27">	
+						<ul>
+							<c:if test="${paging.startPage !=1 }">
+								<li><a href="/admin/memberDeleteFormPaging?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;&lt;</a></li>
+							</c:if>
+							<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+								<c:choose>
+									<c:when test="${p == paging.nowPage }">
+										<li class="active"><span>${p }</span></li>
+									</c:when>
+									<c:when test="${p != paging.nowPage }">
+										<li><a href="/admin/memberDeleteFormPaging?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a><li>
+									</c:when>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${paging.endPage != paging.lastPage}">
+								<li><a href="/admin/memberDeleteFormPaging?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;&gt;</a></li>
+							</c:if>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	</section>

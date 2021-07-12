@@ -17,7 +17,4 @@ public interface MemberService {
 	
 	void updateMember(MemberVO vo);
 	
-	List<MemberVO> memberList();
-	
-	void deleteMember(MemberVO vo);
 }

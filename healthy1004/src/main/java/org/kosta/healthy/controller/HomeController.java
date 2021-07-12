@@ -39,8 +39,4 @@ public class HomeController {
 		return "auth/accessDeniedView";
 	}
 	
-	@RequestMapping("admin")
-	public String adminMain() {
-		return "admin/admin_home.tiles";
-	}
 }
