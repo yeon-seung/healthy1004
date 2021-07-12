@@ -51,7 +51,6 @@
 											<div class="submitting"></div>
 										</div>
 									</div>
-									<input type="hidden" name="memberId" id="memberId" value="${ memberId }">
 									<input type="hidden" name="crewId" id="crewId" value="${ crewId }">
 								</div>
 							</form>

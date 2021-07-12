@@ -4,6 +4,20 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+<script type="text/javascript">
+    $(document).ready(function(){
+    	
+    	$("#deleteForm").submit(function() {
+			return confirm("게시글을 삭제하시겠습니까?");
+		});//deleteForm
+		
+		$("#updateForm").submit(function() {
+			return confirm("게시글을 수정하시겠습니까?");
+		});//updateForm
+    
+    });//ready	
+</script>
+
 <section class="hero-wrap hero-wrap-2"
 	style="background-image:url('${pageContext.request.contextPath}/healthy/images/bike.jpg');">
 	<div class="overlay"></div>
@@ -42,6 +56,29 @@
 					<p>${ crewBoard.boardContent }</p>
 					<h3>Reporting Date</h3>
 					<p>${ crewBoard.boardTime }</p>
+					
+					<!-- 글 삭제 수정 버튼 -->
+<%-- 					${crewBoard.memberId} --%>
+<%-- 					${sessionScope} --%>
+
+					<sec:authentication property="principal.memberId" var="memberId"/>
+					<c:if test="${requestScope.crewBoard.memberId == memberId}">
+					<button form="deleteForm" class="btn float-right bg-primary text-white" type="submit">삭제</button>
+					<button form="updateForm" class="btn float-right bg-primary text-white" type="submit">수정</button>
+					 
+					<!-- 삭제 form -->
+					<form action="${pageContext.request.contextPath}/deleteCrewBoardPost?boardId=${crewBoard.boardId}" id="deleteForm" method="POST">
+						<sec:csrfInput/>
+						<input type="hidden" name="crewId" value="${crewBoard.crewId}">
+						${crewBoard.crewId}
+					</form>
+					 
+					<!-- 수정 form -->
+					<form action="updateView" id="updateForm" method="POST">
+					<sec:csrfInput/>
+						<input type="hidden" name="no" value="${requestScope.pvo.no}">			
+					</form>			 
+					</c:if>
 				</div>
 			</div>
 		</div>

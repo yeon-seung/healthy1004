@@ -42,9 +42,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<insert id="postCrewBoard" parameterType="crewBoardVO">
-		insert into healthy_board
-		values(board_seq.nextval, #{memberId}, #{crewId}, #{boardTitle}, #{boardContent}, sysdate)
+		<selectKey keyProperty="boardId" resultType="string" order="BEFORE">
+			select board_seq.nextval from dual
+ 		</selectKey>
+			insert into healthy_board
+			values(#{boardId}, #{memberId}, #{crewId}, #{boardTitle}, #{boardContent}, sysdate)
 	</insert>
+	
+	<delete id="deleteCrewBoardPost" parameterType="string">
+		delete from healthy_board
+		where board_id=#{value}
+	</delete>
 </mapper>
  
  

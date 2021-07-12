@@ -42,6 +42,11 @@ public class CrewBoardServiceImpl implements CrewBoardService {
 	public void postCrewBoard(CrewBoardVO crewBoardVO) {
 		crewBoardMapper.postCrewBoard(crewBoardVO);
 	}
+
+	@Override
+	public void deleteCrewBoardPost(String boardId) {
+		crewBoardMapper.deleteCrewBoardPost(boardId);
+	}
 	
 	
 }
