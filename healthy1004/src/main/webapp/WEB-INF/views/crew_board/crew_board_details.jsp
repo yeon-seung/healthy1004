@@ -63,7 +63,7 @@
 
 					<sec:authentication property="principal.memberId" var="memberId"/>
 					<c:if test="${requestScope.crewBoard.memberId == memberId}">
-					<button form="deleteForm" class="btn float-right bg-primary text-white" type="submit" style="margin-right: 5rem;">삭제</button>
+					<button form="deleteForm" class="btn float-right bg-danger text-white" type="submit" style="margin-right: 5rem;">삭제</button>
 					<button form="updateForm" class="btn float-right bg-primary text-white" type="submit" style="margin-right: 1rem;">수정</button>
 					 
 					<!-- 삭제 form -->
