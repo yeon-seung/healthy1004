@@ -52,7 +52,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="recentCrewId" resultType="int">
 		select max(crew_id) from healthy_crew
 	</select>
-	
 </mapper>
  
  

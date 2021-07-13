@@ -29,13 +29,14 @@ insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location
 insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '오리역 복싱 크루','록키 보고 오세요','23','성남시 분당구 성남대로 34');
 insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '강남 수영 크루','20세 이상만 받아요^^','12','서울특별시 강남구 수서동 광평로51길 6-5');
 
-
 --crew table 전체 검색
 select * from healthy_crew;
 
 delete from healthy_crew;
 commit
 
+--크루 삭제하기
+delete from healthy_crew where crew_id='4';
 
 
 --크루 가입

@@ -55,15 +55,5 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("noob");
 		memberMapper.updateMember(vo);
 	}
-	
-	@Override
-	public void deleteMember(MemberVO vo) {
-		memberMapper.deleteMember(vo);
-	}
 
-	@Override
-	public List<MemberVO> memberList() {
-		// TODO Auto-generated method stub
-		return memberMapper.memberList();
-	}
 }

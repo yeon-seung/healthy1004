@@ -9,12 +9,13 @@
 <script type="text/javascript">
 	function alert() {
 		if(confirm("정말 이 회원을 탈퇴시키겠습니까?")==true) {
-			return "/member/delete_result";
+			return "/admin/member_delete_result";
 		} else {
 			return false;
 		}
 	}
 </script>
+
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 	<section class="hero-wrap hero-wrap-2"
 		style="background-image: url('${pageContext.request.contextPath}/healthy/images/bg_2.jpg');">
@@ -41,7 +42,7 @@
 			<h3 style="text-align: center; color:gray"  >회원 목록</h3><br><br>
 			<p style="text-align: center; color:gray">회원 아이디를 누르면 탈퇴됩니다.</p>
 			<form method="POST"
-				action="${pageContext.request.contextPath}/member/deleteMember">
+				action="${pageContext.request.contextPath}/admin/deleteMember">
 				<sec:csrfInput />
 				<table class="table table-hover">
 					<tr>
@@ -57,7 +58,7 @@
 					<c:forEach items="${list}" var="list">
 						<tr>
 							<td><a
-								href="${pageContext.request.contextPath}/member/deleteMember?memberId=${list.memberId}" onclick="return alert();">
+								href="${pageContext.request.contextPath}/admin/deleteMember?memberId=${list.memberId}" onclick="return alert();">
 								${list.memberId}</a></td>
 							<td><c:out value="${list.memberName}" /></td>
 							<td><c:out value="${list.address}" /></td>

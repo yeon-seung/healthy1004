@@ -47,7 +47,7 @@ create table healthy_crew_member (
    crew_id number not null,
    join_date date not null,
    constraint fk_member_id foreign key(member_id) references healthy_member(member_id),
-   constraint fk_crew_id foreign key(crew_id) references healthy_crew(crew_id),
+   constraint fk_crew_id foreign key(crew_id) references healthy_crew(crew_id) on delete cascade,
    constraint pk_crew_member primary key(member_id, crew_id)
 )
 
@@ -86,7 +86,7 @@ create table healthy_board(
    crew_id number not null,
    board_title varchar2(100) not null,
    board_content varchar2(100) not null,
-   board_time varchar2(100) not null,
+   board_time date not null,
    constraint fk_board_member_id foreign key(member_id) references healthy_member(member_id),
    constraint fk_board_crew_id foreign key(crew_id) references healthy_crew(crew_id)
 )
