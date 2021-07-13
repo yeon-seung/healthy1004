@@ -44,8 +44,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 크루 생성 -->
 	<insert id="createCrew" parameterType="crewVO">
+	<selectKey resultType="string" keyProperty="crewId" order="BEFORE">
+		SELECT crew_seq.nextval FROM DUAL                                      
+	</selectKey>  
 		insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location)
-		values (crew_seq.nextval, #{crewName}, #{crewInfo}, #{crewSize}, #{crewLocation})
+		values (#{crewId}, #{crewName}, #{crewInfo}, #{crewSize}, #{crewLocation})
 	</insert>
 	
 	<!-- 생성한 크루에 자동 가입시키기 위해 seq.currval 반환하는 쿼리 -->

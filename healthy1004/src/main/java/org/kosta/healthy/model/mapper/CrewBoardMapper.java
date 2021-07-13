@@ -17,5 +17,9 @@ public interface CrewBoardMapper {
 	CrewVO findCrewByCrewId(String crewId);
 
 	void postCrewBoard(CrewBoardVO crewBoardVO);
+	
+	void deleteCrewBoardPost(String boardId);
+
+	void updateCrewBoardPost(CrewBoardVO crewBoardVO);
 
 }

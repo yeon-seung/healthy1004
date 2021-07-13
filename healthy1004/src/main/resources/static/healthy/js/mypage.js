@@ -18,7 +18,10 @@ $(document).ready(function() {
 							+ "' class='img' style='background-image: url(https://images.pexels.com/photos/34514/spot-runs-start-la.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);'>"
 							+"</a>"
 							+"<div class='text p-4'>"
-							+"<h3><a href='#' style='color: #4986fc; font-weight: bold !important;'>"+list[i].crewName+"</a></h3>"
+							+"<h3><a href='"
+							+ $("#pageContext").val() + "crew_board?crewId="
+							+ list[i].crewId 
+							+ "' style='color: #4986fc; font-weight: bold !important;'>"+list[i].crewName+"</a></h3>"
 							+"<p style='float: right;'><span>"+list[i].crewSize+"명</span></p>"
 							+"<p><span>"+list[i].crewLocation+"</span></p>"
 							+"<ul class='d-flex justify-content-between'>"

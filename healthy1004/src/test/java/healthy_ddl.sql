@@ -81,7 +81,7 @@ drop table healthy_board;
 
 --crew_board table 생성
 create table healthy_board(
-   board_id varchar2(100) primary key,
+   board_id number primary key,
    member_id varchar2(100) not null,
    crew_id number not null,
    board_title varchar2(100) not null,

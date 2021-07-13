@@ -26,5 +26,5 @@ public interface CrewMapper {
 	void createCrew(CrewVO crewVO);
 
 	//크루 seq 최신값 받아오기 
-	int recentCrewId();
+//	int recentCrewId();
 }

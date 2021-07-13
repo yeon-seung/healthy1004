@@ -24,5 +24,5 @@ public interface CrewService {
 
 	void createCrew(CrewVO cvo);
 	
-	int recentCrewId();
+//	int recentCrewId();
 }

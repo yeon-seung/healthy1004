@@ -56,9 +56,9 @@ public class CrewServiceImpl implements CrewService {
 	}
 
 	//크루생성 위해 최신크루id 반환
-	@Override
-	public int recentCrewId() {
-		return crewMapper.recentCrewId();
-	}
+//	@Override
+//	public int recentCrewId() {
+//		return crewMapper.recentCrewId();
+//	}
 
 }
