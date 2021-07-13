@@ -63,20 +63,24 @@
 
 					<sec:authentication property="principal.memberId" var="memberId"/>
 					<c:if test="${requestScope.crewBoard.memberId == memberId}">
-					<button form="deleteForm" class="btn float-right bg-primary text-white" type="submit">삭제</button>
-					<button form="updateForm" class="btn float-right bg-primary text-white" type="submit">수정</button>
+					<button form="deleteForm" class="btn float-right bg-primary text-white" type="submit" style="margin-right: 5rem;">삭제</button>
+					<button form="updateForm" class="btn float-right bg-primary text-white" type="submit" style="margin-right: 1rem;">수정</button>
 					 
 					<!-- 삭제 form -->
 					<form action="${pageContext.request.contextPath}/deleteCrewBoardPost?boardId=${crewBoard.boardId}" id="deleteForm" method="POST">
 						<sec:csrfInput/>
 						<input type="hidden" name="crewId" value="${crewBoard.crewId}">
-						${crewBoard.crewId}
 					</form>
 					 
 					<!-- 수정 form -->
-					<form action="updateView" id="updateForm" method="POST">
-					<sec:csrfInput/>
-						<input type="hidden" name="no" value="${requestScope.pvo.no}">			
+					<form action="${pageContext.request.contextPath}/updateCrewBoardPostForm" id="updateForm" method="POST">
+						<sec:csrfInput/>
+						<input type="hidden" name="boardId" value="${crewBoard.boardId}">
+						<input type="hidden" name="memberId" value="${crewBoard.memberId}">
+						<input type="hidden" name="crewId" value="${crewBoard.crewId}">
+						<input type="hidden" name="boardTitle" value="${crewBoard.boardTitle}">
+						<input type="hidden" name="boardContent" value="${crewBoard.boardContent}">	
+						<input type="hidden" name="boardTime" value="${crewBoard.boardTime}">			
 					</form>			 
 					</c:if>
 				</div>

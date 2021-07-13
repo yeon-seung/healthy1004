@@ -17,4 +17,6 @@ public interface CrewBoardService {
 	void postCrewBoard(CrewBoardVO crewBoardVO);
 	
 	void deleteCrewBoardPost(String boardId);
+
+	void updateCrewBoardPost(CrewBoardVO crewBoardVO);
 }

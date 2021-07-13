@@ -33,7 +33,7 @@ public class MemberController {
 			return "member/findMemberById_fail";
 		else {
 			model.addAttribute("memberVO", vo);
-			return "member/findMemberById_ok";
+			return "member/findMemberById_ok";	
 		}
 	}
 

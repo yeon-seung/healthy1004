@@ -57,7 +57,7 @@
 								<h3 class="mb-4">UPDATE INFO</h3>
 								<form method="POST" name="contactForm"
 									class="contactForm" action="${pageContext.request.contextPath}/updateMemberAction"
-									id="regForm"6>
+									id="regForm">
 									<div class="row">
 									<sec:csrfInput/>
 										<input type="hidden" name="command" value="update">

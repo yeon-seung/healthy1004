@@ -20,4 +20,6 @@ public interface CrewBoardMapper {
 	
 	void deleteCrewBoardPost(String boardId);
 
+	void updateCrewBoardPost(CrewBoardVO crewBoardVO);
+
 }

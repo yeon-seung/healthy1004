@@ -33,7 +33,7 @@ public class CrewBoardController {
 	@RequestMapping("crew_board_detail")
 	public String findCrewBoardByCrewBoardId(String crewBoardId, Model model) {
 		CrewBoardVO crewBoardDetail = crewBoardService.findCrewBoardByCrewBoardId(crewBoardId);
-		model.addAttribute("crewBoard",  crewBoardDetail);
+		model.addAttribute("crewBoard", crewBoardDetail);
 		model.addAttribute("crewVO", crewBoardService.findCrewByCrewId(crewBoardDetail.getCrewId()));
 		return "crew_board/crew_board_details.tiles";
 	}
@@ -62,5 +62,20 @@ public class CrewBoardController {
 	public RedirectView deleteCrewBoardPost(String boardId, String crewId, Model model) {
 		crewBoardService.deleteCrewBoardPost(boardId);
 		return new RedirectView("crew_board?crewId="+crewId);
+	}
+	
+	// 게시글 수정 폼으로 이동
+	@RequestMapping("updateCrewBoardPostForm")
+	public String updateCrewBoardPostForm(CrewBoardVO crewBoardVO, Model model) {
+//		System.out.println(crewBoardVO);
+		model.addAttribute("crewBoardVO", crewBoardVO);
+		return "crew_board/board-update-form.tiles";
+	}
+	
+	// 게시글 수정
+	@PostMapping("updateCrewBoardPost")
+	public RedirectView updateCrewBoardPost(CrewBoardVO crewBoardVO) {
+		crewBoardService.updateCrewBoardPost(crewBoardVO);
+		return new RedirectView("crew_board_detail?crewBoardId=" + crewBoardVO.getBoardId());
 	}
 }

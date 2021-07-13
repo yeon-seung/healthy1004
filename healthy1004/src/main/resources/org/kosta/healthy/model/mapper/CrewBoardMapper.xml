@@ -53,6 +53,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from healthy_board
 		where board_id=#{value}
 	</delete>
+	
+	<update id="updateCrewBoardPost" parameterType="crewBoardVO">
+		update healthy_board 
+		set board_title = #{boardTitle}, board_Content = #{boardContent}, board_time = sysdate
+		where board_id = #{boardId}
+	</update>
+	
 </mapper>
  
  

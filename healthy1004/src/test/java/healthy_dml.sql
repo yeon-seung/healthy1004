@@ -8,7 +8,7 @@ update healthy_member
 set enabled=1
 where member_id='dong';
 
---member table 전체 검색 
+--member table 전체 검색
 select * from healthy_member;
 commit
 
@@ -99,6 +99,10 @@ commit
 --이건 seq로 id 넣은 후 insert문~~~
 insert into healthy_board(board_id,member_id,crew_id,board_title,board_content,board_time) values(board_seq.nextval,'java',1,'7/1 la러닝 크루구합니다','7/1에 la에서 러닝하실 분 구합니다',sysdate);
 
+update healthy_board 
+set board_title = '메롱', board_Content = '메롱', board_time = sysdate
+where board_id = 14
+		
 --crew_board table 전체 검색
 select * from healthy_board;
 commit
