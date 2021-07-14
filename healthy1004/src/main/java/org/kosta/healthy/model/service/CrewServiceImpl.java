@@ -49,16 +49,36 @@ public class CrewServiceImpl implements CrewService {
 		return crewMapper.getMyCrewList(memberId);
 	}
 	
-	//크루생성
+	//크루 생성
 	@Override
 	public void createCrew(CrewVO cvo) {
 		crewMapper.createCrew(cvo);
 	}
 
-	//크루생성 위해 최신크루id 반환
-//	@Override
-//	public int recentCrewId() {
-//		return crewMapper.recentCrewId();
-//	}
+	//크루 현원 조회
+	@Override
+	public int countCrewMember(String crewId) {
+		int curSize = crewMapper.countCrewMember(crewId);
+		return curSize;
+	}
 
+	// 크루 정원 조회
+	@Override
+	public int getCrewSize(String crewId) {
+		int curSize = crewMapper.getCrewSize(crewId);
+		return curSize;
+	}
+
+	// 크루 현원 증가
+	@Override
+	public void addCrewMember(String crewId) {
+		crewMapper.addCrewMember(crewId);
+	}
+	
+	// 크루 현원 감소
+	@Override
+	public void removeCrewMember(String crewId) {
+		crewMapper.removeCrewMember(crewId);
+	}
+	
 }

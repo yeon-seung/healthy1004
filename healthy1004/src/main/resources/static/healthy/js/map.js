@@ -84,7 +84,9 @@ $(document).ready(function() {
 				dataType: "json",
 				data:"memberId="+memberIdForCrew,
 				success: function(list){
+					console.log(list);
 					for(let i=0; i<list.length; i++){
+//						list[i].crewMemberCount = 1;
 						$("#crewFindResult").append(
 							"<div class='staff' style='margin-bottom: -1rem;'>"
 							+ "<div class='text pt-3'>"
@@ -92,7 +94,7 @@ $(document).ready(function() {
 							+ $("#csrfInput").html()
 							+ "<a href='#'><h3 style='margin-bottom: -1rem;'>" +  list[i].crewName
 							+ "</h3></a>"
-							+ "<br>정원: " + list[i].crewSize + "명"
+							+ "<br>정원: " + list[i].crewMemberCount + "/" + list[i].crewSize + "명"
 							+ "<br>위치: " + list[i].crewLocation
 							+ "<br>소개: " + list[i].crewInfo
 							+ "<input type='hidden' name='crewId' value='" + list[i].crewId + "'>"
@@ -149,7 +151,7 @@ $(document).ready(function() {
 
 					}
 				}
-			});
+			});		
 		
 		// 검색어로 크루 찾기
 		$("#crewFindBtn").click(function() {
@@ -165,7 +167,7 @@ $(document).ready(function() {
 					"memberId": memberIdForCrew},
 				success: function(list){ console.log(list);
 					if (list.length == 0) {
-						alert(keyword + " 지역에는 아직 크루가 존재하지 않습니다!");
+						alert(keyword + " 지역에는 가입할 수 있는 크루가 존재하지 않습니다!");
 					} else if (keyword == "") {
 						alert("검색어를 입력하세요!");
 					}
@@ -177,7 +179,7 @@ $(document).ready(function() {
 							+ $("#csrfInput").html()
 							+ "<a href=\"#\"><h3 style=\"margin-bottom: -1rem;\">" +  list[i].crewName
 							+ "</h3></a>"
-							+ "<br>정원: " + list[i].crewSize + "명"
+							+ "<br>정원: " + list[i].crewMemberCount + "/" + + list[i].crewSize + "명"
 							+ "<br>위치: " + list[i].crewLocation
 							+ "<br>소개: " + list[i].crewInfo
 							+ "<input type='hidden' name='crewId' value='" + list[i].crewId + "'>"

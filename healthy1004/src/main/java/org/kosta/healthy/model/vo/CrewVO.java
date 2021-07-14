@@ -4,17 +4,19 @@ public class CrewVO {
 	private String crewId;
 	private String crewName;
 	private String crewInfo;
-	private String crewSize;
+	private int crewSize;
+	private int crewMemberCount;
 	private String crewLocation;
 	public CrewVO() {
 		super();
 	}
-	public CrewVO(String crewId, String crewName, String crewInfo, String crewSize, String crewLocation) {
+	public CrewVO(String crewId, String crewName, String crewInfo, int crewSize, int crewMemberCount, String crewLocation) {
 		super();
 		this.crewId = crewId;
 		this.crewName = crewName;
 		this.crewInfo = crewInfo;
 		this.crewSize = crewSize;
+		this.crewMemberCount = crewMemberCount;
 		this.crewLocation = crewLocation;
 	}
 	public String getCrewId() {
@@ -35,10 +37,10 @@ public class CrewVO {
 	public void setCrewInfo(String crewInfo) {
 		this.crewInfo = crewInfo;
 	}
-	public String getCrewSize() {
+	public int getCrewSize() {
 		return crewSize;
 	}
-	public void setCrewSize(String crewSize) {
+	public void setCrewSize(int crewSize) {
 		this.crewSize = crewSize;
 	}
 	public String getCrewLocation() {
@@ -47,12 +49,15 @@ public class CrewVO {
 	public void setCrewLocation(String crewLocation) {
 		this.crewLocation = crewLocation;
 	}
+	public int getCrewMemberCount() {
+		return crewMemberCount;
+	}
+	public void setCrewMemberCount(int crewMemberCount) {
+		this.crewMemberCount = crewMemberCount;
+	}
 	@Override
 	public String toString() {
 		return "CrewVO [crewId=" + crewId + ", crewName=" + crewName + ", crewInfo=" + crewInfo + ", crewSize="
-				+ crewSize + ", crewLocation=" + crewLocation + "]";
+				+ crewSize + ", crewMemberCount=" + crewMemberCount + ", crewLocation=" + crewLocation + "]";
 	}
-	
-	
-
 }

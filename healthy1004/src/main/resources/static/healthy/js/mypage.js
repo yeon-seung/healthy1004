@@ -22,12 +22,10 @@ $(document).ready(function() {
 							+ $("#pageContext").val() + "crew_board?crewId="
 							+ list[i].crewId 
 							+ "' style='color: #4986fc; font-weight: bold !important;'>"+list[i].crewName+"</a></h3>"
-							+"<p style='float: right;'><span>"+list[i].crewSize+"명</span></p>"
+							+"<p style='float: right; margin-left: 2rem;'><span>"+  + list[i].crewMemberCount + "/" + list[i].crewSize+"명</span></p>"
 							+"<p><span>"+list[i].crewLocation+"</span></p>"
 							+"<ul class='d-flex justify-content-between'>"
 							+"<li style='color: black;'>"+list[i].crewInfo+"</li>"
-//							+"<li class='price'>정원: "+list[i].crewSize+"명</li>"
-//							+"<li style='font-weight: normal'>정원: "+list[i].crewSize+"명</li>"
 							+"</ul>"
 							+"</div>"
 							+"</div>"

@@ -1,9 +1,12 @@
 package org.kosta.healthy;
 
-import java.util.HashMap;
+import java.util.List;
+
+//import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
 import org.kosta.healthy.model.mapper.CrewMapper;
+import org.kosta.healthy.model.vo.CrewVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -14,10 +17,11 @@ class HealthyPracticeApplicationTests {
 	 
 		@Test
 		void contextLoads() {
-//			System.out.println(crewMapper.findCrewListByName("송파"));
-			HashMap<String, Object> hashMap = new HashMap<>();
-			hashMap.put("crewId", "2");
-			hashMap.put("memberId", "java");
-			crewMapper.joinCrew(hashMap);
+//			List<CrewVO> list = crewMapper.getMyCrewList("dongooree");
+//			System.out.println(list);
+//			for (int i = 0; i < list.size(); i++) {
+//				crewMapper.removeCrewMember(list.get(i).getCrewId());
+//			}
+//			System.out.println(crewMapper.getMyCrewList("dongooree"));
 		}
 }

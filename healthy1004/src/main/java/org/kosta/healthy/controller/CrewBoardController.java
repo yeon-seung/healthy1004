@@ -78,4 +78,5 @@ public class CrewBoardController {
 		crewBoardService.updateCrewBoardPost(crewBoardVO);
 		return new RedirectView("crew_board_detail?crewBoardId=" + crewBoardVO.getBoardId());
 	}
+	
 }

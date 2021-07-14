@@ -51,11 +51,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{crewId}, #{crewName}, #{crewInfo}, #{crewSize}, #{crewLocation})
 	</insert>
 	
-	<!-- 생성한 크루에 자동 가입시키기 위해 seq.currval 반환하는 쿼리 -->
-<!-- 	<select id="recentCrewId" resultType="int"> -->
-<!-- 		select max(crew_id) from healthy_crew -->
-<!-- 	</select> -->
+	<select id="countCrewMember" resultType="int">
+		select crew_member_count from healthy_crew
+		where crew_id = #{value}
+	</select>
 	
+	<select id="getCrewSize" resultType="int">
+		select crew_size from healthy_crew
+		where crew_id = #{value}
+	</select>
+	
+	<update id="addCrewMember">
+		update healthy_crew set crew_member_count = crew_member_count + 1
+		where crew_id = #{value}
+	</update>
+	
+	<update id="removeCrewMember">
+		update healthy_crew set crew_member_count = crew_member_count - 1
+		where crew_id = #{value}
+	</update>	
 </mapper>
  
  

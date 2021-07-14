@@ -25,6 +25,15 @@ public interface CrewMapper {
 	//크루 생성
 	void createCrew(CrewVO crewVO);
 
-	//크루 seq 최신값 받아오기 
-//	int recentCrewId();
+	//크루 현원 조회
+	int countCrewMember(String crewId);
+
+	//크루 정원 출력
+	int getCrewSize(String crewId);
+	
+	//크루 참가시 정원 1 증가
+	void addCrewMember(String crewId);
+
+	//회원 삭제시 정원 1 감소
+	void removeCrewMember(String crewId);
 }

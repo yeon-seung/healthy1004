@@ -22,7 +22,18 @@ public interface CrewService {
 	//내가 가입한 크루 리스트
 	List<CrewVO> getMyCrewList(String memberId);
 
+	//크루 생성
 	void createCrew(CrewVO cvo);
 	
-//	int recentCrewId();
+	//크루 현원 조회
+	int countCrewMember(String crewId);
+
+	//크루 정원 조회
+	int getCrewSize(String crewId);
+
+	//크루 현원 증가
+	void addCrewMember(String crewId);
+	
+	//크루 현원 감소
+	void removeCrewMember(String crewId);
 }

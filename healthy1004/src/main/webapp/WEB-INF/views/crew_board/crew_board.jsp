@@ -43,12 +43,12 @@
 						<div class="text d-block">
 							<div class="meta">
 								<p>
+									<a href="${pageContext.request.contextPath}/crew_board_detail?crewBoardId=${ list.boardId }"><span
+										class="fa fa-user mr-2"></span>${ list.memberId }</a><br>
 									<a href="#"><span class="fa fa-calendar mr-2"></span>${ list.boardTime }
-										&nbsp; &nbsp;</a> <a
-										href="${pageContext.request.contextPath}/crew_board_detail?crewBoardId=${ list.boardId }"><span
-										class="fa fa-user mr-2"></span>${ list.memberId }</a>
+										&nbsp; &nbsp;</a>
 								</p>
-							</div>
+							</div><hr>
 							<h5 class="heading">
 								<a
 									href="${pageContext.request.contextPath}/crew_board_detail?crewBoardId=${ list.boardId }">${ list.boardTitle }</a>

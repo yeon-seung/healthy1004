@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.kosta.healthy.model.mapper.CrewMapper;
 import org.kosta.healthy.model.mapper.MemberMapper;
 import org.kosta.healthy.model.vo.Authority;
+import org.kosta.healthy.model.vo.CrewVO;
 import org.kosta.healthy.model.vo.MemberVO;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberServiceImpl implements MemberService {
 	@Resource
 	private MemberMapper memberMapper;
+	private CrewMapper crewMapper;
 	
 	@Resource
 	private BCryptPasswordEncoder passwordEncoder;
@@ -59,6 +62,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void deleteMember(MemberVO vo) {
 		memberMapper.deleteMember(vo);
+		List<CrewVO> list = crewMapper.getMyCrewList(vo.getMemberId());
+		for (int i = 0; i < list.size(); i++) {
+			crewMapper.removeCrewMember(list.get(i).getCrewId());
+		}
+		
 	}
 
 	@Override

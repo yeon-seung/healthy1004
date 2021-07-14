@@ -25,7 +25,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class CrewController {
 	@Resource
-//	private CrewMapper crewMapper;
 	private CrewService crewService;
 	
 	//검색 후 크루리스트 - 참가한 크루는 제외
@@ -55,11 +54,16 @@ public class CrewController {
 		HashMap<String, Object> hashMap = new HashMap<String, Object>();
 		hashMap.put("crewId", crewId);
 		hashMap.put("memberId", pvo.getMemberId());
-		if (pvo == null || crewService.crewMemberCheck(hashMap))	{// 세션정보 없거나 이미 참가한 크루면 안넣어줌
-			return "crew_board/crewJoin_fail";
+//		if (crewService.crewMemberCheck(hashMap))	{ // 이미 참가한 크루면 가입 불가 -- 리스트에서 안보여주기때문에 안걸리는 조건임
+//			return "crew_board/crewJoin_fail_joined";
+//		} else if (crewService.countCrewMember(crewId) >= crewService.getCrewSize(crewId)) { //정원이 차있는 크루면 가입 불가
+
+		if (crewService.countCrewMember(crewId) >= crewService.getCrewSize(crewId)) { //정원이 차있는 크루면 가입 불가
+			return "crew_board/crewJoin_fail_full";
 		}
 		else {
 			crewService.joinCrew(hashMap);
+			crewService.addCrewMember(crewId);
 			return "crew_board/crewJoin_ok";
 		}
 	}

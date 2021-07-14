@@ -22,13 +22,13 @@ create table healthy_member (
 
 --crew table 삭제
 drop table healthy_crew;
-
 --crew table 생성
 create table healthy_crew (
    crew_id number primary key,
    crew_name varchar2(100) not null,
    crew_info varchar2(500) not null,
    crew_size number not null,
+   crew_member_count number default 0,
    crew_location varchar2(100) not null
 )
 
@@ -47,11 +47,17 @@ create table healthy_crew_member (
    crew_id number not null,
    join_date date not null,
    constraint fk_member_id foreign key(member_id) references healthy_member(member_id),
-   constraint fk_crew_id foreign key(crew_id) references healthy_crew(crew_id),
+   constraint fk_crew_id foreign key(crew_id) references healthy_crew(crew_id) on delete cascade,
    constraint pk_crew_member primary key(member_id, crew_id)
 )
 
-
+--ALTER TABLE healthy_crew_member DROP CONSTRAINT fk_crew_id
+--
+--ALTER TABLE healthy_crew_member
+--ADD CONSTRAINT fk_crew_id
+--  FOREIGN KEY (crew_id)
+--  REFERENCES healthy_crew(crew_id)
+--  ON DELETE CASCADE;
 
 --   DIARY
 --diary table 삭제
@@ -88,7 +94,7 @@ create table healthy_board(
    board_content varchar2(100) not null,
    board_time date not null,
    constraint fk_board_member_id foreign key(member_id) references healthy_member(member_id),
-   constraint fk_board_crew_id foreign key(crew_id) references healthy_crew(crew_id)
+   constraint fk_board_crew_id foreign key(crew_id) references healthy_crew(crew_id) on delete cascade
 )
 
 --크루게시판 시퀀스

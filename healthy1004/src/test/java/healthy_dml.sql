@@ -12,6 +12,9 @@ where member_id='dong';
 select * from healthy_member;
 commit
 
+update healthy_member
+		set enabled=1
+		where member_id='박동구리'
 
 -- CREW &   CREW_MEMBER
 
@@ -26,12 +29,23 @@ commit
 insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '송파 러닝 크루','애인괌','10','서울시 송파구 중대로12길 35');
 insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '송파 수영 크루','sexy 물개 모여라','10','서울시 송파구 신천동 32');
 insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '주짓수 크루','주짓수 국대 되고 싶은 사람 모여라','5','서울시 송파구 양재대로 1218');
-insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '오리역 복싱 크루','록키 보고 오세요','23','성남시 분당구 성남대로 34');
-insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '강남 수영 크루','20세 이상만 받아요^^','12','서울특별시 강남구 수서동 광평로51길 6-5');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '오리역 복싱 크루','록키 보고 오세요','1','성남시 분당구 성남대로 34');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '강남 수영 크루','20세 이상만 받아요^^','2','서울특별시 강남구 수서동 광평로51길 6-5');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '정자 필라테스 크루','주량 최소 3병 이상','1','정자동');
 
+commit
 
 --crew table 전체 검색
 select * from healthy_crew;
+
+-- id로 crew member 수 조회
+select count(*) from healthy_crew_member
+where crew_id = '28'
+
+update healthy_crew set crew_member_count = crew_member_count + 1
+where crew_id = 1
+
+select crew_size from healthy_crew where crew_id = 28;
 
 delete from healthy_crew;
 commit
@@ -39,7 +53,7 @@ commit
 --크루 가입
 insert into healthy_crew_member values('java','5',sysdate);
 
-select * from healthy_crew
+select * from healthy_crew_member
 
 select count(*) from healthy_crew_member
 where member_id='javaaa' and crew_id='1';
@@ -96,10 +110,6 @@ commit
 
 --이건 seq로 id 넣은 후 insert문~~~
 insert into healthy_board(board_id,member_id,crew_id,board_title,board_content,board_time) values(board_seq.nextval,'java',1,'7/1 la러닝 크루구합니다','7/1에 la에서 러닝하실 분 구합니다',sysdate);
-
-update healthy_board 
-set board_title = '메롱', board_Content = '메롱', board_time = sysdate
-where board_id = 14
 		
 --crew_board table 전체 검색
 select * from healthy_board;

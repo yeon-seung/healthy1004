@@ -6,7 +6,7 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-    	
+   
     	$("#deleteForm").submit(function() {
 			return confirm("게시글을 삭제하시겠습니까?");
 		});//deleteForm
@@ -48,18 +48,14 @@
 			</div>
 			<div class="col-md-8 d-flex align-items-center">
 				<div class="staff-detail w-100 pl-md-5">
-					<h3>Title</h3>
+					<h3>제목</h3>
 					<p>${ crewBoard.boardTitle }</p>
-					<h3>written by</h3>
+					<h3>작성자</h3>
 					<p>${ crewBoard.memberId }</p>
-					<h3>Content</h3>
+					<h3>내용</h3>
 					<p>${ crewBoard.boardContent }</p>
-					<h3>Reporting Date</h3>
+					<h3>최근 작성일시</h3>
 					<p>${ crewBoard.boardTime }</p>
-					
-					<!-- 글 삭제 수정 버튼 -->
-<%-- 					${crewBoard.memberId} --%>
-<%-- 					${sessionScope} --%>
 
 					<sec:authentication property="principal.memberId" var="memberId"/>
 					<c:if test="${requestScope.crewBoard.memberId == memberId}">
