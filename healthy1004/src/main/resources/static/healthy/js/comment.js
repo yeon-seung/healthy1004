@@ -8,7 +8,9 @@ $(document).ready(function() {
 					console.log(list);
 					for(let i=0; i<list.length; i++){
 						$("#commentResult").append(
-							list[i].crewId
+							list[i].commentContent
+							+ '<br>'
+							+'작성자' + list[i].memberId
 						);
 					}
 				}//success :function
