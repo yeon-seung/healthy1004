@@ -101,6 +101,23 @@ create table healthy_board(
 drop sequence board_seq;
 create sequence board_seq;
 
+-- COMMENT
+
+-- 댓글테이블 삭제
+drop table board_comment
+-- 댓글테이블 생성
+create table board_comment(
+	comment_id number not null,
+	comment_content varchar2(100) not null,
+	member_id varchar2(100) not null,
+	crew_id number not null,
+	board_id number not null,
+	reg_date date not null,
+	constraint fk_comment_member_id foreign key(member_id) references healthy_member(member_id),
+	constraint fk_comment_crew_id foreign key(crew_id) references healthy_crew(crew_id),
+	constraint fk_comment_board_id foreign key(board_id) references healthy_board(board_id)
+)
+
 --   AUTHORITY
 
 --authorities table 삭제
