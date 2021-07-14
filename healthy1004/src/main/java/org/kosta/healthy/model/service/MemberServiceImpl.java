@@ -58,20 +58,4 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("noob");
 		memberMapper.updateMember(vo);
 	}
-	
-//	@Override
-//	public void deleteMember(MemberVO vo) {
-//		memberMapper.deleteMember(vo);
-//		List<CrewVO> list = crewMapper.getMyCrewList(vo.getMemberId());
-//		for (int i = 0; i < list.size(); i++) {
-//			crewMapper.removeCrewMember(list.get(i).getCrewId());
-//		}
-//		
-//	}
-
-//	@Override
-//	public List<MemberVO> memberList() {
-//		// TODO Auto-generated method stub
-//		return memberMapper.memberList();
-//	}
 }
