@@ -86,21 +86,4 @@ public class MemberController {
 		return "member/update_result.tiles";
 	}
 
-	@Secured("ROLE_ADMIN")
-	@RequestMapping("member/deleteForm")
-	public String deleteForm(Model model) {
-		List<MemberVO> list = memberService.memberList();
-		model.addAttribute("list", list);
-		return "member/deleteForm.tiles";
-	}
-
-	@Secured("ROLE_ADMIN")
-	@RequestMapping(value = "member/deleteMember")
-	public String deleteMember(MemberVO vo, Model model) {
-		memberService.deleteMember(vo);
-		String name = vo.getMemberId();
-		model.addAttribute("name",name);
-		return "member/delete_result.tiles";
-	}
-
 }

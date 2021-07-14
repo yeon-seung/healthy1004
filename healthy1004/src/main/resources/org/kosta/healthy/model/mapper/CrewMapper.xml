@@ -69,7 +69,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="removeCrewMember">
 		update healthy_crew set crew_member_count = crew_member_count - 1
 		where crew_id = #{value}
-	</update>	
+	</update>
+	
 </mapper>
  
  

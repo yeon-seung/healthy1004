@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sql Mapper -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kosta.healthy.model.mapper.AdminMapper">
+<!-- 관리자가 멤버 삭제 -->
+	<update id="deleteMember" parameterType="memberVO">
+		update healthy_member
+		set enabled=0
+		where member_id=#{memberId}
+	</update>
+	<!-- 멤버 전체 리스트 출력(관리자는 제와) -->
+	<select id="memberList" resultType="memberVO">
+		select h.member_id, h.member_name, h.address, h.email, h.height, h.weight, h.age, h.phone
+		from healthy_member h, authorities a
+		where h.member_id=a.username and enabled=1 and a.authority='ROLE_MEMBER'
+	</select>
+	<!-- 크루 전체 리스트 출력(참가여부 상관없이) -->
+	<select id="crewList" parameterType="string" resultType="crewVO">
+		select * from healthy_crew 
+	</select>
+	<!-- 관리자가 크루 삭제 -->
+	<delete id="deleteCrew" parameterType="crewVO">
+		delete healthy_crew
+		where crew_name=#{crewName}
+	</delete>
+</mapper>

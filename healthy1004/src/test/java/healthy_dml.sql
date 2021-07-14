@@ -12,9 +12,6 @@ where member_id='dong';
 select * from healthy_member;
 commit
 
-update healthy_member
-		set enabled=1
-		where member_id='박동구리'
 
 -- CREW &   CREW_MEMBER
 
@@ -33,8 +30,6 @@ insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location
 insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '강남 수영 크루','20세 이상만 받아요^^','2','서울특별시 강남구 수서동 광평로51길 6-5');
 insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '정자 필라테스 크루','주량 최소 3병 이상','1','정자동');
 
-commit
-
 --crew table 전체 검색
 select * from healthy_crew;
 
@@ -50,10 +45,13 @@ select crew_size from healthy_crew where crew_id = 28;
 delete from healthy_crew;
 commit
 
+--크루 삭제하기
+delete from healthy_crew where crew_id='4';
+
 --크루 가입
 insert into healthy_crew_member values('java','5',sysdate);
 
-select * from healthy_crew_member
+select * from healthy_crew
 
 select count(*) from healthy_crew_member
 where member_id='javaaa' and crew_id='1';

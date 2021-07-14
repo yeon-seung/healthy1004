@@ -19,6 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM	authorities
 		WHERE	username=#{value}
 	</select>
+	<!-- 회원 가입 -->
 	<insert id="registerMember" parameterType="memberVO">
 		insert into healthy_member(member_id, password, member_name, address, email, height, weight, age, phone)
 		values (#{memberId}, #{password}, #{memberName}, #{address}, #{email}, #{height}, #{weight}, #{age}, #{phone})
@@ -29,21 +30,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="registerRole" parameterType="authority">
 		insert into authorities(username,authority) values(#{username},#{authority})
 	</insert>
+	<!-- 회원 수정 -->
 	<update id="updateMember" parameterType="memberVO">
 		update healthy_member 
 		set password=#{password}, address=#{address}, height=#{height}, weight=#{weight}, age=#{age}, phone=#{phone}
 		where member_id=#{memberId}
 	</update>
-	<update id="deleteMember" parameterType="memberVO">
-		update healthy_member
-		set enabled=0
-		where member_id=#{memberId}
-	</update>
-	<select id="memberList" resultType="memberVO">
-		select h.member_id, h.member_name, h.address, h.email, h.height, h.weight, h.age, h.phone
-		from healthy_member h, authorities a
-		where h.member_id=a.username and enabled=1 and a.authority='ROLE_MEMBER'
-	</select>
 </mapper>
 
 

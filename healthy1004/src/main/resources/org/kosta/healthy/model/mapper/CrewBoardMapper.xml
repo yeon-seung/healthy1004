@@ -60,11 +60,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where board_id = #{boardId}
 	</update>
 	
-<!-- 	<select id="countCrewMember" resultType="int"> -->
-<!-- 		select count(*) from healthy_crew_member -->
-<!-- 		where crew_id = #{value} -->
-<!-- 	</select> -->
-	
 </mapper>
  
  

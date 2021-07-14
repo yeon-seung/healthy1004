@@ -23,33 +23,37 @@
 			</div>
 		</div>
 	</section>
-
 	<section class="ftco-section bg-light">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 sidebar">
-					<div class="sidebar-box bg-white p-4 ftco-animate">
-						<h3 class="heading-sidebar">
-							<a href="${pageContext.request.contextPath}/member/deleteForm"
-								style="color: black; !important">회원 탈퇴시키기</a>
-						</h3>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 d-flex align-items-stretch ftco-animate">
+						<div class="project-wrap">
+							<a href="#" class="img"
+								style="background-image: url('${pageContext.request.contextPath}/healthy/images/delete.png'); background-size: 200px 200px;"></a>
+							<div class="text p-4">
+								<h3>
+									<a
+										href="${pageContext.request.contextPath}/admin/memberDeleteForm"
+										style="color: purple; font-weight: bold !important;">회원 탈퇴시키기</a>
+								</h3>
+							</div>
+						</div>
 					</div>
-
-					<div class="sidebar-box bg-white p-4 ftco-animate">
-						<h3 class="heading-sidebar">
-							<a href="${pageContext.request.contextPath}/admin/crewDeleteForm"
-								style="color: black; !important">크루 삭제하기</a>
-						</h3>
-					</div>
-
-					<div class="sidebar-box bg-white p-4 ftco-animate">
-						<h3 class="heading-sidebar">
-							<a href="${pageContext.request.contextPath}/member/updateForm"
-								style="color: black; !important">회원 크루에서 탈퇴시키기</a>
-						</h3>
+					
+					<div class="col-md-6 d-flex align-items-stretch ftco-animate">
+						<div class="project-wrap">
+							<a href="#" class="img"
+								style="background-image: url('${pageContext.request.contextPath}/healthy/images/delete.png'); background-size: 200px 200px;"></a>
+							<div class="text p-4" text-align="center">
+								<h3>
+									<a
+										href="${pageContext.request.contextPath}/admin/crewDeleteForm"
+										style="color: purple; font-weight: bold !important;">크루 삭제하기</a>
+								</h3>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 	</section>
 </sec:authorize>

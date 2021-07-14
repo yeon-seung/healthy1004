@@ -20,7 +20,4 @@ public interface MemberMapper {
 	
 	void registerRole(Authority authority);
 	
-	List<MemberVO> memberList();
-	
-	void deleteMember(MemberVO vo);
 }

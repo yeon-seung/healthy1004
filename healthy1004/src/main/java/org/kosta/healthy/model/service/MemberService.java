@@ -16,8 +16,5 @@ public interface MemberService {
 	void registerMember(MemberVO vo);
 	
 	void updateMember(MemberVO vo);
-	
-	List<MemberVO> memberList();
-	
-	void deleteMember(MemberVO vo);
+
 }
