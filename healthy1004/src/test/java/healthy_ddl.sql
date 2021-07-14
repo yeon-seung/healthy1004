@@ -117,6 +117,11 @@ create table board_comment(
 	constraint fk_comment_crew_id foreign key(crew_id) references healthy_crew(crew_id),
 	constraint fk_comment_board_id foreign key(board_id) references healthy_board(board_id)
 )
+--댓글 테이블 시퀀스
+drop sequence comment_seq;
+create sequence comment_seq;
+
+
 
 --   AUTHORITY
 

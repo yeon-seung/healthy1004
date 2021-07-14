@@ -81,6 +81,12 @@
 					</c:if>
 				</div>
 			</div>
+			
+				<input type="hidden" name="boardId" id="boardId" value="${crewBoard.boardId}">	
+				<input type="hidden" id="pageContext" value="${pageContext.request.contextPath}">
+				<span id="commentResult" ></span>
+
+
 		</div>
 	</div>
 </section>

@@ -76,7 +76,7 @@ where crew_id not in(
 ----가입한 크루 뽑아내기
 select crew.*
 from healthy_crew crew, healthy_crew_member crew_mem
-where crew.crew_id=crew_mem.crew_id and crew_mem.member_id='spring'
+where crew.crew_id=crew_mem.crew_id and crew_mem.member_id='jiye'
 order by crew_mem.join_date
 
 -----검색 후 리스트 출력
@@ -113,6 +113,22 @@ insert into healthy_board(board_id,member_id,crew_id,board_title,board_content,b
 select * from healthy_board;
 commit
 
+-- COMMENT
+--댓글 갯수
+select count(*) from board_comment
+--댓글 리스트
+select * 
+from board_comment
+where board_id='2'
+--댓글 삽입
+insert into board_comment(comment_id,comment_content,member_id,crew_id,board_id,reg_date) values(comment_seq.nextval,'힘드롱ㅜ','jiye',21,2,sysdate);
+insert into board_comment(comment_id,comment_content,member_id,crew_id,board_id,reg_date) values(comment_seq.nextval,'뭬렁','jiye',21,2,sysdate);
+--댓글 수정
+update board_comment
+set comment_content = '다리아팡'
+where comment_id = '1'
+--댓글 삭제
+delete from board_comment where comment_id='2'
 
 --   AUTHORITY
 
