@@ -256,7 +256,6 @@
 											</div>
 										</div>  --%>
 
-
 										<div class="col-md-4">
 											<label class="label" for="email">Email</label>
 											<div class="form-group">
@@ -292,6 +291,7 @@
 										<span
 													class="compare-text" style="display: none">불일치</span>
 										</div>
+									
 										<div class="col-md-12">
 											<div class="form-group">
 												<label class="label" for="address">ADDRESS</label> <input

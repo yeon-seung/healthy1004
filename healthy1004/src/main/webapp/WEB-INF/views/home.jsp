@@ -20,11 +20,15 @@
 					<br> 이 모든 것들은 HealthySexy 회원이 되신다면 누릴 수 있답니다. <br>
 				</p>
 				<p class="mb-0">
-				<sec:authorize access="isAuthenticated()!=false">
+				<sec:authorize access="isAuthenticated()!=false and hasRole('ROLE_MEMBER') and !hasRole('ROLE_ADMIN')">
 					<a href="${pageContext.request.contextPath}/diary"
 						class="btn btn-primary">다이어리</a> <a
 						href="${pageContext.request.contextPath}/crewfind"
 						class="btn btn-white">크루 찾기</a>
+				</sec:authorize>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<a href="${pageContext.request.contextPath}/admin_home"
+						class="btn btn-primary">관리자 페이지</a>
 				</sec:authorize>
 				</p>
 			</div>

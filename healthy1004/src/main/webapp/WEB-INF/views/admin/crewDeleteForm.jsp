@@ -8,7 +8,7 @@
 
 <script type="text/javascript">
 	function alert() {
-		if (confirm("정말 이 크루를 삭제하시겠습니까?크루를 삭제하시면 크루에 관련된 모든 정보가 삭제됩니다.") == true) {
+		if (confirm("정말 이 크루를 삭제하시겠습니까?\n크루를 삭제하시면 크루에 관련된 모든 정보가 삭제됩니다.") == true) {
 			return "/admin/crew_delete_result";
 		} else {
 			return false;

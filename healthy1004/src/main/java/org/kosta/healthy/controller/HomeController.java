@@ -34,6 +34,11 @@ public class HomeController {
 		return "member/registerForm.tiles";
 	}
 	
+	@RequestMapping("admin_home")
+	public String admin_home() {
+		return "admin/admin_home.tiles";
+	}
+	
 	@RequestMapping("accessDeniedView") //로그인 하였으나 권한 없는 요청할 때 페이지
 	public String accessDeniedView() {
 		return "auth/accessDeniedView";
