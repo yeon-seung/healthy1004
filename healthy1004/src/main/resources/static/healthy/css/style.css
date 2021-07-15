@@ -9735,9 +9735,11 @@ textarea.form-control {
       color: #000000;
       text-align: center;
       display: inline-block;
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
+      font-size: 14px;
+      margin : 2px;
       border-radius: 50%;
       border: 1px solid #e6e6e6; }
     .block-27 ul li.active a, .block-27 ul li.active span, .block-27 ul li:hover a, .block-27 ul li:hover span {

@@ -4,18 +4,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosta.healthy.model.mapper.AdminMapper">
-<!-- 관리자가 멤버 삭제 -->
-	<update id="deleteMember" parameterType="memberVO">
-		update healthy_member
-		set enabled=0
-		where member_id=#{memberId}
-	</update>
-	<!-- 멤버 전체 리스트 출력(관리자는 제와) -->
-	<select id="memberList" resultType="memberVO">
-		select h.member_id, h.member_name, h.address, h.email, h.height, h.weight, h.age, h.phone
-		from healthy_member h, authorities a
-		where h.member_id=a.username and enabled=1 and a.authority='ROLE_MEMBER'
-	</select>
+
 	<!-- 크루 전체 리스트 출력(참가여부 상관없이) -->
 	<select id="crewList" parameterType="string" resultType="crewVO">
 		select * from healthy_crew 
@@ -25,4 +14,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete healthy_crew
 		where crew_name=#{crewName}
 	</delete>
+
+	<!-- Spring Security에서 로그인 인증시 사용 : 
+	      사용가능한(enabled 1) 계정일 경우만 조회. 
+	 -->
+		<!-- 관리자가 사용하는 mamberMapper -->
+	
+	<update id="deleteMember" parameterType="memberVO">
+		update healthy_member
+		set enabled=0
+		where member_id=#{memberId}
+	</update>
+	
+	<!--member 총 사용자 출력/ 조건 : 모두 활성화 상태이며, 멤버인 경우-->
+	<select id="countMember" resultType="int">
+		select count(*)  from healthy_member h, authorities a
+		where h.member_id=a.username and enabled=1 and a.authority='ROLE_MEMBER'
+	</select>
+
+	<!-- 페이징 처리 후에 member 리스트 불러오기-->
+	<select id="memberListPaging" resultType="memberVO">
+		SELECT member_id, member_name, address, email, height, weight, age, phone  FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+						select *
+						from healthy_member h, authorities a
+						where h.member_id=a.username and enabled=1 and a.authority='ROLE_MEMBER'
+						) A
+				)
+		WHERE RN BETWEEN ${start} AND ${end}
+	</select>
 </mapper>
+
+

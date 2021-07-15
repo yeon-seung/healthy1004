@@ -6,7 +6,7 @@ delete from healthy_member;
 --member 탈퇴 enabled=0으로 만드는 test용 sql
 update healthy_member
 set enabled=1
-where member_id='dong';
+where member_id='spring';
 
 --member table 전체 검색
 select * from healthy_member;
@@ -93,10 +93,10 @@ where crew_id not in(
 --   DIARY
 
 --이건 seq로 id 넣은 후 insert문~~~
-insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail,excercise_content) values(diary_seq.nextval,'java','2021-07-01','상','다리가 부음','러닝 100분');
-insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail) values(diary_seq.nextval,'java','2021-07-27','하','다리가 부음');
+insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail,excercise_content) values(diary_seq.nextval,'spring','2021-07-01','상','다리가 부음','러닝 100분');
+insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail) values(diary_seq.nextval,'spring','2021-07-27','하','다리가 부음');
 insert into healthy_diary(diary_id,member_id,diary_date,body_condition,body_condition_detail,excercise_content) values(diary_seq.nextval,'java','2021-07-17','중','다리가 부음','러닝 100분');
-insert into healthy_diary(diary_id,member_id,diary_date,body_condition,excercise_content) values(diary_seq.nextval,'java','2021-06-27','다리가 부음','러닝 100분');
+insert into healthy_diary(diary_id,member_id,diary_date,body_condition,excercise_content) values(diary_seq.nextval,'spring','2021-06-27','다리가 부음','러닝 100분');
 
 
 --diary table 전체 검색

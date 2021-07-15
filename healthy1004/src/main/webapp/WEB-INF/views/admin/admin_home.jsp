@@ -33,7 +33,7 @@
 							<div class="text p-4">
 								<h3>
 									<a
-										href="${pageContext.request.contextPath}/admin/memberDeleteForm"
+										href="${pageContext.request.contextPath}/admin/memberDeleteFormPaging"
 										style="color: purple; font-weight: bold !important;">회원 탈퇴시키기</a>
 								</h3>
 							</div>
