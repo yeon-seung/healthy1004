@@ -4,6 +4,13 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<style>
+    .map_wrap {position:relative;width:100%;height:400px;}
+    .title {font-weight:bold;display:block;}
+    .hAddr {position:absolute;left:25px;top:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
+    #centerAddr {display:block;margin-top:2px;font-weight: normal;}
+    .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+</style>
 
 <section class="hero-wrap hero-wrap-2"
 	style="background-image: url('${pageContext.request.contextPath}/healthy/images/bg_2.jpg');">
@@ -34,7 +41,7 @@
 										<div class="form-group">
 											<label class="label" for="crewName">crew name</label> <input
 												type="text" class="form-control" name="crewName"
-												id="crewName" placeholder="input crew name">
+												id="crewName" placeholder="크루명을 입력하세요">
 										</div>
 									</div>
 									
@@ -42,7 +49,7 @@
 										<div class="form-group">
 											<label class="label" for="crewSize">crew size</label> <input
 												type="number" class="form-control" name="crewSize"
-												id="crewSize" placeholder="input crew size">
+												id="crewSize" placeholder="크루 정원을 입력하세요">
 										</div>
 									</div>
 									<div class="col-md-12">
@@ -50,14 +57,14 @@
 											<label class="label" for="crewInfo">crew info</label>
 											<%-- name, id, placeholder 변경 --%>
 											<textarea name="crewInfo" class="form-control" id="crewInfo"
-												cols="30" rows="4" placeholder="input crew info"></textarea>
+												cols="30" rows="4" placeholder="크루를 소개하세요 (예: 수서 탄천을 매주 같이 달려요!)"></textarea>
 										</div>
 									</div>
 									<div class="col-md-9">
 										<div class="form-group">
 											<label class="label" for="crewLocation">crew location</label> <input
 												type="text" class="form-control" name="crewLocation"
-												id="crewLocation" placeholder="input crew location">
+												id="crewLocation" placeholder="지도에서 집결 위치를 클릭해주세요" readonly="readonly">
 											
 											
 										</div>
@@ -71,33 +78,30 @@
 								</div>
 							</form>
 							<%-- 맵도 찍어서 넣기 --%>
-											<div id="input-location-area" >
-												<div class="col-md-6" style="display: inline-flex;">
-													<div class="form-group" >
-														<input type="text" class="form-control" style="width: auto;" name="locationKeyword"
-															id="search-keyword" placeholder="지도에서 확인할 지역명">
-													</div>
-													
-													<div class="form-group" style="margin-left: 1rem;">
-														<input id="search-keyword-btn" type="submit" value="위치보기" class="btn btn-warning">
-														<div class="submitting"></div>
-													</div>
-												</div>
-												<div class="col-md-3">
-												</div>
-											
-												<!-- <div class="form-group" style="margin-bottom: -1rem !important;">
-													<input id="locationKeyword" name="locationKeyword" type="text" class="form-control" placeholder="지역명을 입력하세요">
-													
-													<span id="crewFindBtn" class="icon fa fa-search" style="float:right;"></span>
-												</div> -->
-											
-											</div>
-											
-											<div class="col-md-8">
-												<!-- 지도에는 전체 크루 리스트가 마커로 표시 -->
-												<div id="map1" style="width:100%;height:400px;"></div>
-											</div>
+							<div id="input-location-area" >
+								<div class="col-md-6" style="display: inline-flex; align-items: center;">
+									<div class="form-group" >
+										<input type="text" class="form-control" style="width: auto;" name="locationKeyword"
+											id="search-keyword" placeholder="지도에서 확인할 지역">
+									</div>
+									
+									<div class="form-group" style="margin-left: 1rem;">
+										<input id="search-keyword-btn" type="submit" value="지도 이동" class="btn btn-warning">
+										<div class="submitting"></div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-8">
+								<!-- 지도에는 전체 크루 리스트가 마커로 표시 -->
+<!-- 												<div id="map1" style="width:100%;height:400px;"></div> -->
+								<div id="map1" style="width:100%; height:400px; position:relative; overflow:hidden;"></div>
+							    <div class="hAddr">
+							        <span class="title">지도중심기준 행정동 주소정보</span>
+							        <span id="centerAddr"></span>
+							    </div>
+							</div>
+							
 						</div>
 					</div>
 				</div>
