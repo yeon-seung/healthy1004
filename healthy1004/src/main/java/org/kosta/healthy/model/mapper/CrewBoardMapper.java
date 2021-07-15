@@ -5,12 +5,14 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.kosta.healthy.model.vo.CrewBoardVO;
 import org.kosta.healthy.model.vo.CrewVO;
+import org.kosta.healthy.utils.PagingVO;
 
 @Mapper
 public interface CrewBoardMapper {
-	List<CrewBoardVO> findCrewBoardListByCrewId(String crewId);
+	
+	int countCrewBoard(String crewId);
 
-	List<CrewBoardVO> findCrewBoardListByCrewIdTest(String crewId);
+	List<CrewBoardVO> findCrewBoardListPagingByCrewId(PagingVO pagingvo,String crewId);
 
 	CrewBoardVO findCrewBoardByCrewBoardId(String crewBoardId);
 

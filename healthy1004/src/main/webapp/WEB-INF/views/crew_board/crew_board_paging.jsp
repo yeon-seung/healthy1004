@@ -32,7 +32,7 @@
 			</div>
 		</div>
 		<div class="row d-flex">
-			<c:forEach items="${ crewBoardList }" var="list" varStatus="status">
+			<c:forEach items="${ crewBoardListPaging }" var="list" varStatus="status">
 				<div class="col-lg-4 ftco-animate">
 					<div class="blog-entry shadow">
 						<a
@@ -59,20 +59,29 @@
 				</div>
 			</c:forEach>
 		</div>
-		<div class="row mt-5">
-			<div class="col text-center">
-				<div class="block-27">
-					<ul>
-						<li><a href="#">&lt;</a></li>
-						<li class="active"><span>1</span></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#">&gt;</a></li>
-					</ul>
+	<div class="row mt-5">
+				<div class="col text-center">
+					<div class="block-27">	
+						<ul>
+							<c:if test="${paging.startPage !=1 }">
+								<li><a href="/crew_board_paging?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}&crewId=${crewId}">&lt;&lt;</a></li>
+							</c:if>
+							<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+								<c:choose>
+									<c:when test="${p == paging.nowPage }">
+										<li class="active"><span>${p }</span></li>
+									</c:when>
+									<c:when test="${p != paging.nowPage }">
+										<li><a href="/crew_board_paging?nowPage=${p }&cntPerPage=${paging.cntPerPage}&crewId=${crewId}">${p }</a><li>
+									</c:when>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${paging.endPage != paging.lastPage}">
+								<li><a href="/crew_board_paging?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}&crewId=${crewId}">&gt;&gt;</a></li>
+							</c:if>
+						</ul>
+					</div>
 				</div>
 			</div>
-		</div>
 	</div>
 </section>

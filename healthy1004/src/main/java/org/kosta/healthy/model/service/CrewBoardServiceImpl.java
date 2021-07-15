@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.kosta.healthy.model.mapper.CrewBoardMapper;
 import org.kosta.healthy.model.vo.CrewBoardVO;
 import org.kosta.healthy.model.vo.CrewVO;
+import org.kosta.healthy.utils.PagingVO;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,15 +15,17 @@ public class CrewBoardServiceImpl implements CrewBoardService {
 	@Resource
 	private CrewBoardMapper crewBoardMapper;
 
+	//크루 보드 페이징
 	@Override
-	public List<CrewBoardVO> findCrewBoardListByCrewId(String crewId) {
-		return crewBoardMapper.findCrewBoardListByCrewId(crewId);
+	public int countCrewBoard(String crewId) {
+		return crewBoardMapper.countCrewBoard(crewId);
 	}
 
 	@Override
-	public List<CrewBoardVO> findCrewBoardListByCrewIdTest(String crewId) {
-		return crewBoardMapper.findCrewBoardListByCrewIdTest(crewId);
+	public List<CrewBoardVO> findCrewBoardListPagingByCrewId(PagingVO pagingvo, String crewId) {
+		return crewBoardMapper.findCrewBoardListPagingByCrewId(pagingvo, crewId);
 	}
+
 
 	@Override
 	public CrewBoardVO findCrewBoardByCrewBoardId(String crewBoardId) {
