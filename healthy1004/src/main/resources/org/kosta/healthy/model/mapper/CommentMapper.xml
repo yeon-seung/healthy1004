@@ -11,11 +11,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			from board_comment
 		</select>
 		
-		<select id="findCommentListByBoardId" parameterType="String" resultType="CommentVO">
+		<select id="findCommentListByBoardId" parameterType="string" resultType="CommentVO">
 			select * 
 			from board_comment
 			where board_id=#{value}
 		</select>
+		
+		<insert id="insertComment" parameterType="CommentVO">
+		<selectKey keyProperty="boardId" resultType="string" order="BEFORE">
+			select board_seq.nextval from dual
+ 		</selectKey>
+			insert into board_comment
+			values(#{commentId}, #{commentContent}, #{memberId}, #{crewId}, #{boardId}, sysdate)
+		</insert>
 	
 </mapper>
  

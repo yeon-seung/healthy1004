@@ -5,14 +5,14 @@ public class CommentVO {
 	private String commentContent;
 	private String memberId;
 	private String crewId;
-	private int boardId;
+	private String boardId;
 	private String regDate;
 	
 	public CommentVO() {
 		super();
 	}
 
-	public CommentVO(String commentId, String commentContent, String memberId, String crewId, int boardId,
+	public CommentVO(String commentId, String commentContent, String memberId, String crewId, String boardId,
 			String regDate) {
 		super();
 		this.commentId = commentId;
@@ -55,11 +55,11 @@ public class CommentVO {
 		this.crewId = crewId;
 	}
 
-	public int getBoardId() {
+	public String getBoardId() {
 		return boardId;
 	}
 
-	public void setBoardId(int boardId) {
+	public void setBoardId(String boardId) {
 		this.boardId = boardId;
 	}
 

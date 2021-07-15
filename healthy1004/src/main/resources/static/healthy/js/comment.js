@@ -1,6 +1,9 @@
 $(document).ready(function() {
-		// 로딩시 모든 크루 위치 마커 표시
-		$.ajax({
+	commentList();
+	});//$(document).ready(function() {
+		
+function commentList(){
+	$.ajax({
 				type: "get",
 				url: "/findCommentListByBoardId?boardId="+$("#boardId").val(),
 				dataType: "JSON",
@@ -15,4 +18,19 @@ $(document).ready(function() {
 					}
 				}//success :function
 			})//$.ajax
-	});
+} // commentList()
+
+function commentInsert(insertData){
+	$.ajax({
+        url : '/insertComment',
+        type : 'post',
+        data : insertData,
+        success : function(data){
+            if(data == 1) {
+                commentList(); //댓글 작성 후 댓글 목록 reload
+                $('[name=content]').val('');
+            }
+        }
+    });
+
+}

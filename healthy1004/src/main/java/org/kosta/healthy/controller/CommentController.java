@@ -26,7 +26,7 @@ public class CommentController {
 	@Resource
 	private CommentService commentService;
 	
-	
+	//댓글 출력
 	@RequestMapping("/findCommentListByBoardId")
 	@ResponseBody
 	public List<CommentVO> findCommentListByBoardId(String boardId){
@@ -34,5 +34,22 @@ public class CommentController {
 		System.out.println("리스트가 나와?");
 		return list;
 	}
+	
+	//댓글 입력
+	@RequestMapping(value = "/insertComment")
+	@ResponseBody
+	public String insertComment(@RequestParam String boardId, @RequestParam String commentContent) {
+		
+		CommentVO commentVO = new CommentVO();
+		MemberVO mvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		commentVO.setBoardId(boardId);
+		commentVO.setCommentContent(commentContent);
+		commentVO.setMemberId(mvo.getMemberId());
+		
+		return CommentService.insertComment(commentVO);
+		
+	}
+	
 	
 }

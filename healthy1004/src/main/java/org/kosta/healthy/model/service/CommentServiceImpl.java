@@ -19,4 +19,10 @@ public class CommentServiceImpl implements CommentService {
 	public List<CommentVO> findCommentListByBoardId(String boardId) {
 		return commentMapper.findCommentListByBoardId(boardId);
 	}
+
+	@Override
+	public String insertComment(CommentVO commentVO) {
+		return commentMapper.insertComment(commentVO);
+	}
+	
 }
