@@ -43,14 +43,21 @@
 
 					<li class="nav-item active " id="home"><a href="#"
 						class="nav-link">Home</a></li>
+					<sec:authorize access="hasRole('ROLE_MEMBER') and !hasRole('ROLE_ADMIN')">
 					<li class="nav-item active" id="crewfind"><a href="#"
 						class="nav-link">Find Crew</a></li>
+					</sec:authorize>
+					
+					<sec:authorize access="hasRole('ROLE_MEMBER') and !hasRole('ROLE_ADMIN')">
 					<li class="nav-item active" id="diary"><a href="#"
 						class="nav-link">Diary</a></li>
+					</sec:authorize>
+					
 					<sec:authorize access="hasRole('ROLE_MEMBER') and !hasRole('ROLE_ADMIN')">
 					<li class="nav-item active" id="mypage"><a href="#"
 						class="nav-link">MyPage</a></li>
 					</sec:authorize>
+					
 					<li class="nav-item active" id="admin"><sec:authorize access="hasRole('ROLE_ADMIN')">
 						<a href="#" class="nav-link">Admin Page</a>
 						</sec:authorize>
