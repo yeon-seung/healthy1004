@@ -10,16 +10,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from healthy_board
 	</sql>
 
-	<select id="findCrewBoardListByCrewId" parameterType="string"
-		resultType="CrewBoardVO">
-		<include refid="findCrewBoard"></include>
-		where crew_id=#{value}
+	<!--crew 총 개수 출력-->
+	<select id="countCrewBoard" resultType="int">
+		select count(*)
+		from healthy_board where crew_id=#{crewId}
 	</select>
 
-	<select id="findCrewBoardListByCrewIdTest"
-		parameterType="string" resultType="CrewBoardVO">
-		<include refid="findCrewBoard"></include>
-		where crew_id=1
+	<select id="findCrewBoardListPagingByCrewId" 
+		resultType="CrewBoardVO">
+		SELECT *  FROM (
+		SELECT ROWNUM RN, A.* 
+			FROM (
+					select *
+					from healthy_board where crew_id=#{crewId}
+					) A
+			)
+		WHERE RN BETWEEN ${pagingvo.start} AND ${pagingvo.end}		
 	</select>
 
 	<select id="findCrewBoardListByCrewIdAndMemberId"

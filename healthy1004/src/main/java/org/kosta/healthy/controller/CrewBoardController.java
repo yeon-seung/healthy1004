@@ -7,12 +7,14 @@ import javax.annotation.Resource;
 import org.kosta.healthy.model.service.CrewBoardService;
 import org.kosta.healthy.model.vo.CrewBoardVO;
 import org.kosta.healthy.model.vo.MemberVO;
+import org.kosta.healthy.utils.PagingVO;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -20,13 +22,28 @@ public class CrewBoardController {
 	@Resource
 	private CrewBoardService crewBoardService;
 	
-	@RequestMapping("crew_board")
-	public String findCrewBoardListByCrewId(String crewId, Model model) {
-		List<CrewBoardVO> crewBoardList = crewBoardService.findCrewBoardListByCrewId(crewId);
-		model.addAttribute("crewBoardList", crewBoardList);
-		model.addAttribute("crewId", crewId);
-		return "crew_board/crew_board.tiles";
-	}
+	//크루 보드 페이징
+		@RequestMapping("crew_board_paging")
+		public String findCrewBoardListPagingByCrewId(String crewId, PagingVO pagingvo, Model model
+				, @RequestParam(value="nowPage", required=false)String nowPage
+				, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+			
+				int total = crewBoardService.countCrewBoard(crewId);
+				if (nowPage == null && cntPerPage == null) {
+					nowPage = "1";
+					cntPerPage = "3";
+				} else if (nowPage == null) {
+					nowPage = "1";
+				} else if (cntPerPage == null) { 
+					cntPerPage = "3";
+				}
+				pagingvo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+				model.addAttribute("paging", pagingvo);
+				model.addAttribute("crewBoardListPaging", crewBoardService.findCrewBoardListPagingByCrewId(pagingvo,crewId));
+				model.addAttribute("crewId", crewId);
+				
+				return "crew_board/crew_board_paging.tiles";
+		}
 	
 	// 게시글 상세 보기
 	@Transactional

@@ -7,5 +7,5 @@
 <script type="text/javascript" charset="UTF-8">
 	var name = '${name}';
 	alert(name + " 크루가 삭제되었습니다.");
-	location.href = "${pageContext.request.contextPath}/admin/crewDeleteForm";
-</script>
+	location.href = "${pageContext.request.contextPath}/admin/crewDeleteFormPaging";
+</script>u

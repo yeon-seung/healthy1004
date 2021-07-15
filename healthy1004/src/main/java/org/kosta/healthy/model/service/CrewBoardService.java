@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.kosta.healthy.model.vo.CrewBoardVO;
 import org.kosta.healthy.model.vo.CrewVO;
+import org.kosta.healthy.utils.PagingVO;
 
 public interface CrewBoardService {
-	List<CrewBoardVO> findCrewBoardListByCrewId(String crewId);
+	
+	// 크루 보드 페이징 처리
+	int countCrewBoard(String crewId);
 
-	List<CrewBoardVO> findCrewBoardListByCrewIdTest(String crewId);
+	List<CrewBoardVO> findCrewBoardListPagingByCrewId(PagingVO vo,String crewId);
 
 	CrewBoardVO findCrewBoardByCrewBoardId(String crewBoardId);
 

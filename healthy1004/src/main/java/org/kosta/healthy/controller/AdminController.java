@@ -33,13 +33,26 @@ public class AdminController {
 	}
 
 	//관리자가 크루 삭제
-	@Secured("ROLE_ADMIN")
-	@RequestMapping("admin/crewDeleteForm")
-	public String crewDeleteForm(Model model) {
-		List<CrewVO> list = adminService.crewList();
-		model.addAttribute("list",list);
-		return "admin/crewDeleteForm.tiles";
-	}
+		@Secured("ROLE_ADMIN")
+		@RequestMapping("admin/crewDeleteFormPaging")
+		public String crewDeleteForm(PagingVO vo, Model model
+				, @RequestParam(value="nowPage", required=false)String nowPage
+				, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+			
+			int total = adminService.countCrew();
+			if (nowPage == null && cntPerPage == null) {
+				nowPage = "1";
+				cntPerPage = "5";
+			} else if (nowPage == null) {
+				nowPage = "1";
+			} else if (cntPerPage == null) { 
+				cntPerPage = "5";
+			}
+			vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			model.addAttribute("paging", vo);
+			model.addAttribute("listpaging", adminService.crewListPaging(vo));
+			return "admin/crewDeleteFormPaging.tiles";
+		}
 	
 	@Secured("ROLE_ADMIN")
 	@RequestMapping("admin/deleteCrew")

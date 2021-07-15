@@ -47,7 +47,7 @@
 							<div class="text p-4" text-align="center">
 								<h3>
 									<a
-										href="${pageContext.request.contextPath}/admin/crewDeleteForm"
+										href="${pageContext.request.contextPath}/admin/crewDeleteFormPaging"
 										style="color: purple; font-weight: bold !important;">크루 삭제하기</a>
 								</h3>
 							</div>

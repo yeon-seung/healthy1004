@@ -14,7 +14,9 @@ public interface AdminService {
 	
 	List<MemberVO> memberListPaging(PagingVO vo);
 	
-	List<CrewVO> crewList();
+	int countCrew();
+	
+	Object crewListPaging(PagingVO vo);
 	
 	void deleteCrew(CrewVO vo);
 }
