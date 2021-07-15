@@ -65,14 +65,16 @@ public class MemberController {
 		return "member/login_fail";
 	}
 
-	// @Secured("ROLE_MEMBER")
+	//member/**은 자유 접근 가능하므로, role_member를 줘서 가입자만 접근하게 한다.
+	//mbmer/**를 빼도 되지만 member관련이므로 살려둔다.
+	@Secured("ROLE_MEMBER")
 	@RequestMapping("member/updateForm")
 	public String updateForm() {
 		return "member/updateForm.tiles";
 	}
 
-	// @Secured("ROLE_MEMBER")
-	@RequestMapping("updateMemberAction")
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("member/updateMemberAction")
 	public String updateMemberAction(HttpServletRequest request, MemberVO memberVO) {
 		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		memberService.updateMember(memberVO);// service에서 변경될 비밀번호를 암호화한다
@@ -85,5 +87,20 @@ public class MemberController {
 		pvo.setPhone(memberVO.getPhone());
 		return "member/update_result.tiles";
 	}
+	
+	//회원탈퇴
+		@Secured("ROLE_MEMBER")
+		@RequestMapping("member/selfdelete")
+		public String selfdelete(String id, Model model) {
+			int result = memberService.selfdelete(id);
+			if(result>0) {
+				SecurityContextHolder.clearContext();
+				model.addAttribute("id",id);
+				return "member/selfdelete_result.tiles";
+			}
+			else {
+				return "member/selfdelete_fail";
+			}
+		}
 
 }

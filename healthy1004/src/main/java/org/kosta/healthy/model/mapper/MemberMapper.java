@@ -20,4 +20,6 @@ public interface MemberMapper {
 	
 	void registerRole(Authority authority);
 	
+	int selfdelete(String id);
+	
 }

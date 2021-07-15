@@ -58,4 +58,9 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("noob");
 		memberMapper.updateMember(vo);
 	}
+	
+	@Override
+	public int selfdelete(String id) {
+		return memberMapper.selfdelete(id);
+	}
 }

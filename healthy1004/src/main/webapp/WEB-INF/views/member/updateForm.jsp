@@ -56,7 +56,7 @@
 							<div class="contact-wrap w-100 p-md-5 p-4">
 								<h3 class="mb-4">UPDATE INFO</h3>
 								<form method="POST" name="contactForm"
-									class="contactForm" action="${pageContext.request.contextPath}/updateMemberAction"
+									class="contactForm" action="${pageContext.request.contextPath}/member/updateMemberAction"
 									id="regForm">
 									<div class="row">
 									<sec:csrfInput/>
