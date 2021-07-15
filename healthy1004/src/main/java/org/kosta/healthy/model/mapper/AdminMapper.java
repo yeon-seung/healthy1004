@@ -17,7 +17,9 @@ public interface AdminMapper {
 	
 	List<MemberVO> memberListPaging(PagingVO vo);
 	
-	List<CrewVO> crewList();
+	int countCrew();
+
+	List<CrewVO> crewListPaging(PagingVO vo);
 	
 	void deleteCrew(CrewVO vo);
 }

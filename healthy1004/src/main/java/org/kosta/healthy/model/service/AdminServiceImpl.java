@@ -37,9 +37,16 @@ public class AdminServiceImpl implements AdminService {
 			List<MemberVO> list =  adminMapper.memberListPaging(vo);
 			return list;
 		}
+		
 		@Override
-		public List<CrewVO> crewList() {
-			return adminMapper.crewList();
+		public int countCrew() {
+			int count= adminMapper.countCrew();
+			return count;
+		}
+
+		@Override
+		public List<CrewVO> crewListPaging(PagingVO vo) {
+			return adminMapper.crewListPaging(vo);
 		}
 
 		@Override

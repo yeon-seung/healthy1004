@@ -53,7 +53,7 @@
 							<td>인원</td>
 							<td>위치</td>
 						</tr>
-						<c:forEach items="${list}" var="list">
+						<c:forEach items="${listpaging}" var="list">
 							<tr>
 								<td><c:out value="${list.crewId}" /></td>
 								<td><a
@@ -66,6 +66,31 @@
 						</c:forEach>
 					</table>
 				</form>
+				
+				<div class="row mt-5">
+				<div class="col text-center">
+					<div class="block-27">	
+						<ul>
+							<c:if test="${paging.startPage !=1 }">
+								<li><a href="/admin/crewDeleteFormPaging?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;&lt;</a></li>
+							</c:if>
+							<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+								<c:choose>
+									<c:when test="${p == paging.nowPage }">
+										<li class="active"><span>${p }</span></li>
+									</c:when>
+									<c:when test="${p != paging.nowPage }">
+										<li><a href="/admin/crewDeleteFormPaging?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a><li>
+									</c:when>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${paging.endPage != paging.lastPage}">
+								<li><a href="/admin/crewDeleteFormPaging?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;&gt;</a></li>
+							</c:if>
+						</ul>
+					</div>
+				</div>
+			</div>
 			</div>
 		</div>
 	</section>
