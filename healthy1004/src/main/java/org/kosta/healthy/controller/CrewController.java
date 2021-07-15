@@ -91,6 +91,7 @@ public class CrewController {
 		hashMap.put("crewId", cvo.getCrewId());
 		hashMap.put("memberId", pvo.getMemberId());
 		crewService.joinCrew(hashMap);
+		crewService.addCrewMember(cvo.getCrewId());
 		return "crew_board/createCrewResult";
 	}
 

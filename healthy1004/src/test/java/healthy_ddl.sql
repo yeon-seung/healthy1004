@@ -22,6 +22,8 @@ create table healthy_member (
 
 --crew table 삭제
 drop table healthy_crew;
+delete from healthy_crew;
+
 --crew table 생성
 create table healthy_crew (
    crew_id number primary key,
@@ -39,7 +41,7 @@ create sequence crew_seq;
 
 --   CREW_MEMBER
 --crew_member table 삭제
-drop table healthy_crew_member;
+drop table healthy_crew_member;\
 
 --crew_member table 생성
 create table healthy_crew_member (
