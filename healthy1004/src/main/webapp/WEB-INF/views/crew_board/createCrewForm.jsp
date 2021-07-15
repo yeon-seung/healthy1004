@@ -71,18 +71,19 @@
 								</div>
 							</form>
 							<%-- 맵도 찍어서 넣기 --%>
-											<div id="input-location-area" style="display: inline-flex;">
-												<div class="col-md-12">
-													<div class="form-group" style="float: left;">
-														<input type="text" class="form-control" name="locationKeyword"
-															id="locationKeyword" placeholder="지도에서 확인할 지역명을 입력하세요">
+											<div id="input-location-area" >
+												<div class="col-md-6" style="display: inline-flex;">
+													<div class="form-group" >
+														<input type="text" class="form-control" style="width: auto;" name="locationKeyword"
+															id="search-keyword" placeholder="지도에서 확인할 지역명">
 													</div>
-												</div>
-												<div class="col-md-3" align="right" style="float: right;">
-													<div class="form-group">
-														<input type="submit" value="위치보기" class="btn btn-warning">
+													
+													<div class="form-group" style="margin-left: 1rem;">
+														<input id="search-keyword-btn" type="submit" value="위치보기" class="btn btn-warning">
 														<div class="submitting"></div>
 													</div>
+												</div>
+												<div class="col-md-3">
 												</div>
 											
 												<!-- <div class="form-group" style="margin-bottom: -1rem !important;">
@@ -92,8 +93,11 @@
 												</div> -->
 											
 											</div>
-											<!-- 지도에는 전체 크루 리스트가 마커로 표시 -->
-											<div id="map1" style="width:100%;height:350px;"></div>
+											
+											<div class="col-md-8">
+												<!-- 지도에는 전체 크루 리스트가 마커로 표시 -->
+												<div id="map1" style="width:100%;height:400px;"></div>
+											</div>
 						</div>
 					</div>
 				</div>
