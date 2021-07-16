@@ -6,8 +6,10 @@ import javax.annotation.Resource;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+import org.kosta.healthy.model.mapper.CrewMapper;
 import org.kosta.healthy.model.mapper.MemberMapper;
 import org.kosta.healthy.model.vo.Authority;
+import org.kosta.healthy.model.vo.CrewVO;
 import org.kosta.healthy.model.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -20,6 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberServiceImpl implements MemberService {
 	@Resource
 	private MemberMapper memberMapper;
+	@Resource
+	private CrewMapper crewMapper;
 	
 	@Resource
 	private BCryptPasswordEncoder passwordEncoder;
@@ -66,6 +70,10 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public int selfdelete(String id) {
+		List<CrewVO> list = crewMapper.getMyCrewList(id);
+		for (int i = 0; i < list.size(); i++) {
+			crewMapper.removeCrewMember(list.get(i).getCrewId());
+		}
 		return memberMapper.selfdelete(id);
 	}
 
