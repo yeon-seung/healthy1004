@@ -23,9 +23,8 @@ var keyword1 = "";
 
 $(document).ready(function() {
 	
-	$("#search-keyword-btn").click(function() {
+	$("#search-keyword-btn").click(function relocateMap() {
 				let locKeyword = $("#search-keyword").val();
-//				alert(locKeyword);
 				ps1.keywordSearch(locKeyword, placesSearchCB); 
 				function placesSearchCB (data, status, pagination) {
 				    if (status === kakao.maps.services.Status.OK) {
@@ -43,6 +42,14 @@ $(document).ready(function() {
 				        map1.setBounds(bounds);
 				    } 
 				}
+	});
+	
+	// Enter key로도 검색 가능하도록 추가
+	$('#search-keyword').keypress(function(event){
+   		 if ( event.which == 13 ) {
+	         $("#search-keyword-btn").click();
+	         return false;
+	     }
 	});
 	
 	// 주소-좌표 변환 객체를 생성합니다
@@ -111,4 +118,3 @@ $(document).ready(function() {
 	    }    
 	}
 });
-

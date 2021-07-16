@@ -154,7 +154,9 @@ $(document).ready(function() {
 			});		
 		
 		// 검색어로 크루 찾기
-		$("#crewFindBtn").click(function() {
+		$("#crewFindBtn").click(function() {	
+//		$("#crewFindForm").addEventListener('submit', (function() {	
+//		    e.preventDefault();
 			$("#crewFindResult").text("");
 			let keyword = $("#crewFindKeyword").val();
 			
@@ -235,6 +237,14 @@ $(document).ready(function() {
 					
 				}
 			});
+		});
+		
+		// Enter key로도 검색 가능하도록 추가
+		$('#crewFindKeyword').keypress(function(event){
+	   		 if ( event.which == 13 ) {
+		         $('#crewFindBtn').click();
+		         return false;
+		     }
 		});
 		
 		// 크루 생성할지 confirm

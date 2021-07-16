@@ -96,7 +96,7 @@
 												readonly="readonly">
 										</div>
 
-										<div class="form-group" align="right" style="margin-right: -12rem; margin-top: 2rem;">
+										<div class="form-group" align="right" style="margin-right: -12rem; margin-top: 2.5rem; margin-bottom: -0.25rem;">
 											<input type="submit" style="width: 10rem;" value="크루 생성하기" class="btn btn-primary">
 											<div class="submitting"></div>
 										</div>
@@ -119,8 +119,8 @@
 								<div id="input-location-area">
 									<div style="display: inline-flex; align-items: center; margin-top: 1.15rem;">
 										<div class="form-group" style="width: 18rem;">
-											<input type="text" class="form-control" style="width: 100%;"
-												name="locationKeyword" id="search-keyword"
+											<input id="search-keyword" type="text" class="form-control" style="width: 100%;"
+												name="locationKeyword" 
 												placeholder="지도에서 확인할 지역을 입력하세요">
 										</div>
 
