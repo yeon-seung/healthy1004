@@ -1,5 +1,6 @@
 package org.kosta.healthy.model.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberServiceImpl implements MemberService {
 	@Resource
 	private MemberMapper memberMapper;
+	@Resource
 	private CrewMapper crewMapper;
 	
 	@Resource
@@ -61,6 +63,10 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public int selfdelete(String id) {
+		List<CrewVO> list = crewMapper.getMyCrewList(id);
+		for (int i = 0; i < list.size(); i++) {
+			crewMapper.removeCrewMember(list.get(i).getCrewId());
+		}
 		return memberMapper.selfdelete(id);
 	}
 }

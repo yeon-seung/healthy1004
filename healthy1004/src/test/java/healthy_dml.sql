@@ -12,10 +12,7 @@ where member_id='spring';
 select * from healthy_member;
 commit
 
-
--- CREW &   CREW_MEMBER
-
-
+-- CREW & CREW_MEMBER
 insert into healthy_crew_member values('java','a','2021-06-28');
 
 --crew_member table 전체 검색
