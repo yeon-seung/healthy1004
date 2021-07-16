@@ -9,6 +9,6 @@ public interface CommentService {
 
 	List<CommentVO> findCommentListByBoardId(String boardId);
 	
-	String insertComment(CommentVO commentVO);
+	void insertComment(CommentVO commentVO);
 	
 }

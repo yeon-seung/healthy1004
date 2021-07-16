@@ -83,15 +83,19 @@
 			</div>
 				
 				<!-- 댓글 입력 -->>
-				<form action="#" class="comment-form">
-							<div class="form-group" style="margin-bottom: -1rem;">
-								<input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요.">
+				<div class= "container">
+				<label for ="content">comment</label>
+					<form name="commentInsertForm" id="commentInsertForm">
+							<div class="input-group">
+								<input type="hidden" name="boardId" id="boardId" value="${crewBoard.boardId}">	
+								<input type="hidden" name="crewId" value="${crewBoard.crewId}">
+								<input type="text" class="form-control" id="commentContent" name="commentContent" placeholder="내용을 입력하세요.">
 								<span class="input-group-btn">
-                    				<button class="btn btn-default" type="button" name="commentInsertBtn">등록</button>
+                    				<button class="btn btn-default" type="button" name="commentInsertBtn" id="commentInsertBtn">등록</button>
              					</span>
-	
 							</div>
-						</form>
+					</form>
+				</div>
 			
 				<!-- 댓글 리스트 -->
 				<input type="hidden" name="boardId" id="boardId" value="${crewBoard.boardId}">	

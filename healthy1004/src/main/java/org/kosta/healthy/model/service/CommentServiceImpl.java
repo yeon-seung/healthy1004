@@ -21,8 +21,8 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public String insertComment(CommentVO commentVO) {
-		return commentMapper.insertComment(commentVO);
+	public void insertComment(CommentVO commentVO) {
+		commentMapper.insertComment(commentVO);
 	}
 	
 }

@@ -15,5 +15,5 @@ public interface CommentMapper {
 	List<CommentVO> findCommentListByBoardId(String boardId);
 	
 	//댓글 삽입
-	String insertComment(CommentVO commentVO);
+	void insertComment(CommentVO commentVO);
 }
