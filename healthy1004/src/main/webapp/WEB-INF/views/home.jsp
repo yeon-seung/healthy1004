@@ -69,6 +69,10 @@
 								href="${pageContext.request.contextPath}/member/registerForm">Sign
 								Up</a>
 						</p>
+						<p class="text-center"> <a
+								href="${pageContext.request.contextPath}/member/findPasswordForm">
+							forgot password?</a>
+						</p>
 					</div>
 				</sec:authorize>
 			</div>

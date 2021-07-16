@@ -43,6 +43,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set enabled=0
 		where member_id=#{memberId}
 	</update>
+
+	<select id="checkAccount" parameterType="string" resultType="int">
+		select count(*)
+		from healthy_member
+		where member_id=#{memberId} and email=#{email}
+	</select>
+	
+	<update id="updateMemberPassword" parameterType="string">
+		update healthy_member
+		set password=#{password}
+		where member_id=#{memberId}
+	</update>
+	
 </mapper>
 
 

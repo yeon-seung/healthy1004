@@ -1,15 +1,10 @@
 package org.kosta.healthy.controller;
 
-import java.util.List;
-import java.util.Random;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.kosta.healthy.model.service.MemberService;
 import org.kosta.healthy.model.vo.MemberVO;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -33,7 +28,7 @@ public class MemberController {
 			return "member/findMemberById_fail";
 		else {
 			model.addAttribute("memberVO", vo);
-			return "member/findMemberById_ok";	
+			return "member/findMemberById_ok";
 		}
 	}
 
@@ -65,8 +60,8 @@ public class MemberController {
 		return "member/login_fail";
 	}
 
-	//member/**은 자유 접근 가능하므로, role_member를 줘서 가입자만 접근하게 한다.
-	//mbmer/**를 빼도 되지만 member관련이므로 살려둔다.
+	// member/**은 자유 접근 가능하므로, role_member를 줘서 가입자만 접근하게 한다.
+	// mbmer/**를 빼도 되지만 member관련이므로 살려둔다.
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("member/updateForm")
 	public String updateForm() {
@@ -87,20 +82,37 @@ public class MemberController {
 		pvo.setPhone(memberVO.getPhone());
 		return "member/update_result.tiles";
 	}
-	
-	//회원탈퇴
-		@Secured("ROLE_MEMBER")
-		@RequestMapping("member/selfdelete")
-		public String selfdelete(String id, Model model) {
-			int result = memberService.selfdelete(id);
-			if(result>0) {
-				SecurityContextHolder.clearContext();
-				model.addAttribute("id",id);
-				return "member/selfdelete_result.tiles";
-			}
-			else {
-				return "member/selfdelete_fail";
-			}
+
+	// 회원탈퇴
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("member/selfdelete")
+	public String selfdelete(String id, Model model) {
+		int result = memberService.selfdelete(id);
+		if (result > 0) {
+			SecurityContextHolder.clearContext();
+			model.addAttribute("id", id);
+			return "member/selfdelete_result.tiles";
+		} else {
+			return "member/selfdelete_fail";
 		}
+	}
+
+	// 비밀번호를 찾기 위한 기능들. . .
+	@RequestMapping("member/findPasswordForm")
+	public String findPasswordForm() {
+		return "member/find-password-form.tiles";
+	}
+
+	@RequestMapping("member/checkAccount") // -> url 접근은??
+	@ResponseBody
+	public int checkAccount(String memberId, String email) {
+		return memberService.checkAccount(memberId, email);
+	}
+
+	@PostMapping("member/changeTempPasswordAndSendMail")
+	@ResponseBody
+	public void changeTempPasswordAndSendMail(String memberId, String email) {
+		memberService.changeTempPasswordAndSendMail(memberId, email);
+	}
 
 }
