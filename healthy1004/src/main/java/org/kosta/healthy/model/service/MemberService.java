@@ -18,4 +18,10 @@ public interface MemberService {
 	void updateMember(MemberVO vo);
 	
 	int selfdelete(String id);
+
+	int checkAccount(String memberId, String email);
+
+	void changeTempPasswordAndSendMail(String memberId, String email);
+
+	void updateMemberPassword(String memberId, String password);
 }

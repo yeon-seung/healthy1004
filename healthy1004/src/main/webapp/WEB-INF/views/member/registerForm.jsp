@@ -66,6 +66,8 @@
 										alert("메일 인증이 완료되지 않았습니다.");
 										return false;
 									}
+									$("#email").val($("#email").val() + "@" + $(".domain").val());	
+									alert($("#email").val());
 								});
 						$("#regForm :input[name=memberId]")
 								.keyup(
@@ -145,7 +147,7 @@
 																key = data.key;
 															}
 														});
-												alert("인증번호가 전송되었습니다.이메일을 확인해주세요.");
+												alert("인증번호가 전송되었습니다. 이메일을 확인해주세요.");
 												$(".compare").css("display",
 														"inline");
 												$(".compare-text").css(
