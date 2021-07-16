@@ -78,7 +78,7 @@ public class CrewBoardController {
 	@PostMapping("deleteCrewBoardPost")
 	public RedirectView deleteCrewBoardPost(String boardId, String crewId, Model model) {
 		crewBoardService.deleteCrewBoardPost(boardId);
-		return new RedirectView("crew_board?crewId="+crewId);
+		return new RedirectView("crew_board_paging?crewId="+crewId);
 	}
 	
 	// 게시글 수정 폼으로 이동

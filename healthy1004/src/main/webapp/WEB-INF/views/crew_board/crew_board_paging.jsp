@@ -24,40 +24,57 @@
 
 <section class="ftco-section bg-light">
 	<div class="container">
-		<div class="row">
-			<div class="col-12 m-4 ">
-				<input id="postCrewBoardBtn" type="button"
-					class="btn float-right bg-primary text-white" value="글쓰기"
-					onclick="clickPostCrewBoardBtn()">
-			</div>
-		</div>
-		<div class="row d-flex">
-			<c:forEach items="${ crewBoardListPaging }" var="list" varStatus="status">
-				<div class="col-lg-4 ftco-animate">
-					<div class="blog-entry shadow">
-						<a
-							href="${pageContext.request.contextPath}/crew_board_detail?crewBoardId=${ list.boardId }"
-							class="block-20"
-							style="background-image: url('${pageContext.request.contextPath}/healthy/images/snow.jpg'); ">
-						</a>
-						<div class="text d-block">
-							<div class="meta">
-								<p>
-									<a href="${pageContext.request.contextPath}/crew_board_detail?crewBoardId=${ list.boardId }"><span
-										class="fa fa-user mr-2"></span>${ list.memberId }</a><br>
-									<a href="#"><span class="fa fa-calendar mr-2"></span>${ list.boardTime }
-										&nbsp; &nbsp;</a>
-								</p>
-							</div><hr>
-							<h5 class="heading">
-								<a
-									href="${pageContext.request.contextPath}/crew_board_detail?crewBoardId=${ list.boardId }">${ list.boardTitle }</a>
-							</h5>
 
-						</div>
+		<c:choose>
+			<c:when test="${empty crewBoardListPaging}">
+				<div class="col-md-9 ftco-animate pb-5 text-center">
+					<div style="margin-right: -17rem !important;">
+						<h3 class="mb-0 bread">아직 크루 게시물이 존재하지 않습니다.<br>첫 게시물을 작성해보세요.</h3>
+						<input id="postCrewBoardBtn" type="button" style="margin: 2rem;"
+									class="btn float-center bg-primary text-white" value="글쓰기"
+									onclick="clickPostCrewBoardBtn()">
 					</div>
 				</div>
-			</c:forEach>
+			</c:when>
+			<c:otherwise>
+					<div class="row">
+						<div class="col-12 m-4 ">
+							<input id="postCrewBoardBtn" type="button"
+								class="btn float-right bg-primary text-white" value="글쓰기"
+								onclick="clickPostCrewBoardBtn()">
+						</div>
+					</div>
+					<div class="row d-flex">
+				<c:forEach items="${ crewBoardListPaging }" var="list" varStatus="status">
+					<div class="col-lg-4 ftco-animate">
+						<div class="blog-entry shadow">
+							<a
+								href="${pageContext.request.contextPath}/crew_board_detail?crewBoardId=${ list.boardId }"
+								class="block-20"
+								style="background-image: url('${pageContext.request.contextPath}/healthy/images/snow.jpg'); ">
+							</a>
+							<div class="text d-block">
+								<div class="meta">
+									<p>
+										<a href="${pageContext.request.contextPath}/crew_board_detail?crewBoardId=${ list.boardId }"><span
+											class="fa fa-user mr-2"></span>${ list.memberId }</a><br>
+										<a href="#"><span class="fa fa-calendar mr-2"></span>${ list.boardTime }
+											&nbsp; &nbsp;</a>
+									</p>
+								</div><hr>
+								<h5 class="heading">
+									<a
+										href="${pageContext.request.contextPath}/crew_board_detail?crewBoardId=${ list.boardId }">${ list.boardTitle }</a>
+								</h5>
+	
+							</div>
+						</div>
+						
+					</div>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+			
 		</div>
 	<div class="row mt-5">
 				<div class="col text-center">
