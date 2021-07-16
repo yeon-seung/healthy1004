@@ -34,7 +34,6 @@ function commentInsert(insertData){
         data : insertData,
         success : function(data){
             if(data == "success") {
-				alert(commentList);
                 commentList(); //댓글 작성 후 댓글 목록 reload
                 $('[name=commentContent]').val('');
             }
