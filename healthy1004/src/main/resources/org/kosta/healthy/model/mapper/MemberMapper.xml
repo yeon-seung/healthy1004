@@ -44,6 +44,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from healthy_member h, authorities a
 		where h.member_id=a.username and enabled=1 and a.authority='ROLE_MEMBER'
 	</select>
+	
+	<select id="checkAccount" parameterType="string" resultType="int">
+		select count(*)
+		from healthy_member
+		where member_id=#{memberId} and email=#{email}
+	</select>
+	
+	<update id="updateMemberPassword" parameterType="string">
+		update healthy_member
+		set password=#{password}
+		where member_id=#{memberId}
+	</update>
+	
 </mapper>
 
 

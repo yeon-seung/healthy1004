@@ -1,15 +1,12 @@
 package org.kosta.healthy.controller;
 
 import java.util.List;
-import java.util.Random;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.kosta.healthy.model.service.MemberService;
 import org.kosta.healthy.model.vo.MemberVO;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -102,5 +99,24 @@ public class MemberController {
 		model.addAttribute("name",name);
 		return "member/delete_result.tiles";
 	}
+	
+	// 비밀번호를 찾기 위한 기능들. . .
+	@RequestMapping("member/findPasswordForm")
+	public String findPasswordForm() {
+		return "member/find-password-form.tiles";
+	}
+	
+	@RequestMapping("member/checkAccount")	// -> url 접근은??
+	@ResponseBody
+	public int checkAccount(String memberId, String email) {
+		return memberService.checkAccount(memberId, email);
+	}
+	
+	@PostMapping("member/changeTempPasswordAndSendMail")
+	@ResponseBody
+	public void changeTempPasswordAndSendMail(String memberId, String email) {
+		memberService.changeTempPasswordAndSendMail(memberId, email);
+	}
+	
 
 }

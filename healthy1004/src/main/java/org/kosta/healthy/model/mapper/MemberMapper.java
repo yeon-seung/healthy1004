@@ -3,6 +3,7 @@ package org.kosta.healthy.model.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.kosta.healthy.model.vo.Authority;
 import org.kosta.healthy.model.vo.MemberVO;
 @Mapper
@@ -23,4 +24,8 @@ public interface MemberMapper {
 	List<MemberVO> memberList();
 	
 	void deleteMember(MemberVO vo);
+
+	int checkAccount(@Param("memberId") String memberId, @Param("email") String email);
+
+	void updateMemberPassword(@Param("memberId") String memberId, @Param("password") String password);
 }

@@ -20,4 +20,11 @@ public interface MemberService {
 	List<MemberVO> memberList();
 	
 	void deleteMember(MemberVO vo);
+
+	int checkAccount(String memberId, String email);
+
+	void changeTempPasswordAndSendMail(String memberId, String email);
+
+	void updateMemberPassword(String memberId, String password);
+
 }
