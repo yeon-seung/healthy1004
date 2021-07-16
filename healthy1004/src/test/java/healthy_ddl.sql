@@ -22,7 +22,6 @@ create table healthy_member (
 
 --crew table 삭제
 drop table healthy_crew;
-delete from healthy_crew;
 
 --crew table 생성
 create table healthy_crew (
