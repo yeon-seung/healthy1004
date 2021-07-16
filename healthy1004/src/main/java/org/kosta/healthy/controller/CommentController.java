@@ -31,7 +31,6 @@ public class CommentController {
 	@ResponseBody
 	public List<CommentVO> findCommentListByBoardId(String boardId){
 		List<CommentVO> list= commentService.findCommentListByBoardId(boardId);
-		System.out.println("리스트가 나와?");
 		return list;
 	}
 	
@@ -39,12 +38,9 @@ public class CommentController {
 	@RequestMapping(value = "/insertComment", method = RequestMethod.POST)
 	@ResponseBody
 	public void insertComment(CommentVO commentVO) {
-		System.out.println("하 댓글 입력 컨트롤러");
 		MemberVO mvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		commentVO.setMemberId(mvo.getMemberId());
-		
 		commentService.insertComment(commentVO);
-		
 	}
 	
 	
