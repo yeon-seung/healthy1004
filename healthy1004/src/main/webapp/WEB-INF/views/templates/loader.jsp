@@ -67,9 +67,15 @@
 	<!-- services와 clusterer, drawing 라이브러리 불러오기 -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=97115187be3f975968a24a96c9e00988&libraries=services,clusterer,drawing"></script>
 <script src="${pageContext.request.contextPath}/healthy/js/map.js"></script>
+
 <script	src="${pageContext.request.contextPath}/healthy/js/createCrewForm.js"></script>
-<script src="${pageContext.request.contextPath}/healthy/js/mypage.js"></script>
+
 <script src="${pageContext.request.contextPath}/healthy/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/healthy/js/mypage.js"></script>
+
 
 <%-- 비밀번호 찾기 --%>
 <script src="${pageContext.request.contextPath}/healthy/js/find-password.js"></script>
+
+<script src="${pageContext.request.contextPath}/healthy/js/comment.js"></script>
+
