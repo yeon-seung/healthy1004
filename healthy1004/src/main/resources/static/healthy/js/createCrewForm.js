@@ -1,6 +1,6 @@
 //alert("크루폼js");
 // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-var infowindow1 = new kakao.maps.InfoWindow({zIndex:1});
+var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
 var mapContainer = document.getElementById('map1'), // 지도를 표시할 div 
     mapOption = {
@@ -21,7 +21,94 @@ var locationInput = $("#crewLocation").val();
 var keyword1 = "";
 //ps1.keywordSearch(keyword1, placesSearchCB); 
 
+var positions1 = [];
+
+var scripts= document.getElementsByTagName('script');
+var path= scripts[scripts.length-1].src.split('?')[0];      // remove any ?query
+var mydir= path.split('/').slice(0, -1).join('/')+'/';  // remove last filename part of path
+
+// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+function makeOverListener(map1, marker, infowindow) {
+    return function() {
+		// 마커에 클릭이벤트를 등록합니다
+		kakao.maps.event.addListener(marker, 'click', function() {
+		      // 마커 위에 인포윈도우를 표시합니다
+		      infowindow.open(map1, marker);  
+		});
+    };
+}
+
 $(document).ready(function() {
+	// 로딩시 모든 크루 위치 마커 표시
+		$.ajax({
+				type: "post",
+//			    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				url: "/getAllCrewList",
+				dataType: "json",
+				data:"memberId=0",
+				success: function(list){
+					console.log(list);
+					for(let i=0; i<list.length; i++){
+						// 주소로 좌표 변환하는 코드
+						geocoder.addressSearch(list[i].crewLocation, function(result, status) {
+						    // 정상적으로 검색이 완료됐으면 
+						     if (status === kakao.maps.services.Status.OK) {
+						
+						        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+								positions1.push({
+									title: list[i].crewName,
+									latlng: coords
+								});
+
+								// 마커 이미지의 이미지 주소입니다
+								var imageSrc = mydir + "../images/marker.png"; 	
+								// 마커 이미지의 이미지 크기 입니다
+								var imageSize = new kakao.maps.Size(32, 45); 
+								// 마커 이미지를 생성합니다    
+								var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+
+							    var marker = new kakao.maps.Marker({
+						            map: map1,
+						            position: coords,
+									image: markerImage
+						        });
+
+								var iwRemoveable = false;
+								
+								 // 마커에 표시할 인포윈도우를 생성합니다 
+							    var infowindow = new kakao.maps.InfoWindow({
+							        content: list[i].crewName, // 인포윈도우에 표시할 내용
+									removable : iwRemoveable
+							    });
+			
+								
+							
+							    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+							    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
+							    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+			
+							    // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
+						        kakao.maps.event.addListener(marker, 'mouseover', function() {
+						            infowindow.open(map1, marker);
+						        });
+						
+						        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
+						        kakao.maps.event.addListener(marker, 'mouseout', function() {
+						            infowindow.close();
+						        });							
+							
+								// 리스트에서 크루명 클릭해도 인포윈도우를 표시하자~
+//							    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow)); 
+
+								// 받아온 크루 위치 리스트의 첫번째 좌표로 지도 이동
+//						        map.setCenter(positions1[0].latlng);
+								console.log(positions1[0]);
+						    } 
+						});    
+
+					}
+				}
+			});		
 	
 	$("#search-keyword-btn").click(function relocateMap() {
 				let locKeyword = $("#search-keyword").val();
@@ -56,7 +143,7 @@ $(document).ready(function() {
 	var geocoder = new kakao.maps.services.Geocoder();
 	
 	var marker = new kakao.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
-	    infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+		infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
 	
 	// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
 	searchAddrFromCoords(map1.getCenter(), displayCenterInfo);

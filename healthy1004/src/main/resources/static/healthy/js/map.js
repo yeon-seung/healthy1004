@@ -126,7 +126,7 @@ $(document).ready(function() {
 									image: markerImage
 						        });
 
-								var iwRemoveable = true;
+//								var iwRemoveable = true;
 								
 								 // 마커에 표시할 인포윈도우를 생성합니다 
 							    var infowindow = new kakao.maps.InfoWindow({
@@ -137,15 +137,25 @@ $(document).ready(function() {
 							    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
 							    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
 							    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-							    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-//							    map.setCenter(coords);
+//							    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+
+								// 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
+						        kakao.maps.event.addListener(marker, 'mouseover', function() {
+						            infowindow.open(map, marker);
+						        });
+						
+						        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
+						        kakao.maps.event.addListener(marker, 'mouseout', function() {
+						            infowindow.close();
+						        });
+
 
 								// 리스트에서 크루명 클릭해도 인포윈도우를 표시하자~
 //							    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow)); 
 
 								// 받아온 크루 위치 리스트의 첫번째 좌표로 지도 이동
 						        map.setCenter(positions[0].latlng);
-								console.log(positions[0]);
+//								console.log(positions[0]);
 						    } 
 						});    
 
@@ -215,21 +225,31 @@ $(document).ready(function() {
 //									var iwRemoveable = true;
 //									
 //									 // 마커에 표시할 인포윈도우를 생성합니다 
-//								    var infowindow = new kakao.maps.InfoWindow({
-//								        content: list[i].crewName, // 인포윈도우에 표시할 내용
-//										removable : iwRemoveable
-//								    });
+								    var infowindow = new kakao.maps.InfoWindow({
+								        content: list[i].crewName, // 인포윈도우에 표시할 내용
+										removable : iwRemoveable
+								    });
 								
 								    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
 								    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
 								    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-								    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+//								    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+	
+							        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
+							        kakao.maps.event.addListener(marker, 'mouseover', function() {
+							            infowindow.open(map, marker);
+							        });
+							
+							        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
+							        kakao.maps.event.addListener(marker, 'mouseout', function() {
+							            infowindow.close();
+							        });
 	
 							        map.setCenter(coords);
 									// 받아온 크루 위치 리스트의 첫번째 좌표로 지도 이동
 //						    	    map.setCenter(searchPositions[0].latlng);
 	
-									console.log(searchPositions[0]);
+//									console.log(searchPositions[0]);
 							    } 
 							});    
 
