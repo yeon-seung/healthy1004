@@ -5,6 +5,16 @@
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
+<script type="text/javascript">
+	function self_delete() {
+		if (confirm("정말 탈퇴하시겠습니까? 다시 한번 생각해보세요ㅠㅅㅠ") == true) {
+			return "/member/selfdelete_result";
+		} else {
+			return false;
+		}
+	}
+</script>
+
 <section class="hero-wrap hero-wrap-2"
 	style="background-image: url('${pageContext.request.contextPath}/healthy/images/bg_2.jpg');">
 	<div class="overlay"></div>
@@ -37,6 +47,13 @@
 					<h3 class="heading-sidebar">
 						<a href="${pageContext.request.contextPath}/member/updateForm"
 							style="color: black; !important">회원 정보 수정</a>
+					</h3>
+				</div>
+				
+				<div class="sidebar-box bg-white p-4 ftco-animate">
+					<h3 class="heading-sidebar">
+						<a href="${pageContext.request.contextPath}/member/selfdelete?id=<sec:authentication property="principal.memberId" />"
+							 onclick="return self_delete();" style="color: black; !important">회원 탈퇴</a>
 					</h3>
 				</div>
 			</div>

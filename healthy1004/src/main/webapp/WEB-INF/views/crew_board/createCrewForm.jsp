@@ -96,8 +96,8 @@
 												readonly="readonly">
 										</div>
 
-										<div class="form-group" align="right" style="postion: absolute; right: 1rem; margin-right: -39rem;">
-											<input type="submit" value="크루 생성하기" class="btn btn-primary">
+										<div class="form-group" align="right" style="margin-right: -12rem; margin-top: 2rem;">
+											<input type="submit" style="width: 10rem;" value="크루 생성하기" class="btn btn-primary">
 											<div class="submitting"></div>
 										</div>
 									</div>
@@ -131,12 +131,6 @@
 										</div>
 									</div>
 								</div>
-								
-								<!-- 							<div class="col-md-8"> -->
-								<!-- 지도에는 전체 크루 리스트가 마커로 표시 -->
-								<!-- 												<div id="map1" style="width:100%;height:400px;"></div> -->
-
-								<!-- 							</div> -->
 							</div>
 <!-- 						</div> -->
 					</div>

@@ -36,6 +36,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set password=#{password}, address=#{address}, height=#{height}, weight=#{weight}, age=#{age}, phone=#{phone}
 		where member_id=#{memberId}
 	</update>
+	
+	<!-- 회원 탈퇴 -->
+	<update id="selfdelete">
+		update healthy_member
+		set enabled=0
+		where member_id=#{memberId}
+	</update>
 </mapper>
 
 

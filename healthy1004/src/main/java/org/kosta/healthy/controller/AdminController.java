@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.kosta.healthy.model.vo.CrewVO;
 import org.kosta.healthy.model.service.AdminService;
+import org.kosta.healthy.model.service.CrewService;
 import org.kosta.healthy.model.service.MemberService;
 import org.kosta.healthy.model.vo.MemberVO;
 import org.kosta.healthy.utils.PagingVO;
@@ -24,6 +25,7 @@ public class AdminController {
 	 */
 	@Resource
 	private AdminService adminService;
+	private CrewService crewService;
 	
 	@Secured("ROLE_ADMIN")
 	@RequestMapping("admin")
@@ -89,6 +91,8 @@ public class AdminController {
 		@RequestMapping("admin/deleteMember")
 		public String deleteMember(MemberVO vo, Model model) {
 			adminService.deleteMember(vo);
+			System.out.println(vo);
+//			crewService.removeCrewMember(vo.getMemberId());
 			String name = vo.getMemberId();
 			model.addAttribute("name",name);
 			return "admin/member_delete_result.tiles";

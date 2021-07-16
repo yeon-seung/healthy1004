@@ -1,4 +1,5 @@
---   MEMBER
+selfdelete_fail.jsp
+selfdelete_result.jsp--   MEMBER
 
 --member table 삭제
 drop table healthy_member;
