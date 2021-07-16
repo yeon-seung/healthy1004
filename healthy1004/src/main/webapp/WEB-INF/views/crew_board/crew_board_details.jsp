@@ -81,17 +81,22 @@
 					</c:if>
 				</div>
 			</div>
-				
-				<!-- 댓글 입력 -->>
+			
+		<!-- 댓글 부분 -->	
+		
+			<div class="wrapper">
+				<div class="contact-wrap w-100 p-md-5 p-4">
+				<!-- 댓글 입력 -->
 				<div class= "container">
-				<label for ="content">comment</label>
+				<h3 style='margin-bottom: -1rem;'>comment</h3>
+				<br>
 					<form name="commentInsertForm" id="commentInsertForm">
 							<div class="input-group">
 								<input type="hidden" name="boardId" id="boardId" value="${crewBoard.boardId}">	
 								<input type="hidden" name="crewId" value="${crewBoard.crewId}">
 								<input type="text" class="form-control" id="commentContent" name="commentContent" placeholder="내용을 입력하세요.">
 								<span class="input-group-btn">
-                    				<button class="btn btn-default" type="button" name="commentInsertBtn" id="commentInsertBtn">등록</button>
+                    				<button class="form-control" type="button" name="commentInsertBtn" id="commentInsertBtn">등록</button>
              					</span>
 							</div>
 					</form>
@@ -101,6 +106,8 @@
 				<input type="hidden" name="boardId" id="boardId" value="${crewBoard.boardId}">	
 				<input type="hidden" id="pageContext" value="${pageContext.request.contextPath}">
 				<span id="commentResult" ></span>
+				</div>
+			</div>
 
 
 		</div>

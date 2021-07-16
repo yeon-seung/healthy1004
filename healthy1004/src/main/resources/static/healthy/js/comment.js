@@ -9,13 +9,13 @@ function commentList(){
 					$("#commentResult").empty();
 					for(let i=0; i<list.length; i++){
 						$("#commentResult").append(
-							'내용 : '+list[i].commentContent
-							+ '<br>'							
+							"<div class='staff' style='margin-bottom: -1rem;'>"
+							+ "<div class='text pt-3'>"
+							+"<p style='color: black;'>"+"내용 : "+list[i].commentContent+"</p>"						
 							+'작성자 :' + list[i].memberId
 							+ '<br>'
 							+'작성시간 :' + list[i].regDate
-							+ '<br>'
-							+ '<br>'
+							+"</div></div><br>"
 						);
 					}
 				}//success :function
