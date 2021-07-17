@@ -119,7 +119,7 @@ public class CrewBoardController {
 		String uploadPath = req.getSession().getServletContext().getRealPath("/");
 		String fileName = null;
 		//새로운 파일이 등록되었는지 확인
-		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+		if(file.getOriginalFilename() != null && !file.getOriginalFilename().equals("")) {
 			//기존 파일을 삭제
 			new File(uploadPath + req.getParameter("boardImg")).delete();
 			new File(uploadPath + req.getParameter("boardThumbImg")).delete();

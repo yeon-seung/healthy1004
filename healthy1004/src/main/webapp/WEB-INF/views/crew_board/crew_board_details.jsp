@@ -76,7 +76,9 @@
 						<input type="hidden" name="crewId" value="${crewBoard.crewId}">
 						<input type="hidden" name="boardTitle" value="${crewBoard.boardTitle}">
 						<input type="hidden" name="boardContent" value="${crewBoard.boardContent}">	
-						<input type="hidden" name="boardTime" value="${crewBoard.boardTime}">			
+						<input type="hidden" name="boardTime" value="${crewBoard.boardTime}">
+						<input type="hidden" name="boardImg" value="${crewBoard.boardImg}">
+						<input type="hidden" name="boardThumbImg" value="${crewBoard.boardThumbImg}">			
 					</form>			 
 					</c:if>
 				</div>

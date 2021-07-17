@@ -6,6 +6,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <style>
 .select_img {
+	width: 200px;
 	margin: 20px 0;
 }
 </style>
@@ -55,10 +56,10 @@
 									<div class="form-group">
 									<label class="label" for="boardImg">board image</label>
 											<input type="file" id="boardImg" name="file"/>
-											<div class="select_img" style="background-image: url('./imgUpload/${crewBoard.boardImg }');">
-												<!--  <img src="./imgUpload/${crewBoardVO.boardImg }" />-->
-												<input type="hidden" name="boardImg" value="./imgUpload/${crewBoardVO.boardImg }" />
-												<input type="hidden" name="boardThumbImg" value="./imgUpload/${crewBoardVO.boardThumbImg }" />
+											<div class="select_img">
+												 <img src="./imgUpload/${crewBoardVO.boardImg }" width="300"/>
+												<input type="hidden" name="boardImg" value="${crewBoardVO.boardImg }" />
+												<input type="hidden" name="boardThumbImg" value="${crewBoardVO.boardThumbImg }" />
 											</div>		
 											<script>
 												$("#boardImg").change(function() {
