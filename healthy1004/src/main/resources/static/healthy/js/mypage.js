@@ -1,3 +1,9 @@
+var scripts= document.getElementsByTagName('script');
+var path= scripts[scripts.length-1].src.split('?')[0];      // remove any ?query
+var mydir= path.split('/').slice(0, -1).join('/')+'/';  // remove last filename part of path
+
+var imageSrc2 = mydir + "../../../imgUpload/";
+
 $(document).ready(function() {
     
 	console.log($("#memberId").val());
@@ -15,7 +21,7 @@ $(document).ready(function() {
 							+"<a href='"
 							+ $("#pageContext").val() + "crew_board_paging?crewId="
 							+ list[i].crewId 
-							+ "' class='img' style='background-image: url(https://images.pexels.com/photos/34514/spot-runs-start-la.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);'>"
+							+ "' class='img' style='background-image: url(" + imageSrc2 + list[i].crewImg + ");'>"
 							+"</a>"
 							+"<div class='text p-4'>"
 							+"<h3><a href='"

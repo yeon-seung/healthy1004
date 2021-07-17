@@ -34,6 +34,11 @@ create table healthy_crew (
    crew_location varchar2(100) not null
 )
 
+-- crew에 이미지 파일첨부 관련 ( private String crewImg; private String crewThumbImg; )
+alter table healthy_crew add crewImg varchar2(200);
+alter table healthy_crew add crewThumbImg varchar2(200);
+
+
 -- crew id 시퀀스
 drop sequence crew_seq;
 create sequence crew_seq;
@@ -41,7 +46,7 @@ create sequence crew_seq;
 
 --   CREW_MEMBER
 --crew_member table 삭제
-drop table healthy_crew_member;\
+drop table healthy_crew_member;
 
 --crew_member table 생성
 create table healthy_crew_member (

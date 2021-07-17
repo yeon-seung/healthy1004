@@ -1,5 +1,6 @@
 package org.kosta.healthy.controller;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,11 +9,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.kosta.healthy.model.mapper.CrewMapper;
 import org.kosta.healthy.model.service.CrewService;
 import org.kosta.healthy.model.vo.CrewVO;
 import org.kosta.healthy.model.vo.MemberVO;
-import org.springframework.security.access.annotation.Secured;
+import org.kosta.healthy.utils.UpLoadFileUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class CrewController {
@@ -84,7 +84,28 @@ public class CrewController {
 
 	//크루 생성
 	@RequestMapping(value = "/createCrew", method = RequestMethod.POST)
-	public String createCrew(CrewVO cvo) {		
+	public String createCrew(CrewVO cvo, MultipartFile file, HttpServletRequest req) throws Exception {		
+		//파일 첨부
+		String uploadPath = req.getSession().getServletContext().getRealPath("/");
+		String imgUploadPath = uploadPath + File.separator + "imgUpload"; //이미지를 업로드할 폴더를 설정 = /uploadPath/imgUpload
+		String ymdPath = UpLoadFileUtils.calcPath(imgUploadPath); //위 폴더를 기준으로 연월일 폴더 생성
+		String fileName = null;
+		
+		if(file.getOriginalFilename() != null && !file.getOriginalFilename().equals("")) {
+			//첨부된 파일이 이름이 없다면
+			fileName = UpLoadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
+			//CrewImg에 원본 파일 경로 + 파일명 저장
+//			cvo.setCrewImg(File.separator + "imgUpload" + File.separator + fileName);
+			cvo.setCrewImg(fileName);
+			//CrewThumbImg에 썸네일 파일 경로 + 썸네일 파일명 저장
+			cvo.setCrewThumbImg(File.separator + "imgUpload" + File.separator + "s" + File.separator + "s_" + fileName);
+		} else { //첨부된 파일이 없으면
+			fileName = "new.jpg"; 
+			cvo.setCrewImg(fileName);
+			cvo.setCrewThumbImg(fileName);
+		}
+		System.out.println("fileName : " + fileName);
+		//크루 생성
 		crewService.createCrew(cvo);
 		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		HashMap<String, Object> hashMap = new HashMap<String, Object>();

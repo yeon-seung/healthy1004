@@ -47,8 +47,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<selectKey resultType="string" keyProperty="crewId" order="BEFORE">
 		SELECT crew_seq.nextval FROM DUAL                                      
 	</selectKey>  
-		insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location)
-		values (#{crewId}, #{crewName}, #{crewInfo}, #{crewSize}, #{crewLocation})
+		insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location, crewImg, crewThumbImg)
+		values (#{crewId}, #{crewName}, #{crewInfo}, #{crewSize}, #{crewLocation}, #{crewImg}, #{crewThumbImg})
 	</insert>
 	
 	<select id="countCrewMember" resultType="int">

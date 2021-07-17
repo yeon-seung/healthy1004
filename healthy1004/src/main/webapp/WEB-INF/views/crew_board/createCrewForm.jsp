@@ -39,6 +39,9 @@
 	overflow: hidden;
 	white-space: nowrap;
 }
+.select_img {
+	margin: 20px 0;
+}
 </style>
 
 <section class="hero-wrap hero-wrap-2"
@@ -64,7 +67,7 @@
 						<div class="contact-wrap w-100 p-md-5 p-4 ">
 							<h3 class="mb-4">크루 정보 입력</h3>
 							<form action="${pageContext.request.contextPath}/createCrew"
-								method="POST" id="createCrewForm" class="contactForm">
+								method="POST" id="createCrewForm" class="contactForm" enctype="multipart/form-data">
 								<sec:csrfInput />
 								<div class="row" style="width: 80%;">
 									<div class="col-md-6">
@@ -94,6 +97,23 @@
 											<input type="text" class="form-control" name="crewLocation"
 												id="crewLocation" placeholder="오른쪽 지도에서 집결 위치를 클릭해주세요"
 												readonly="readonly">
+										</div>
+
+										<div class="form-group">
+											<label class="label" for="crewImg">crew image</label>
+											<input type="file" id="crewImg" name="file" />
+											<div class="select_img"><img src="" /></div>		
+											<script>
+												$("#crewImg").change(function() {
+													if(this.files && this.files[0]) {
+														var reader = new FileReader;
+														reader.onload = function(data) {
+															$(".select_img img").attr("src", data.target.result).width(300);
+														}
+														reader.readAsDataURL(this.files[0]);
+													}
+												});
+											</script>
 										</div>
 
 										<div class="form-group" align="right" style="postion: absolute; right: 1rem; margin-right: -39rem;">
