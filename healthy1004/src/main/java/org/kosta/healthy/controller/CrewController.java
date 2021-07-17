@@ -100,7 +100,7 @@ public class CrewController {
 			//CrewThumbImg에 썸네일 파일 경로 + 썸네일 파일명 저장
 			cvo.setCrewThumbImg(File.separator + "imgUpload" + File.separator + "s" + File.separator + "s_" + fileName);
 		} else { //첨부된 파일이 없으면
-			fileName = "new.jpg"; 
+			fileName = "crew_default.png"; 
 			cvo.setCrewImg(fileName);
 			cvo.setCrewThumbImg(fileName);
 		}
