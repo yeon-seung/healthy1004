@@ -98,13 +98,13 @@ public class CrewController {
 //			cvo.setCrewImg(File.separator + "imgUpload" + File.separator + fileName);
 			cvo.setCrewImg(fileName);
 			//CrewThumbImg에 썸네일 파일 경로 + 썸네일 파일명 저장
-			cvo.setCrewThumbImg(File.separator + "imgUpload" + File.separator + "s" + File.separator + "s_" + fileName);
+			cvo.setCrewThumbImg("crewThumbnail_" + fileName);
 		} else { //첨부된 파일이 없으면
 			fileName = "crew_default.png"; 
 			cvo.setCrewImg(fileName);
 			cvo.setCrewThumbImg(fileName);
 		}
-		System.out.println("fileName : " + fileName);
+		System.out.println("crewfileName : " + fileName);
 		//크루 생성
 		crewService.createCrew(cvo);
 		MemberVO pvo = (MemberVO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

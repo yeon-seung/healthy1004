@@ -18,6 +18,7 @@ create table healthy_member (
 )
 
 
+
 --   CREW
 
 --crew table 삭제
@@ -33,7 +34,7 @@ create table healthy_crew (
    crew_location varchar2(100) not null
 )
 
--- crew에 이미지 파일첨부 관련 ( private String crewImg; private String crewThumbImg; )
+-- crew에 이미지 파일첨부 관련 (crew 테이블 만들 때 이거도 반드시..!!!!!!!!!!!!)
 alter table healthy_crew add crewImg varchar2(200);
 alter table healthy_crew add crewThumbImg varchar2(200);
 
@@ -43,7 +44,9 @@ drop sequence crew_seq;
 create sequence crew_seq;
 
 
+
 --   CREW_MEMBER
+
 --crew_member table 삭제
 drop table healthy_crew_member;
 
@@ -57,15 +60,10 @@ create table healthy_crew_member (
    constraint pk_crew_member primary key(member_id, crew_id)
 )
 
---ALTER TABLE healthy_crew_member DROP CONSTRAINT fk_crew_id
---
---ALTER TABLE healthy_crew_member
---ADD CONSTRAINT fk_crew_id
---  FOREIGN KEY (crew_id)
---  REFERENCES healthy_crew(crew_id)
---  ON DELETE CASCADE;
+
 
 --   DIARY
+
 --diary table 삭제
 drop table healthy_diary;
 
@@ -103,14 +101,21 @@ create table healthy_board(
    constraint fk_board_crew_id foreign key(crew_id) references healthy_crew(crew_id) on delete cascade
 )
 
+-- board에 이미지 파일첨부 관련 (board 테이블 만들 때 이거도 반드시..!!!!!!!!!!!!)
+alter table healthy_board add boardImg varchar2(200);
+alter table healthy_board add boardThumbImg varchar2(200);
+
 --크루게시판 시퀀스
 drop sequence board_seq;
 create sequence board_seq;
+
+
 
 -- COMMENT
 
 -- 댓글테이블 삭제
 drop table board_comment
+
 -- 댓글테이블 생성
 create table board_comment(
 	comment_id number not null,
@@ -123,6 +128,7 @@ create table board_comment(
 	constraint fk_comment_crew_id foreign key(crew_id) references healthy_crew(crew_id),
 	constraint fk_comment_board_id foreign key(board_id) references healthy_board(board_id)
 )
+
 --댓글 테이블 시퀀스
 drop sequence comment_seq;
 create sequence comment_seq;

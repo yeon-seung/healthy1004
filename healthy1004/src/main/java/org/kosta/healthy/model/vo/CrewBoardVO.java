@@ -7,11 +7,14 @@ public class CrewBoardVO {
 	private String boardTitle;
 	private String boardContent;
 	private String boardTime;
+	private String boardImg;
+	private String boardThumbImg;
+	
 	public CrewBoardVO() {
 		super();
 	}
 	public CrewBoardVO(String boardId, String memberId, String crewId, String boardTitle, String boardContent,
-			String boardTime) {
+			String boardTime, String boardImg, String boardThumbImg) {
 		super();
 		this.boardId = boardId;
 		this.memberId = memberId;
@@ -19,6 +22,8 @@ public class CrewBoardVO {
 		this.boardTitle = boardTitle;
 		this.boardContent = boardContent;
 		this.boardTime = boardTime;
+		this.boardImg = boardImg;
+		this.boardThumbImg = boardThumbImg;
 	}
 	public String getBoardId() {
 		return boardId;
@@ -56,10 +61,24 @@ public class CrewBoardVO {
 	public void setBoardTime(String boardTime) {
 		this.boardTime = boardTime;
 	}
+	public String getBoardImg() {
+		return boardImg;
+	}
+	public void setBoardImg(String boardImg) {
+		this.boardImg = boardImg;
+	}
+	public String getBoardThumbImg() {
+		return boardThumbImg;
+	}
+	public void setBoardThumbImg(String boardThumbImg) {
+		this.boardThumbImg = boardThumbImg;
+	}
+	
 	@Override
 	public String toString() {
 		return "CrewBoardVO [boardId=" + boardId + ", memberId=" + memberId + ", crewId=" + crewId + ", boardTitle="
-				+ boardTitle + ", boardContent=" + boardContent + ", boardTime=" + boardTime + "]";
+				+ boardTitle + ", boardContent=" + boardContent + ", boardTime=" + boardTime + ", boardImg=" + boardImg
+				+ ", boardThumbImg=" + boardThumbImg + "]";
 	}
 	
 }

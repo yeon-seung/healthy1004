@@ -52,7 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select board_seq.nextval from dual
  		</selectKey>
 			insert into healthy_board
-			values(#{boardId}, #{memberId}, #{crewId}, #{boardTitle}, #{boardContent}, sysdate)
+			values(#{boardId}, #{memberId}, #{crewId}, #{boardTitle}, #{boardContent}, sysdate, #{boardImg}, #{boardThumbImg})
 	</insert>
 	
 	<delete id="deleteCrewBoardPost" parameterType="string">
@@ -62,7 +62,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="updateCrewBoardPost" parameterType="crewBoardVO">
 		update healthy_board 
-		set board_title = #{boardTitle}, board_Content = #{boardContent}, board_time = sysdate
+		set board_title = #{boardTitle}, board_Content = #{boardContent}, board_time = sysdate, boardImg = #{boardImg}, boardThumbImg = #{boardThumbImg}
 		where board_id = #{boardId}
 	</update>
 	

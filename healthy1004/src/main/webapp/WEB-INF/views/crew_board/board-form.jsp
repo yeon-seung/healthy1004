@@ -4,6 +4,11 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<style>
+.select_img {
+	margin: 20px 0;
+}
+</style>
 
 <section class="hero-wrap hero-wrap-2"
 	style="background-image: url('${pageContext.request.contextPath}/healthy/images/bg_2.jpg');">
@@ -27,7 +32,7 @@
 						<div class="contact-wrap w-100 p-md-5 p-4 ">
 							<h3 class="mb-4">게시글 작성하기</h3>
 							<form method="POST" id="contactForm" name="contactForm"
-								class="contactForm" action="postCrewBoard">
+								class="contactForm" action="postCrewBoard" enctype="multipart/form-data">
 								<sec:csrfInput/>
 								<div class="row">
 									<div class="col-md-6">
@@ -45,6 +50,24 @@
 												id="boardContent" cols="30" rows="4" placeholder="내용"></textarea>
 										</div>
 									</div>
+
+									<div class="form-group">
+									<label class="label" for="boardImg">board image</label>
+											<input type="file" id="boardImg" name="file" />
+											<div class="select_img"><img src="" /></div>		
+											<script>
+												$("#boardImg").change(function() {
+													if(this.files && this.files[0]) {
+														var reader = new FileReader;
+														reader.onload = function(data) {
+															$(".select_img img").attr("src", data.target.result).width(300);
+														}
+														reader.readAsDataURL(this.files[0]);
+													}
+												});
+											</script>
+									</div>
+									
 									<div class="col-md-12" align="right">
 										<div class="form-group">
 											<input type="submit" value="작성하기" class="btn btn-primary">

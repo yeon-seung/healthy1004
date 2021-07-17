@@ -51,7 +51,7 @@
 							<a
 								href="${pageContext.request.contextPath}/crew_board_detail?crewBoardId=${ list.boardId }"
 								class="block-20"
-								style="background-image: url('${pageContext.request.contextPath}/healthy/images/snow.jpg'); ">
+								style="background-image: url('./imgUpload/${list.boardImg }'); ">
 							</a>
 							<div class="text d-block">
 								<div class="meta">

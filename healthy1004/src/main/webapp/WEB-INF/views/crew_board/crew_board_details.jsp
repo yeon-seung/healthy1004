@@ -40,7 +40,7 @@
 				<div class="staff-2 w-100">
 					<div class="img-wrap d-flex align-items-stretch">
 						<div class="img align-self-stretch d-flex align-items-end"
-							style="background-image: url('${pageContext.request.contextPath}/healthy/images/snow.jpg');">
+							style="background-image: url('./imgUpload/${crewBoard.boardImg }');">
 
 						</div>
 					</div>
