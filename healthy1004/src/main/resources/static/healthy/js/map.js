@@ -1,8 +1,8 @@
 let memberIdForCrew = $('#memberId').val();
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
-        center: new kakao.maps.LatLng(37.5175475, 127.136363), // 지도의 중심좌표
-        level: 6 // 지도의 확대 레벨
+        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+        level: 7 // 지도의 확대 레벨
     };
 
 var map = new kakao.maps.Map(mapContainer, mapOption);	// 지도 생성

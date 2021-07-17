@@ -19,7 +19,7 @@
 .hAddr {
 	position: absolute;
 	left: 25px;
-	top: 13px;
+	top: 75px;
 	border-radius: 2px;
 	background: #fff;
 	background: rgba(255, 255, 255, 0.8);
@@ -72,12 +72,12 @@
 								<div class="row" style="width: 80%;">
 									<div class="col-md-6">
 										<div>
-											<div class="form-group" style="margin-bottom: 1rem;">
+											<div class="form-group">
 												<label class="label" for="crewName">crew name</label> <input
 													type="text" class="form-control" name="crewName"
 													id="crewName" placeholder="크루명을 입력하세요">
 											</div>
-											<div class="form-group" style="margin-bottom: 1rem;">
+											<div class="form-group">
 												<label class="label" for="crewSize">crew size</label> <input
 													type="number" class="form-control" name="crewSize"
 													id="crewSize" placeholder="크루 정원을 입력하세요">
@@ -88,20 +88,11 @@
 											<label class="label" for="crewInfo">crew info</label>
 											<%-- name, id, placeholder 변경 --%>
 											<textarea name="crewInfo" class="form-control" id="crewInfo"
-												cols="30" rows="5"
-												placeholder="크루를 자유롭게 소개하세요 (예: 수서 탄천을 매주 같이 달려요!)"></textarea>
+												cols="30" rows="4"
+												placeholder="크루를 자유롭게 소개하세요 &#13;&#10;(예: 수서 탄천을 매주 같이 달려요!)"></textarea>
 										</div>
 
-										<div class="form-group">
-											<label class="label" for="crewLocation">crew location</label>
-											<input type="text" class="form-control" name="crewLocation"
-												id="crewLocation" placeholder="오른쪽 지도에서 집결 위치를 클릭해주세요"
-												readonly="readonly">
-										</div>
 
-										<div class="form-group" align="right" style="margin-right: -12rem; margin-top: 2.5rem; margin-bottom: -0.25rem;">
-											<input type="submit" style="width: 10rem;" value="크루 생성하기" class="btn btn-primary">
-										<div class="form-group">
 											<label class="label" for="crewImg">crew image</label>
 											<input type="file" id="crewImg" name="file" />
 											<div class="select_img"><img src="" /></div>		
@@ -118,43 +109,57 @@
 											</script>
 										</div>
 
-										<div class="form-group" align="right" style="postion: absolute; right: 1rem; margin-right: -39rem;">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label class="label" for="crewLocation">crew location</label>
+											<input type="text" class="form-control" name="crewLocation"
+												id="crewLocation" placeholder="아래 지도에서 집결지를 클릭해주세요"
+												readonly="readonly">
+										</div>
+									</div>
+										
+<!-- 										<div class="form-group" align="right" style="margin-right: -12rem; margin-top: 2.5rem; margin-bottom: -0.25rem;"> -->
+<!-- 											<input type="submit" style="width: 10rem;" value="크루 생성하기" class="btn btn-primary"> -->
+<!-- 										<div class="form-group"> -->
+										
+										
+									</div>
+									<div class="form-group" align="center" style="margin-top: 14rem;">
 											<input type="submit" value="크루 생성하기" class="btn btn-primary">
 											<div class="submitting"></div>
 										</div>
-									</div>
 								</div>
+								
 							</form>
 						</div>
 
-<!-- 						<div class="contact-wrap w-100 p-md-5 p-4 "> -->
-							<div class="col-md-7" style="position: absolute; right: 1.5rem; top: 8rem;">
-								<%-- 맵도 찍어서 넣기 --%>
-								
-								<div id="map1"
-									style="width: 95%; height: 330px; position: relative; overflow: hidden;"></div>
-								<div class="hAddr">
-									<span class="title">지도중심기준 행정동 주소정보</span> <span
-										id="centerAddr"></span>
-								</div>
-								
+							<div class="col-md-7" style="position: absolute; right: 1.5rem; top: 12rem;">
 								<div id="input-location-area">
 									<div style="display: inline-flex; align-items: center; margin-top: 1.15rem;">
-										<div class="form-group" style="width: 18rem;">
+										<div class="form-group" style="width: 17.25rem;">
 											<input id="search-keyword" type="text" class="form-control" style="width: 100%;"
 												name="locationKeyword" 
 												placeholder="지도에서 확인할 지역을 입력하세요">
 										</div>
 
-										<div class="form-group" style="margin-left: 1rem;">
+										<div class="form-group" style="margin-left: 0.5rem;">
 											<input id="search-keyword-btn" type="submit" value="지도 이동"
 												class="btn btn-warning">
 											<div class="submitting"></div>
 										</div>
 									</div>
 								</div>
+							
+								<div id="map1"
+									style="width: 95%; height: 470px; position: relative; overflow: hidden;"></div>
+								<div class="hAddr">
+									<span class="title">지도중심기준 행정동 주소정보</span> <span
+										id="centerAddr"></span>
+								</div>
+								
+								
 							</div>
-<!-- 						</div> -->
+							
 					</div>
 				</div>
 			</div>
