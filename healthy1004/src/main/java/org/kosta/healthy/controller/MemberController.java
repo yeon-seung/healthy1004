@@ -78,7 +78,7 @@ public class MemberController {
 		
 	}
 	
-	// 비밀번호 확인 후, 회원정보 수정으로 가도록
+	// 비밀번호 확인 후, 회원정보 수정으로 가도록    
 	@Secured("ROLE_MEMBER")
 	@RequestMapping("member/checkPasswordForm")
 	public String checkPasswordForm() {
