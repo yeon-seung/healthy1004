@@ -56,10 +56,15 @@
 					<p>${ crewBoard.boardContent }</p>
 					<h3>최근 작성일시</h3>
 					<p>${ crewBoard.boardTime }</p>
-
+					
+					
 					<sec:authentication property="principal.memberId" var="memberId"/>
+					<button form="listForm" class="btn float-right bg-secondary text-white" type="submit" style="margin-right: 5rem;">목록</button>
+					<form action="${pageContext.request.contextPath}/crew_board_paging" id="listForm" method="GET">
+							<input type="hidden" name="crewId" value="${crewBoard.crewId}">
+					</form>
 					<c:if test="${requestScope.crewBoard.memberId == memberId}">
-					<button form="deleteForm" class="btn float-right bg-danger text-white" type="submit" style="margin-right: 5rem;">삭제</button>
+					<button form="deleteForm" class="btn float-right bg-danger text-white" type="submit" style="margin-right: 1rem;">삭제</button>
 					<button form="updateForm" class="btn float-right bg-primary text-white" type="submit" style="margin-right: 1rem;">수정</button>
 					 
 					<!-- 삭제 form -->

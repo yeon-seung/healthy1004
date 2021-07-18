@@ -28,7 +28,7 @@
 				<div class="row">
 					<div class="col-md-6 d-flex align-items-stretch ftco-animate">
 						<div class="project-wrap">
-							<a href="#" class="img"
+							<a href="${pageContext.request.contextPath}/admin/memberDeleteFormPaging" class="img"
 								style="background-image: url('${pageContext.request.contextPath}/healthy/images/delete.png'); background-size: 200px 200px;"></a>
 							<div class="text p-4">
 								<h3>
@@ -42,7 +42,7 @@
 					
 					<div class="col-md-6 d-flex align-items-stretch ftco-animate">
 						<div class="project-wrap">
-							<a href="#" class="img"
+							<a href="${pageContext.request.contextPath}/admin/crewDeleteFormPaging" class="img"
 								style="background-image: url('${pageContext.request.contextPath}/healthy/images/delete.png'); background-size: 200px 200px;"></a>
 							<div class="text p-4" text-align="center">
 								<h3>

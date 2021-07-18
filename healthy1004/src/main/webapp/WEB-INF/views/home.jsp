@@ -5,6 +5,23 @@
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		var rememberid = document.cookie;
+		if(rememberid=="null"){
+			document.getElementById("id").value =""; 
+		}else{
+			document.getElementById("id").value = rememberid; 
+			document.cookie = null;
+		}
+	});
+	function remember_id(){
+		var remember = $("#id").val();
+		document.cookie = remember;
+	}
+
+</script>
+
 <div class="hero-wrap js-fullheight"
 	style="background-image: url('${pageContext.request.contextPath}/healthy/images/first_page.jpg');">
 	<div class="overlay"></div>
@@ -44,12 +61,12 @@
 				<sec:authorize access="isAuthenticated()==false">
 					<div class="login-wrap p-4 p-md-5">
 						<h3 class="mb-4">Login</h3>
-						<form action="${pageContext.request.contextPath}/login"
+						<form action="${pageContext.request.contextPath}/login" onsubmit="return remember_id();"
 							method="post" class="loginForm">
 							<sec:csrfInput />
 							<div class="form-group">
-								<label class="label" for="name">ID</label> <input name="id"
-									type="text" class="form-control" placeholder="아이디를 입력하세요">
+								<label class="label" for="name">ID</label> <input name="id" id="id"
+									type="text" class="form-control" placeholder="아이디를 입력하세요" autofocus >
 							</div>
 
 							<div class="form-group">

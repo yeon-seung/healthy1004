@@ -62,6 +62,23 @@
 										alert("나이를 입력해주세요");
 										return false;
 									}
+									//
+									if ($('#height').val() == null
+											|| $('#height').val() < 0) {
+										alert("키는 0cm이상이어야 합니다.");
+										return false;
+									}
+									if ($('#weight').val() == null
+											|| $('#weight').val() <0) {
+										alert("몸무게는 0kg 이상이어야 합니다.");
+										return false;
+									}
+									if ($('#age').val() == null
+											|| $('#age').val() <0) {
+										alert("나이는 0살 이상이어야 합니다.");
+										return false;
+									}
+									//
 									if (isCertification == false) {
 										alert("메일 인증이 완료되지 않았습니다.");
 										return false;
@@ -313,21 +330,21 @@
 										<div class="col-md-4">
 											<div class="form-group">
 												<label class="label" for="height">HEIGHT</label> <input
-													type="text" class="form-control" name="height" id="height"
+													type="number" class="form-control" name="height" id="height"
 													placeholder="키를 입력해주세요">
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group">
 												<label class="label" for="weight">WEIGHT</label> <input
-													type="text" class="form-control" name="weight" id="weight"
+													type="number" class="form-control" name="weight" id="weight"
 													placeholder="몸무게를 입력해주세요">
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group">
 												<label class="label" for="age">AGE</label> <input
-													type="text" class="form-control" name="age" id="age"
+													type="number" class="form-control" name="age" id="age"
 													placeholder="나이를 입력해주세요">
 											</div>
 										</div>
