@@ -17,7 +17,7 @@
 </script>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('${pageContext.request.contextPath}/healthy/images/bg_2.jpg');">
+		style="background-image: url('${pageContext.request.contextPath}/healthy/images/bike.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
 			<div

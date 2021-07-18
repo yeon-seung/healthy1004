@@ -6,9 +6,14 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <script type="text/javascript">
-	$(function() {
-
+$(document).ready(function(){
+	$("#checkForm").submit(function(){		
+		if($('#password').val() == null || $('#password').val()=="") {
+			alert("비밀번호를 입력해주세요");
+			return false;
+		}
 	});
+});//ready 
 </script>
 
 <style>
@@ -48,6 +53,7 @@
 			<div class="col-md-5 order-md-last">
 				<sec:authorize access="isAuthenticated()">
 					<form action="${pageContext.request.contextPath}/member/updateForm"
+						 id="checkForm" name="checkForm" class="checkForm"
 						method="post">
 						<sec:csrfInput />
 						<div class="login-wrap p-4 p-md-5">

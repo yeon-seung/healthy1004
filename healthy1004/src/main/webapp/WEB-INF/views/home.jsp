@@ -6,7 +6,9 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <script type="text/javascript">
-	$(document).ready(function(){
+
+$(document).ready(function(){
+	//id 틀려도 기억하기
 		var rememberid = document.cookie;
 		if(rememberid=="null"){
 			document.getElementById("id").value =""; 
@@ -14,12 +16,25 @@
 			document.getElementById("id").value = rememberid; 
 			document.cookie = null;
 		}
-	});
+	//아이디 비번 적게 하기
+		$("#loginForm").submit(function(){		
+			if($('#id').val() == null || $('#id').val()=="") {
+				alert("아이디를 입력해주세요");
+				return false;
+			}
+			if($('#password').val() == null || $('#password').val()=="") {
+				alert("비밀번호를 입력해주세요");
+				return false;
+			}
+		});
+});
+
 	function remember_id(){
 		var remember = $("#id").val();
 		document.cookie = remember;
 	}
 
+	
 </script>
 
 <div class="hero-wrap js-fullheight"
@@ -61,7 +76,8 @@
 				<sec:authorize access="isAuthenticated()==false">
 					<div class="login-wrap p-4 p-md-5">
 						<h3 class="mb-4">Login</h3>
-						<form action="${pageContext.request.contextPath}/login" onsubmit="return remember_id();"
+						<form action="${pageContext.request.contextPath}/login" onsubmit="return remember_id();" 
+							id="loginForm" name="loginForm" class="loginForm"
 							method="post" class="loginForm">
 							<sec:csrfInput />
 							<div class="form-group">

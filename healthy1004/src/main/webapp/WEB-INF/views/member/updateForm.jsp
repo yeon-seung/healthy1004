@@ -32,7 +32,7 @@
 	});
 </script>
 <section class="hero-wrap hero-wrap-2"
-	style="background-image: url('${pageContext.request.contextPath}/healthy/images/bg_2.jpg');">
+	style="background-image: url('${pageContext.request.contextPath}/healthy/images/snow.jpg');">
 	<div class="overlay"></div>
 	<div class="container">
 		<div

@@ -50,8 +50,7 @@ public class MailCertification {
 						+ "</span>\r\n" + "	</p>"
 						+ "	<div style=\"border-top: 1px solid #DDD; padding: 10px;\">"
 						+ "</div>" + "</div></body></html>";
-//		message.setText("인증번호 : " + key);
-		
+
 		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper;
 		try {

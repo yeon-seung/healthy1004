@@ -72,7 +72,7 @@
 
 <script src="${pageContext.request.contextPath}/healthy/js/main.js"></script>
 <script src="${pageContext.request.contextPath}/healthy/js/mypage.js"></script>
-
+<script src="${pageContext.request.contextPath}/healthy/js/registerForm.js"></script>
 
 <%-- 비밀번호 찾기 --%>
 <script src="${pageContext.request.contextPath}/healthy/js/find-password.js"></script>

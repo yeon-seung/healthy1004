@@ -10,7 +10,7 @@
 </script>
 
 <section class="hero-wrap hero-wrap-2"
-	style="background-image: url('${pageContext.request.contextPath}/healthy/images/run.jpg');">
+	style="background-image: url('${pageContext.request.contextPath}/healthy/images/bike.jpg');">
 	<div class="overlay"></div>
 	<div class="container">
 		<div
