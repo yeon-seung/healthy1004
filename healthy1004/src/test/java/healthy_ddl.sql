@@ -109,8 +109,6 @@ alter table healthy_board add boardThumbImg varchar2(200);
 drop sequence board_seq;
 create sequence board_seq;
 
-
-
 -- COMMENT
 
 -- 댓글테이블 삭제
@@ -124,15 +122,33 @@ create table board_comment(
 	crew_id number not null,
 	board_id number not null,
 	reg_date date not null,
-	constraint fk_comment_member_id foreign key(member_id) references healthy_member(member_id),
-	constraint fk_comment_crew_id foreign key(crew_id) references healthy_crew(crew_id),
-	constraint fk_comment_board_id foreign key(board_id) references healthy_board(board_id)
+	constraint fk_comment_member_id foreign key(member_id) references healthy_member(member_id) on delete cascade,
+	constraint fk_comment_crew_id foreign key(crew_id) references healthy_crew(crew_id) on delete cascade,
+	constraint fk_comment_board_id foreign key(board_id) references healthy_board(board_id) on delete cascade
 )
 
 --댓글 테이블 시퀀스
 drop sequence comment_seq;
 create sequence comment_seq;
 
+
+select * from BOARD_COMMENT;
+-- 댓글이 있는 게시글 삭제 위해 on delete cascade 추가 ------------- 테이블 새로 만들기 귀찮은 갓기들을 위해 남겨둠
+ALTER TABLE BOARD_COMMENT DROP CONSTRAINT fk_comment_member_id;
+ALTER TABLE BOARD_COMMENT DROP CONSTRAINT fk_comment_crew_id;
+ALTER TABLE BOARD_COMMENT DROP CONSTRAINT fk_comment_board_id;
+
+ALTER TABLE BOARD_COMMENT
+ADD CONSTRAINT fk_comment_member_id
+FOREIGN KEY(member_id) REFERENCES healthy_member(member_id) ON DELETE CASCADE;
+  
+ALTER TABLE BOARD_COMMENT  
+ADD CONSTRAINT fk_comment_crew_id
+FOREIGN KEY(crew_id) REFERENCES healthy_crew(crew_id) ON DELETE CASCADE;
+
+ALTER TABLE BOARD_COMMENT
+ADD CONSTRAINT fk_comment_board_id
+FOREIGN KEY(board_id) REFERENCES healthy_board(board_id) ON DELETE CASCADE;
 
 
 --   AUTHORITY
