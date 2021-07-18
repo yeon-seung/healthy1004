@@ -44,6 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where member_id=#{memberId}
 	</update>
 
+	<!-- 비밀번호 찾기 기능을 위해서 사용되는 계정 체크 -->
 	<select id="checkAccount" parameterType="string" resultType="int">
 		select count(*)
 		from healthy_member
@@ -55,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set password=#{password}
 		where member_id=#{memberId}
 	</update>
-	
+
 </mapper>
 
 
