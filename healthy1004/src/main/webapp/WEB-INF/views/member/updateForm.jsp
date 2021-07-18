@@ -6,8 +6,7 @@
  <sec:authorize access="hasRole('ROLE_MEMBER')">
 <script type="text/javascript">
  	$(document).ready(function(){
-		var checkResultId="";		
-		$("#regForm").submit(function(){					
+		$("#updateForm").submit(function(){					
 			if($('#password1').val() == null || $('#password1').val()=="") {
 				alert("비밀번호를 입력해주세요");
 				return false;
@@ -57,7 +56,7 @@
 								<h3 class="mb-4">UPDATE INFO</h3>
 								<form method="POST" name="contactForm"
 									class="contactForm" action="${pageContext.request.contextPath}/member/updateMemberAction"
-									id="regForm">
+									id="updateForm">
 									<div class="row">
 									<sec:csrfInput/>
 										<input type="hidden" name="command" value="update">

@@ -20,20 +20,11 @@
 
 <%-- fullcalendar 가져오기 --%>
 <section class="ftco-section bg-light">
-	<%--일정 눌렀을 때 뜨게 --%>
-	<%-- 
-	<div id="contextMenu" class="dropdown clearfix">
-		<ul class="dropdown-menu dropNewEvent" role="menu"
-			aria-labelledby="dropdownMenu"
-			style="display: block; position: static; margin-bottom: 5px;">
-			<li><a tabindex="-1" href="#">운동 추가</a></li>
-			<li class="divider"></li>
-			<li><a tabindex="-1" href="#" data-role="close">Close</a></li>
-		</ul>
+	
+	<div class="container">
+		<div id='calendar'></div>
 	</div>
-	--%>
-	<%--<div id="contextMenu" class="dropdown clearfix">
-	</div>--%>
+
 	<%-- 일정 추가 MODAL --%>
 	<div class="modal fade" tabindex="-1" role="dialog" id="eventModal">
 		<div class="modal-dialog modal-dialog-centered" role="document">
@@ -103,8 +94,5 @@
 		<%-- /.modal-dialog --%>
 	</div>
 	<%-- /.modal --%>
-	<div class="container">
-		<div id='calendar'></div>
-	</div>
-
+	
 </section>
