@@ -89,7 +89,7 @@
 				<div class="contact-wrap w-100 p-md-5 p-4">
 				<!-- 댓글 입력 -->
 				<div class= "container">
-				<h3 style='margin-bottom: -1rem;'>comment</h3>
+				<h3 style='margin-bottom: -1rem;'>Comments</h3>
 				<br>
 					<form name="commentInsertForm" id="commentInsertForm">
 							<div class="input-group">
@@ -106,7 +106,7 @@
 				<!-- 댓글 리스트 -->
 				<input type="hidden" name="boardId" id="boardId" value="${crewBoard.boardId}">	
 				<input type="hidden" id="pageContext" value="${pageContext.request.contextPath}">
-				<span id="commentResult" ></span>
+				<span id="commentResult" style="padding: 0.5rem;"></span>
 				</div>
 			</div>
 

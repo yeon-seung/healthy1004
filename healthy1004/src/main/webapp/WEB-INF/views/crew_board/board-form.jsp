@@ -17,7 +17,7 @@
 		<div
 			class="row no-gutters slider-text align-items-end justify-content-center">
 			<div class="col-md-9 ftco-animate pb-5 text-center">
-				<h1 class="mb-0 bread">게시글 쓰기</h1>
+				<h1 class="mb-0 bread">Crew Board Posting</h1>
 			</div>
 		</div>
 	</div>

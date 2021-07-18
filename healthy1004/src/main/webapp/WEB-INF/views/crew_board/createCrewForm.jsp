@@ -19,7 +19,7 @@
 .hAddr {
 	position: absolute;
 	left: 25px;
-	top: 75px;
+	top: 85px;
 	border-radius: 2px;
 	background: #fff;
 	background: rgba(255, 255, 255, 0.8);
@@ -51,7 +51,7 @@
 		<div
 			class="row no-gutters slider-text align-items-end justify-content-center">
 			<div class="col-md-9 ftco-animate pb-5 text-center">
-				<h1 class="mb-0 bread">Create New Crew</h1>
+				<h1 class="mb-0 bread">Create Your Crew</h1>
 			</div>
 		</div>
 	</div>
