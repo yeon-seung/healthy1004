@@ -61,7 +61,7 @@
 							<div class="form-group">
 								<label class="label" for="password">password</label> <input
 									type="password" class="form-control" id="password"
-									placeholder="현재 비밀번호를 입력하세요" style="width: 80%; !important"
+									placeholder="현재 비밀번호를 입력하세요" 
 									name="password">
 							</div>
 
