@@ -4,6 +4,31 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#createCrewForm").submit(function(){		
+		if($('#crewName').val() == null || $('#crewName').val()=="") {
+			alert("크루명을 입력해주세요");
+			return false;
+		}
+		if($('#crewSize').val()<2) {
+			alert("크루인원은 최소 2명 이상여야 합니다.");
+			return false;
+		}
+		if($('#crewInfo').val() == null || $('#crewInfo').val()=="") {
+			alert("크루를 소개해주세요.");
+			return false;
+		}
+		if($('#crewLocation').val() == null || $('#crewLocation').val()=="") {
+			alert("크루 집결 중심지를 선택해주세요.");
+			return false;
+		}
+	});
+});//ready 
+</script>
+	
 <style>
 .map_wrap {
 	position: relative;
@@ -126,7 +151,7 @@
 
 										<div class="form-group" style="margin-left: 1rem;">
 											<input id="search-keyword-btn" type="submit" value="지도 이동"
-												class="btn btn-warning">
+												class="btn btn-warning text-white">
 											<div class="submitting"></div>
 										</div>
 									</div>

@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT ROWNUM RN, A.* 
 			FROM (
 					select *
-					from healthy_board where crew_id=#{crewId}
+					from healthy_board where crew_id=#{crewId} order by board_id desc
 					) A
 			)
 		WHERE RN BETWEEN ${pagingvo.start} AND ${pagingvo.end}		
