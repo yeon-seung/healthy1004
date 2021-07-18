@@ -45,7 +45,7 @@
 
 				<div class="sidebar-box bg-white p-4 ftco-animate">
 					<h3 class="heading-sidebar">
-						<a href="${pageContext.request.contextPath}/member/updateForm"
+						<a href="${pageContext.request.contextPath}/member/checkPasswordForm"
 							style="color: black; !important">회원 정보 수정</a>
 					</h3>
 				</div>

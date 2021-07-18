@@ -144,4 +144,5 @@ public class MemberServiceImpl implements MemberService {
 		String encodeTempPassword = passwordEncoder.encode(password); 		// 비밀번호 암호화
 		memberMapper.updateMemberPassword(memberId, encodeTempPassword);	// DB에 암호화된 비밀번호 업데이트.
     }
+	
 }

@@ -7,6 +7,7 @@ import org.kosta.healthy.model.service.MemberService;
 import org.kosta.healthy.model.vo.MemberVO;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -63,9 +64,25 @@ public class MemberController {
 	// member/**은 자유 접근 가능하므로, role_member를 줘서 가입자만 접근하게 한다.
 	// mbmer/**를 빼도 되지만 member관련이므로 살려둔다.
 	@Secured("ROLE_MEMBER")
-	@RequestMapping("member/updateForm")
-	public String updateForm() {
-		return "member/updateForm.tiles";
+	@PostMapping("member/updateForm")
+	public String updateForm(String memberId, String password) {
+		MemberVO mvo = memberService.findMemberById(memberId);	// 현재 로그인한 회원 객체 (getPrincipal()로 해도 되지만, form에서 받아오기떄문에 사용할게요~)
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); // 복호화된 비번과 입력받은 비번을 비교하기 위해서 BCryptPasswordEncoder 객체 가져옴
+		
+		// 입력된 비번과 DB에 저장된 암호화된 비번 비교
+		if(encoder.matches(password, mvo.getPassword())) { // 계정 정보가 일치해서 true면
+			return "member/updateForm.tiles";
+		}else {// 계정 정보 일치하지 않아서 false면
+			return "member/checkMember-fail.tiles";
+		}
+		
+	}
+	
+	// 비밀번호 확인 후, 회원정보 수정으로 가도록
+	@Secured("ROLE_MEMBER")
+	@RequestMapping("member/checkPasswordForm")
+	public String checkPasswordForm() {
+		return "member/checkMemberForm.tiles";
 	}
 
 	@Secured("ROLE_MEMBER")
