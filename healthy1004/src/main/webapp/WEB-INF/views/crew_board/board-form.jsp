@@ -10,6 +10,21 @@
 }
 </style>
 
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#contactForm").submit(function(){		
+		if($('#boardTitle').val() == null || $('#boardTitle').val()=="") {
+			alert("제목을 입력해주세요");
+			return false;
+		}
+		if($('#boardContent').val() == null || $('#boardContent').val()=="") {
+			$('#boardContent').val('내용없음');
+			return true;
+		}
+	});
+});//ready 
+</script>
+
 <section class="hero-wrap hero-wrap-2"
 	style="background-image: url('${pageContext.request.contextPath}/healthy/images/bg_2.jpg');">
 	<div class="overlay"></div>
@@ -32,7 +47,7 @@
 						<div class="contact-wrap w-100 p-md-5 p-4 ">
 							<h3 class="mb-4">게시글 작성하기</h3>
 							<form method="POST" id="contactForm" name="contactForm"
-								class="contactForm" action="postCrewBoard" enctype="multipart/form-data">
+								class="contactForm" action="${pageContext.request.contextPath}/postCrewBoard" enctype="multipart/form-data">
 								<sec:csrfInput/>
 								<div class="row">
 									<div class="col-md-6">
@@ -47,13 +62,13 @@
 											<label class="label" for="boardContent">내용</label>
 											<%-- name, id, placeholder 변경 --%>
 											<textarea name="boardContent" class="form-control"
-												id="boardContent" cols="30" rows="4" placeholder="내용"></textarea>
+												id="boardContent" cols="30" rows="4" placeholder="내용(아무것도 적지 않을 경우 '내용 없음'으로 값이 들어갑니다.)"></textarea>
 										</div>
 									</div>
 
-									<div class="form-group">
-									<label class="label" for="boardImg">board image</label>
-											<input type="file" id="boardImg" name="file" />
+									<div class="col-md-6">
+									<label class="label" for="boardImg">board image</label><br>
+										<input type="file" id="boardImg" name="file" />
 											<div class="select_img"><img src="" /></div>		
 											<script>
 												$("#boardImg").change(function() {
