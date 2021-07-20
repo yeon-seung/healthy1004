@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select crew.*
 		from healthy_crew crew, healthy_crew_member crew_mem
 		where crew.crew_id=crew_mem.crew_id and crew_mem.member_id=#{memberId}
-		order by crew_mem.join_date
+		order by crew_mem.join_date desc
 	</select>
 	
 	<!-- 크루 생성 -->

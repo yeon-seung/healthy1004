@@ -65,15 +65,15 @@ for (var i = 0; i < positions.length; i ++) {
 }
 
 // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-function makeOverListener(map, marker, infowindow) {
-    return function() {
-		// 마커에 클릭이벤트를 등록합니다
-		kakao.maps.event.addListener(marker, 'click', function() {
-		      // 마커 위에 인포윈도우를 표시합니다
-		      infowindow.open(map, marker);  
-		});
-    };
-}
+//function makeOverListener(map, marker, infowindow) {
+//    return function() {
+//		// 마커에 클릭이벤트를 등록합니다
+//		kakao.maps.event.addListener(marker, 'click', function() {
+//		      // 마커 위에 인포윈도우를 표시합니다
+//		      infowindow.open(map, marker);  
+//		});
+//    };
+//}
 
 $(document).ready(function() {
 		// 로딩시 모든 크루 위치 마커 표시
@@ -127,18 +127,14 @@ $(document).ready(function() {
 						        });
 
 //								var iwRemoveable = true;
-								
+								var iwContent = '<div style="height:2rem; width: 12rem; display: block; text-align: center !important; display:table-cell !important;">' + list[i].crewName + '</div>'
 								 // 마커에 표시할 인포윈도우를 생성합니다 
 							    var infowindow = new kakao.maps.InfoWindow({
-							        content: list[i].crewName, // 인포윈도우에 표시할 내용
+//							        content: list[i].crewName, // 인포윈도우에 표시할 내용
+							        content: iwContent, // 인포윈도우에 표시할 내용
 									removable : iwRemoveable
 							    });
-							
-							    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
-							    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
-							    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-//							    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-
+					
 								// 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
 						        kakao.maps.event.addListener(marker, 'mouseover', function() {
 						            infowindow.open(map, marker);
@@ -149,13 +145,8 @@ $(document).ready(function() {
 						            infowindow.close();
 						        });
 
-
-								// 리스트에서 크루명 클릭해도 인포윈도우를 표시하자~
-//							    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow)); 
-
 								// 받아온 크루 위치 리스트의 첫번째 좌표로 지도 이동
 						        map.setCenter(positions[0].latlng);
-//								console.log(positions[0]);
 						    } 
 						});    
 
@@ -224,9 +215,11 @@ $(document).ready(function() {
 //	
 //									var iwRemoveable = true;
 //									
-//									 // 마커에 표시할 인포윈도우를 생성합니다 
+									var iwContent = '<div style="height:2rem; width: 12rem; display: block; text-align: center !important; display:table-cell !important;">' + list[i].crewName + '</div>'
+									 // 마커에 표시할 인포윈도우를 생성합니다 
 								    var infowindow = new kakao.maps.InfoWindow({
-								        content: list[i].crewName, // 인포윈도우에 표시할 내용
+	//							        content: list[i].crewName, // 인포윈도우에 표시할 내용
+								        content: iwContent, // 인포윈도우에 표시할 내용
 										removable : iwRemoveable
 								    });
 								

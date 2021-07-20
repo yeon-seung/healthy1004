@@ -121,17 +121,19 @@ $(document).ready(function(){
 											<label class="label" for="crewImg">crew image</label>
 											<input type="file" id="crewImg" name="file" />
 											<div class="select_img"><img src="" /></div>		
-											<script>
-												$("#crewImg").change(function() {
-													if(this.files && this.files[0]) {
-														var reader = new FileReader;
-														reader.onload = function(data) {
-															$(".select_img img").attr("src", data.target.result).width(300);
-														}
-														reader.readAsDataURL(this.files[0]);
-													}
-												});
-											</script>
+<!-- 											<script> -->
+<!-- // 												$("#crewImg").change(function() { -->
+<!-- // 													if(this.files && this.files[0]) { -->
+<!-- // 														var reader = new FileReader; -->
+<!-- // 														reader.onload = function(data) { -->
+<!-- // 															$(".select_img img").attr("src", data.target.result).height(230); -->
+<!-- // 														} -->
+<!-- // 														reader.readAsDataURL(this.files[0]); -->
+<!-- // 													} -->
+<!-- // 													$("#creatBtn").css("margin-top", "2rem"); -->
+													
+<!-- // 												}); -->
+<!-- 											</script> -->
 										</div>
 
 									<div class="col-md-6">
@@ -149,7 +151,7 @@ $(document).ready(function(){
 										
 										
 									</div>
-									<div class="form-group" align="center" style="margin-top: 14rem;">
+									<div class="form-group" id="creatBtn" align="center" style="margin-top: 15rem;">
 											<input type="submit" value="크루 생성하기" class="btn btn-primary">
 											<div class="submitting"></div>
 										</div>
@@ -176,7 +178,7 @@ $(document).ready(function(){
 								</div>
 							
 								<div id="map1"
-									style="width: 95%; height: 470px; position: relative; overflow: hidden;"></div>
+									style="width: 95%; height: 480px; position: relative; overflow: hidden;"></div>
 								<div class="hAddr">
 									<span class="title">지도중심기준 행정동 주소정보</span> <span
 										id="centerAddr"></span>

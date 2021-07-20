@@ -22,7 +22,9 @@
 		<div class="row justify-content-center">
 			<div class="col-md-8">
 				<div id="map" style="width: 100%; height: 500px;" class="bg-white"></div>
+				
 				<a href="${pageContext.request.contextPath}/createCrewForm" id="createCrewBtn" class="btn btn-primary" style="margin: 1rem; float: right;">크루 생성</a>
+				<p style="float: right; margin: 1.25rem 0 1rem 1rem;">참가할 만한 크루가 없다면 직접 새 크루를 만들어보세요.</p>
 			</div>
 			<!-- End Map -->
 			

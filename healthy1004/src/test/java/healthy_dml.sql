@@ -3,6 +3,11 @@
 --member 데이터 전체 삭제
 delete from healthy_member;
 
+-- 수정중~
+update healthy_crew set crew_name = ''
+where crew_id = '';
+select * from healthy_crew;
+
 --member 탈퇴 enabled=0으로 만드는 test용 sql
 update healthy_member
 set enabled=1
@@ -20,19 +25,24 @@ select * from healthy_crew_member;
 commit
 
 -- 아이디 시퀀스로 바꾼 후 insert문
-insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '송파 러닝 크루','애인괌','10','서울시 송파구 중대로12길 35');
-insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '송파 수영 크루','sexy 물개 모여라','10','서울시 송파구 신천동 32');
-insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '주짓수 크루','주짓수 국대 되고 싶은 사람 모여라','5','서울시 송파구 양재대로 1218');
-insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '오리역 복싱 크루','록키 보고 오세요','1','성남시 분당구 성남대로 34');
-insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '강남 수영 크루','20세 이상만 받아요^^','2','서울특별시 강남구 수서동 광평로51길 6-5');
-insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_location) values(crew_seq.nextval, '정자 필라테스 크루','주량 최소 3병 이상','1','정자동');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_member_count, crew_location) values(crew_seq.nextval, '동구리의 링피트 크루','게임하면서 운동해요', 10, 5, '서울시 송파구 중대로12길 35');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_member_count, crew_location) values(crew_seq.nextval, '송파 수영 모임','healthy 물개 모여라!', 10, 8, '서울시 송파구 신천동 32');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_member_count, crew_location) values(crew_seq.nextval, '주짓수 크루','주짓수 국대 되고 싶은 사람 모여라','5','서울시 송파구 양재대로 1218');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_member_count, crew_location) values(crew_seq.nextval, '오리역 복싱 크루 ROCKY','록키 보고 오세요', 6, 6, '성남시 분당구 성남대로 34');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_member_count, crew_location) values(crew_seq.nextval, '강남 수영 크루','20세 이상만 받아요^^','2','서울특별시 강남구 수서동 광평로51길 6-5');
+insert into healthy_crew(crew_id, crew_name, crew_info, crew_size, crew_member_count, crew_location) values(crew_seq.nextval, '정자 필라테스 크루','체지방률 20% 미만에 함께 도전하실 분^^', 5, 3, '경기 성남시 분당구 정자동 88');
 
 --crew table 전체 검색
 select * from healthy_crew;
+select * from healthy_crew_member;
+delete from healthy_crew_member where member_id = 'mk2eeeeee' and crew_id = '15'
 
 -- id로 crew member 수 조회
 select count(*) from healthy_crew_member
 where crew_id = '28'
+
+update healthy_crew set crew_member_count = crew_member_count + 1
+where crew_id = 1
 
 update healthy_crew set crew_member_count = crew_member_count + 1
 where crew_id = 1

@@ -95,7 +95,7 @@ create table healthy_board(
    member_id varchar2(100) not null,
    crew_id number not null,
    board_title varchar2(100) not null,
-   board_content varchar2(100) not null,
+   board_content varchar2(500) not null,
    board_time date not null,
    constraint fk_board_member_id foreign key(member_id) references healthy_member(member_id),
    constraint fk_board_crew_id foreign key(crew_id) references healthy_crew(crew_id) on delete cascade
@@ -104,6 +104,8 @@ create table healthy_board(
 -- board에 이미지 파일첨부 관련 (board 테이블 만들 때 이거도 반드시..!!!!!!!!!!!!)
 alter table healthy_board add boardImg varchar2(200);
 alter table healthy_board add boardThumbImg varchar2(200);
+
+-- alter table healthy_board modify board_content varchar2(500);
 
 --크루게시판 시퀀스
 drop sequence board_seq;

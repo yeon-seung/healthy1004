@@ -1,11 +1,12 @@
-//alert("크루폼js");
+
+
 // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
 var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
 var mapContainer = document.getElementById('map1'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 8 // 지도의 확대 레벨
+        level: 9 // 지도의 확대 레벨
     };  
 
 // 지도를 생성합니다    
@@ -39,6 +40,24 @@ function makeOverListener(map1, marker, infowindow) {
 }
 
 $(document).ready(function() {
+// $(window).load( function() {
+	$("#crewImg").change(function() {
+		if(this.files && this.files[0]) {
+			var reader = new FileReader;
+			reader.onload = function(data) {
+				$(".select_img img").attr("src", data.target.result).height(230);
+			}
+			reader.readAsDataURL(this.files[0]);
+		}
+		$("#creatBtn").css("margin-top", "2rem");
+		
+	});
+});
+
+//$(document).ready(function() {
+$(window).load( function() {
+	
+	
 	// 로딩시 모든 크루 위치 마커 표시
 		$.ajax({
 				type: "post",
@@ -75,9 +94,11 @@ $(document).ready(function() {
 
 								var iwRemoveable = false;
 								
-								 // 마커에 표시할 인포윈도우를 생성합니다 
+								var iwContent = '<div style="height:2rem; width: 12rem; display: block; text-align: center !important; display:table-cell !important;">' + list[i].crewName + '</div>'
+								// 마커에 표시할 인포윈도우를 생성합니다 
 							    var infowindow = new kakao.maps.InfoWindow({
-							        content: list[i].crewName, // 인포윈도우에 표시할 내용
+//							        content: list[i].crewName, // 인포윈도우에 표시할 내용
+							        content: iwContent, // 인포윈도우에 표시할 내용
 									removable : iwRemoveable
 							    });
 			
